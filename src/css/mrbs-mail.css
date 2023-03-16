@@ -1,0 +1,75 @@
+body#mrbs {
+    background-color: #ffffff; 
+    color: #0B263B;
+    font-family: Arial,'Helvetica Neue',helvetica,sans-serif;
+    margin: 0; 
+    padding: 0
+}
+
+table, td {
+    font-family: Arial,'Helvetica Neue',helvetica,sans-serif;
+}
+
+div#header {
+    width: 100%;
+    background-color: #4b667b;
+    color: #ffffff;
+    margin: 0;
+    padding: 10px
+}
+
+div#contents {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1em
+}
+
+#mrbs a:link {
+    color: #0B263B;
+    text-decoration: none;
+    font-weight: bold
+}
+
+#mrbs a:visited {
+    color: #0B263B;
+    text-decoration: none;
+    font-weight: bold
+}
+
+#mrbs a:hover {
+    color: #ff0066;
+    text-decoration: underline;
+    font-weight: bold
+} 
+
+#mrbs tr {
+    padding: 0;
+    margin: 0
+}
+
+#mrbs th, #mrbs td {
+    text-align: left;
+    padding: 1px 1em;
+    margin: 0
+}
+
+.bookingdata th, .bookingdata td {
+    text-align: left;
+    padding: 5px 5px;
+    margin: 0;
+}
+
+.bookingdata th {
+    width: 200px;
+}
+
+table.bookingdata {
+  border-collapse: collapse;
+  padding-top: 10px;
+  width: 100%;
+}
+
+table.bookingdata, .bookingdata th, .bookingdata td {
+  border: 1px solid black;
+}
+
