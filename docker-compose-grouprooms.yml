@@ -1,0 +1,115 @@
+version: "3.6"
+
+services:
+  grouprooms1:
+    container_name: grouprooms1
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystems:main
+    restart: unless-stopped
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grouprooms1.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
+      - "traefik.http.services.grouprooms1.loadbalancer.server.port=80"
+      - "traefik.http.services.grouprooms1.loadbalancer.sticky=true"
+      - "traefik.http.routers.grouprooms1.middlewares=grouprooms1-stripprefix"
+      - "traefik.http.middlewares.grouprooms1-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS}"
+      - "traefik.http.routers.grouprooms1.entrypoints=websecure"
+      - "traefik.http.routers.grouprooms1.tls=true"
+      - "traefik.http.routers.grouprooms1.tls.certresolver=myresolver"
+    volumes:
+      - ./config.inc.php:/var/www/html/config.inc.php
+      - ./custom.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  grouprooms2:
+    container_name: grouprooms2
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystems:main
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grouprooms2.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
+      - "traefik.http.services.grouprooms2.loadbalancer.server.port=80"
+      - "traefik.http.services.grouprooms2.loadbalancer.sticky=true"
+      - "traefik.http.routers.grouprooms2.middlewares=grouprooms2-stripprefix"
+      - "traefik.http.middlewares.grouprooms2-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS}"
+      - "traefik.http.routers.grouprooms2.entrypoints=websecure"
+      - "traefik.http.routers.grouprooms2.tls=true"
+      - "traefik.http.routers.grouprooms2.tls.certresolver=myresolver"
+    restart: unless-stopped
+    volumes:
+      - ./config.inc.php:/var/www/html/config.inc.php
+      - ./custom.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+  
+  grouproomskiosk1:
+    container_name: grouproomskiosk1
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystems:main
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grouproomskiosk1.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS_KIOSK}`)"
+      - "traefik.http.routers.grouproomskiosk1.middlewares=grouproomskiosk1-stripprefix"
+      - "traefik.http.middlewares.grouproomskiosk1-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS_KIOSK}"
+      - "traefik.http.routers.grouproomskiosk1.entrypoints=websecure"
+      - "traefik.http.routers.grouproomskiosk1.tls=true"
+      - "traefik.http.routers.grouproomskiosk1.tls.certresolver=myresolver"
+    volumes:
+      - ./config_kiosk.inc.php:/var/www/html/config.inc.php
+      - ./custom_kiosk.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  wsgrouprooms1:
+    container_name: wsgrouprooms1
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystems:main
+    restart: unless-stopped
+    env_file:
+      - ws.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wsgrouprooms1.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS_WEBSERVICE}`)"
+      - "traefik.http.routers.wsgrouprooms1.middlewares=rewrite-mrbs"
+      - "traefik.http.middlewares.rewrite-mrbs.replacepathregex.regex=^${PATHPREFIX_GROUPROOMS_WEBSERVICE}(.*)"
+      - "traefik.http.middlewares.rewrite-mrbs.replacepathregex.replacement=/public$1"
+      - "traefik.http.routers.wsgrouprooms1.entrypoints=websecure"
+      - "traefik.http.routers.wsgrouprooms1.tls=true"
+      - "traefik.http.routers.wsgrouprooms1.tls.certresolver=myresolver"
+    networks:
+      - "apps-net"
+      
+  grouprooms-db:
+    container_name: grouprooms-db
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - persistent-grouprooms-db:/var/lib/mysql
+      - ./dbinit:/docker-entrypoint-initdb.d
+    networks:
+      - "apps-net"
+
+volumes:
+  persistent-grouprooms-db:
+
+networks:
+  apps-net:
+    external: true
