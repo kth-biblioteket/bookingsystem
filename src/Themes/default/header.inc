@@ -124,7 +124,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 			<div class="header-container__top">
 				<figure class="block figure defaultTheme mainLogo" data-cid="1.77257" lang="sv-SE">
 					<a href="<?php echo (!$is_kiosk ? $kth_www : "#");?>">
-						<img class="figure-img img-fluid" src="/images/KTH_Logotyp.svg" alt="KTH:s logotyp" height="70" width="70">
+						<img class="figure-img img-fluid" src="images/KTH_Logotyp.svg" alt="KTH:s logotyp" height="70" width="70">
 					</a>
 				</figure>
 				<h1 class="block siteName" data-cid="1.260060">
