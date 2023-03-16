@@ -953,7 +953,7 @@ function notifyInstructorOnBooking($data, $mail_previous, $new_entry, $series, $
   if ($mail_settings['html'])
   {
     //191003 Hämta html-mail från mallar/config
-    require_once "config\mail\instructor_mail_booking.inc";
+    require_once "config/mail/instructor_mail_booking.inc";
     $html_body['cid'] = generate_global_uid("html");
   }
   
@@ -1058,7 +1058,7 @@ function notifyInstructorOnDelete($data)
   if ($mail_settings['html'])
   {
     //191003 Hämta html-mail från mallar/config
-    require_once "config\mail\instructor_mail_delete.inc";
+    require_once "config/mail/instructor_mail_delete.inc";
     $html_body['cid'] = generate_global_uid("html");
   }
   
@@ -1166,7 +1166,7 @@ function notifyBookerOnBooking($data, $mail_previous, $new_entry, $series, $star
   // språk beroende på bokarens valda språk
   //TODO göra mer dynamiskt, väldigt mycket hårdkodning.
   //191003
-    require_once "config\mail\booker_mail_booking.inc";
+    require_once "config/mail/booker_mail_booking.inc";
     $html_body['cid'] = generate_global_uid("html");
   }
   
@@ -1273,7 +1273,7 @@ function notifyBookerOnCancel($data)
   // språk beroende på bokarens valda språk
   //TODO göra mer dynamiskt, väldigt mycket hårdkodning.
   //191003
-    require_once "config\mail\booker_mail_delete.inc";
+    require_once "config/mail/booker_mail_delete.inc";
     $html_body['cid'] = generate_global_uid("html");
   }
   
@@ -1393,7 +1393,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $start
   $html_body = array();
   if ($mail_settings['html'])
   {
-    require_once "config\mail\areaadmin_mail_booking.inc";
+    require_once "config/mail/areaadmin_mail_booking.inc";
     //$html_body['content'] = create_body($data, $mail_previous, $compare, $series, $action, TRUE, $note, $start_times);
     $html_body['cid'] = generate_global_uid("html");
   }
@@ -1484,7 +1484,7 @@ function notifyAdminOnDelete($data, $series=FALSE, $start_times, $action="delete
   $html_body = array();
   if ($mail_settings['html'])
   {
-    require_once "config\mail\areaadmin_mail_delete.inc";
+    require_once "config/mail/areaadmin_mail_delete.inc";
     //$html_body['content'] = create_body($data, NULL, FALSE, $series, $action, TRUE, $note, $start_times);
     $html_body['cid'] = generate_global_uid("html");
   }

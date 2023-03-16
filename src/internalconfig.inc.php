@@ -519,6 +519,8 @@ $use_strict = FALSE;
  ********************************************************/
 
 // Disable magic quoting on database returns:
+// KTH 20230316 Depracated
+/*
 if (get_magic_quotes_runtime())
 {
   if (version_compare(PHP_VERSION, '5.3.0') >= 0)
@@ -530,6 +532,7 @@ if (get_magic_quotes_runtime())
     set_magic_quotes_runtime(false);
   }
 }
+*/
 
 // Make sure notice errors are not reported, they can break mrbs code:
 $error_level = E_ALL & !E_NOTICE & !E_USER_NOTICE;
