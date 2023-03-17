@@ -19,16 +19,16 @@ if($environment == 'development') {
 switch ($default_view)
 {
   case 2:
-    $redirect_str = "month.php";
+    $redirect_str = "/" . $app_name . "month.php";
     break;
   case 1:
-    $redirect_str = "week.php";
+    $redirect_str = "/" . $app_name . "week.php";
     break;
   case 0:
-    $redirect_str = "day.php";
+    $redirect_str = "/" . $app_name . "day.php";
     break;
   default:
-    $redirect_str = "day.php";
+    $redirect_str = "/" . $app_name . "day.php";
 }
 //echo $redirect_str;
 $redirect_str .= "?year=$year&month=$month&day=$day&area=$area&room=$room";
