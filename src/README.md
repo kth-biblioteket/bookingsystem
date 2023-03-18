@@ -83,11 +83,6 @@ if ($is_kiosk) {
     $auth["session_php"]["inactivity_expire_time"] = (60*60); // 1 timme
 }
 
-ini_set('session.save_path', '');
-ini_set('session.gc_maxlifetime', (x));
-$auth["session_php"]["session_expire_time"] =
-$auth["session_php"]["inactivity_expire_time"] =
-
 unset($auth["admin"]);
 $auth["admin"][] =
 $auth['bookingadmin'][] =
