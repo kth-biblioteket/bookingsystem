@@ -60,8 +60,16 @@ $ajax_refresh_rate = 15;
 $view_week_number = TRUE;
 $times_along_top = TRUE;
 $default_view = 0;
-$default_room = 1;
+$default_room = 1;$rotate_room_names = FALSE;
 
+// Text när en area är "avstängd"
+
+$vocab_override['sv']["no_rooms_for_area"]  = "Med anledning av de skärpta allmänna råden i Stockholm är grupprummen stängda för bokning tills vidare";
+$vocab_override['en']["no_rooms_for_area"]  = "Due to the stricter general guidelines in Stockholm, the group rooms are closed until further notice";
+
+/***********************************************
+ * Authentication settings - read AUTHENTICATION
+ ***********************************************/
 $auth["session"] =
 $auth["type"] =
 $session_name =
