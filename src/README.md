@@ -26,6 +26,9 @@ $ews_host =
 $ews_user =
 $ews_password =
 
+/*********************************
+ * Site identification information
+ *********************************/
 $mrbs_admin =
 $mrbs_admin_email =
 
