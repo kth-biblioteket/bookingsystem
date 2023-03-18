@@ -73,6 +73,16 @@ $vocab_override['en']["no_rooms_for_area"]  = "Due to the stricter general guide
 $auth["session"] =
 $auth["type"] =
 $session_name =
+
+ini_set('session.gc_maxlifetime', (60*60*2)); //2 timmar
+
+$auth["session_php"]["session_expire_time"] = (60*60*24*30); // 30 dagar
+if ($is_kiosk) {
+    $auth["session_php"]["inactivity_expire_time"] = (30); // 30 ssekunder
+} else {
+    $auth["session_php"]["inactivity_expire_time"] = (60*60); // 1 timme
+}
+
 ini_set('session.save_path', '');
 ini_set('session.gc_maxlifetime', (x));
 $auth["session_php"]["session_expire_time"] =
