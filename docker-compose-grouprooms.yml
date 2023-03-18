@@ -11,7 +11,7 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.grouprooms1.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
+      - "traefik.http.routers.grouprooms1.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
       - "traefik.http.services.grouprooms1.loadbalancer.server.port=80"
       - "traefik.http.services.grouprooms1.loadbalancer.sticky=true"
       - "traefik.http.routers.grouprooms1.middlewares=grouprooms1-stripprefix"
@@ -20,8 +20,8 @@ services:
       - "traefik.http.routers.grouprooms1.tls=true"
       - "traefik.http.routers.grouprooms1.tls.certresolver=myresolver"
     volumes:
-      - ./config_grouprooms.inc.php:/var/www/html/config.inc.php
-      - ./custom_grouprooms.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/config_grouprooms.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_grouprooms.css:/var/www/html/css/custom.css
     networks:
       - "apps-net"
 
@@ -34,7 +34,7 @@ services:
       - .env
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.grouprooms2.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
+      - "traefik.http.routers.grouprooms2.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
       - "traefik.http.services.grouprooms2.loadbalancer.server.port=80"
       - "traefik.http.services.grouprooms2.loadbalancer.sticky=true"
       - "traefik.http.routers.grouprooms2.middlewares=grouprooms2-stripprefix"
@@ -44,8 +44,8 @@ services:
       - "traefik.http.routers.grouprooms2.tls.certresolver=myresolver"
     restart: unless-stopped
     volumes:
-      - ./config_grouprooms.inc.php:/var/www/html/config.inc.php
-      - ./custom_grouprooms.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/config_grouprooms.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_grouprooms.css:/var/www/html/css/custom.css
     networks:
       - "apps-net"
 
@@ -57,15 +57,15 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.grouproomskiosk1.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS_KIOSK}`)"
+      - "traefik.http.routers.grouproomskiosk1.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS_KIOSK}`)"
       - "traefik.http.routers.grouproomskiosk1.middlewares=grouproomskiosk1-stripprefix"
       - "traefik.http.middlewares.grouproomskiosk1-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS_KIOSK}"
       - "traefik.http.routers.grouproomskiosk1.entrypoints=websecure"
       - "traefik.http.routers.grouproomskiosk1.tls=true"
       - "traefik.http.routers.grouproomskiosk1.tls.certresolver=myresolver"
     volumes:
-      - ./config_grouprooms_kiosk.inc.php:/var/www/html/config.inc.php
-      - ./custom_grouprooms_kiosk.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/config_grouprooms_kiosk.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_grouprooms_kiosk.css:/var/www/html/css/custom.css
     networks:
       - "apps-net"
 
@@ -95,15 +95,15 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.readingstudios.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_READINGSTUDIOS}`)"
+      - "traefik.http.routers.readingstudios.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_READINGSTUDIOS}`)"
       - "traefik.http.routers.readingstudios.middlewares=readingstudios-stripprefix"
       - "traefik.http.middlewares.readingstudios-stripprefix.stripprefix.prefixes=${PATHPREFIX_READINGSTUDIOS}"
       - "traefik.http.routers.readingstudios.entrypoints=websecure"
       - "traefik.http.routers.readingstudios.tls=true"
       - "traefik.http.routers.readingstudios.tls.certresolver=myresolver"
     volumes:
-      - ./config_readingstudios.inc.php:/var/www/html/config.inc.php
-      - ./custom_readingstudios.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/config_readingstudios.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_readingstudios.css:/var/www/html/css/custom.css
     networks:
       - "apps-net"
   
@@ -115,15 +115,15 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.readingstudioskiosk.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_READINGSTUDIOS_KIOSK}`)"
+      - "traefik.http.routers.readingstudioskiosk.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_READINGSTUDIOS_KIOSK}`)"
       - "traefik.http.routers.readingstudioskiosk.middlewares=readingstudioskiosk-stripprefix"
       - "traefik.http.middlewares.readingstudioskiosk-stripprefix.stripprefix.prefixes=${PATHPREFIX_READINGSTUDIOS_KIOSK}"
       - "traefik.http.routers.readingstudioskiosk.entrypoints=websecure"
       - "traefik.http.routers.readingstudioskiosk.tls=true"
       - "traefik.http.routers.readingstudioskiosk.tls.certresolver=myresolver"
     volumes:
-      - ./config_readingstudios_kiosk.inc.php:/var/www/html/config.inc.php
-      - ./custom_readingstudios_kiosk.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/config_readingstudios_kiosk.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_readingstudios_kiosk.css:/var/www/html/css/custom.css
     networks:
       - "apps-net"
 
@@ -153,15 +153,15 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.handledning.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_HANDLEDNING}`)"
+      - "traefik.http.routers.handledning.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_HANDLEDNING}`)"
       - "traefik.http.routers.handledning.middlewares=handledning-stripprefix"
       - "traefik.http.middlewares.handledning-stripprefix.stripprefix.prefixes=${PATHPREFIX_HANDLEDNING}"
       - "traefik.http.routers.handledning.entrypoints=websecure"
       - "traefik.http.routers.handledning.tls=true"
       - "traefik.http.routers.handledning.tls.certresolver=myresolver"
     volumes:
-      - ./config_handledning.inc.php:/var/www/html/config.inc.php
-      - ./custom_handledning.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/config_handledning.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_handledning.css:/var/www/html/css/custom.css
     networks:
       - "apps-net"
 
