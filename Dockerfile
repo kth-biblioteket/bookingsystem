@@ -19,7 +19,6 @@ ENV LANG en_GB.UTF-8
 ENV LANGUAGE en_GB:en
 ENV LC_ALL en_GB.UTF-8
 
-# Disable error display in the custom php.ini file
 RUN sed -i -e 's/^display_errors\s*=\s*On/display_errors = Off/g' $PHP_INI_DIR/php.ini
 
 COPY ./src/ /var/www/html/

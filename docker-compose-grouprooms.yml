@@ -1,0 +1,193 @@
+version: "3.6"
+
+services:
+  grouprooms1:
+    container_name: grouprooms1
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    restart: unless-stopped
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grouprooms1.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
+      - "traefik.http.services.grouprooms1.loadbalancer.server.port=80"
+      - "traefik.http.services.grouprooms1.loadbalancer.sticky=true"
+      - "traefik.http.routers.grouprooms1.middlewares=grouprooms1-stripprefix"
+      - "traefik.http.middlewares.grouprooms1-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS}"
+      - "traefik.http.routers.grouprooms1.entrypoints=websecure"
+      - "traefik.http.routers.grouprooms1.tls=true"
+      - "traefik.http.routers.grouprooms1.tls.certresolver=myresolver"
+    volumes:
+      - ./config_grouprooms.inc.php:/var/www/html/config.inc.php
+      - ./custom_grouprooms.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  grouprooms2:
+    container_name: grouprooms2
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grouprooms2.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS}`)"
+      - "traefik.http.services.grouprooms2.loadbalancer.server.port=80"
+      - "traefik.http.services.grouprooms2.loadbalancer.sticky=true"
+      - "traefik.http.routers.grouprooms2.middlewares=grouprooms2-stripprefix"
+      - "traefik.http.middlewares.grouprooms2-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS}"
+      - "traefik.http.routers.grouprooms2.entrypoints=websecure"
+      - "traefik.http.routers.grouprooms2.tls=true"
+      - "traefik.http.routers.grouprooms2.tls.certresolver=myresolver"
+    restart: unless-stopped
+    volumes:
+      - ./config_grouprooms.inc.php:/var/www/html/config.inc.php
+      - ./custom_grouprooms.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  grouproomskiosk1:
+    container_name: grouproomskiosk1
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grouproomskiosk1.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS_KIOSK}`)"
+      - "traefik.http.routers.grouproomskiosk1.middlewares=grouproomskiosk1-stripprefix"
+      - "traefik.http.middlewares.grouproomskiosk1-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS_KIOSK}"
+      - "traefik.http.routers.grouproomskiosk1.entrypoints=websecure"
+      - "traefik.http.routers.grouproomskiosk1.tls=true"
+      - "traefik.http.routers.grouproomskiosk1.tls.certresolver=myresolver"
+    volumes:
+      - ./config_grouprooms_kiosk.inc.php:/var/www/html/config.inc.php
+      - ./custom_grouprooms_kiosk.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  grouprooms-db:
+    container_name: grouprooms-db
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - persistent-grouprooms-db:/var/lib/mysql
+      - ./dbinit_grouprooms:/docker-entrypoint-initdb.d
+    networks:
+      - "apps-net"
+
+  readingstudios:
+    container_name: readingstudios
+    depends_on:
+      - readingstudios-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.readingstudios.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_READINGSTUDIOS}`)"
+      - "traefik.http.routers.readingstudios.middlewares=readingstudios-stripprefix"
+      - "traefik.http.middlewares.readingstudios-stripprefix.stripprefix.prefixes=${PATHPREFIX_READINGSTUDIOS}"
+      - "traefik.http.routers.readingstudios.entrypoints=websecure"
+      - "traefik.http.routers.readingstudios.tls=true"
+      - "traefik.http.routers.readingstudios.tls.certresolver=myresolver"
+    volumes:
+      - ./config_readingstudios.inc.php:/var/www/html/config.inc.php
+      - ./custom_readingstudios.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+  
+  readingstudioskiosk:
+    container_name: readingstudioskiosk
+    depends_on:
+      - readingstudios-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.readingstudioskiosk.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_READINGSTUDIOS_KIOSK}`)"
+      - "traefik.http.routers.readingstudioskiosk.middlewares=readingstudioskiosk-stripprefix"
+      - "traefik.http.middlewares.readingstudioskiosk-stripprefix.stripprefix.prefixes=${PATHPREFIX_READINGSTUDIOS_KIOSK}"
+      - "traefik.http.routers.readingstudioskiosk.entrypoints=websecure"
+      - "traefik.http.routers.readingstudioskiosk.tls=true"
+      - "traefik.http.routers.readingstudioskiosk.tls.certresolver=myresolver"
+    volumes:
+      - ./config_readingstudios_kiosk.inc.php:/var/www/html/config.inc.php
+      - ./custom_readingstudios_kiosk.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  readingstudios-db:
+    container_name: readingstudios-db
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - persistent-readingstudios-db:/var/lib/mysql
+      - ./dbinit_readingstudios:/docker-entrypoint-initdb.d
+    networks:
+      - "apps-net"
+
+  handledning:
+    container_name: handledning
+    depends_on:
+      - handledning-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.handledning.rule=Host(`${HOST}`) && PathPrefix(`${PATHPREFIX_HANDLEDNING}`)"
+      - "traefik.http.routers.handledning.middlewares=handledning-stripprefix"
+      - "traefik.http.middlewares.handledning-stripprefix.stripprefix.prefixes=${PATHPREFIX_HANDLEDNING}"
+      - "traefik.http.routers.handledning.entrypoints=websecure"
+      - "traefik.http.routers.handledning.tls=true"
+      - "traefik.http.routers.handledning.tls.certresolver=myresolver"
+    volumes:
+      - ./config_handledning.inc.php:/var/www/html/config.inc.php
+      - ./custom_handledning.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  handledning-db:
+    container_name: handledning-db
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - persistent-handledning-db:/var/lib/mysql
+      - ./dbinit_handledning:/docker-entrypoint-initdb.d
+    networks:
+      - "apps-net"
+
+volumes:
+  persistent-grouprooms-db:
+  persistent-readingstudios-db:
+  persistent-handledning-db:
+
+networks:
+  apps-net:
+    external: true
