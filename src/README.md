@@ -8,6 +8,10 @@ Open Source MRBS
 ### config.inc.php: ###
 ```
 $timezone = 
+
+/*******************
+ * Database settings
+ ******************/
 $dbsys =
 $db_host =
 $db_database =
@@ -15,6 +19,9 @@ $db_login =
 $db_password =
 $db_tbl_prefix =
 
+/*******************
+ * Exchange settings
+ ******************/
 $ews_host =
 $ews_user =
 $ews_password =
