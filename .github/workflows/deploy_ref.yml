@@ -1,8 +1,8 @@
-name: Create and publish Docker image
+name: Create, publish Docker image and Deploy using webhook
 
 on:
   push:
-    branches: ['main']
+    branches: ['ref']
 
 env:
   REGISTRY: ghcr.io
@@ -35,7 +35,20 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: Create, publish Docker image and Deploy using webhook
+          
+  deploy:
+    needs: build-and-push-image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy docker container webhook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: https://api-ref.lib.kth.se/webhook/hook
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          data: '{ "action": "deploy" }'
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+        
+
