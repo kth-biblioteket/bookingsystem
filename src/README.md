@@ -74,7 +74,7 @@ $auth["session"] =
 $auth["type"] =
 $session_name =
 
-ini_set('session.gc_maxlifetime', (60*60*2)); //2 timmar
+ini_set('session.gc_maxlifetime', (60*60*2))
 
 $auth["session_php"]["session_expire_time"] =
 if ($is_kiosk) {
