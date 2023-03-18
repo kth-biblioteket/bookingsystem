@@ -44,8 +44,13 @@ $ldap_api_key =
 $ldap_api_url =
 $ldap_user_domain =
 
+//Typ av bokningssätt
+//alla tider bokningsbara eller otillgängliga som default (type för bokningsbar tid = "B")
 $default_bookings_open =
 
+/******************
+ * Display settings
+ ******************/
 $weekstarts = 1;
 $hidden_days = array(0,6);
 $year_range['back'] = 1;
