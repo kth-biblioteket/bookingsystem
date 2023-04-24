@@ -97,6 +97,7 @@ function authenticateuser($user_id, $password) {
 	$response = curl_exec($ch);
 	if($environment == 'development') {
 		error_log("authenticateuser()  " . $response);
+		error_log("authenticateuser()  url: " . $url);
 	}
 	if(curl_errno($ch)) {
 		$json = '"error":{"Error connecting to loginserver."}' . curl_errno($ch);
