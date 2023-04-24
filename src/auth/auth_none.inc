@@ -95,10 +95,6 @@ function authenticateuser($user_id, $password) {
 	);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 	$response = curl_exec($ch);
-	if($environment == 'development') {
-		error_log("authenticateuser()  " . $response);
-		error_log("authenticateuser()  url: " . $url);
-	}
 	if(curl_errno($ch)) {
 		$json = '"error":{"Error connecting to loginserver."}' . curl_errno($ch);
 		$error = $json;
@@ -290,9 +286,7 @@ function authValidateUser($user, $pass, $kthcas)
 			$ldapuser = $user . "@" . $ldap_user_domain;
 			$ldapresponse = authenticateuser($ldapuser, $pass);
 			$ldapjson = json_decode($ldapresponse,TRUE);
-			if($environment == 'development') {
-				error_log("ldapjson: " . $ldapjson);
-			}
+			
 			if($ldapjson["auth"]){
 				$result = 1; //SUCCESS!!
 				$message = "Success";
