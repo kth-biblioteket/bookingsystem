@@ -283,6 +283,9 @@ function authValidateUser($user, $pass, $kthcas)
 			$ldapuser = $user . "@" . $ldap_user_domain;
 			$ldapresponse = authenticateuser($ldapuser, $pass);
 			$ldapjson = json_decode($ldapresponse,TRUE);
+			if($environment == 'development') {
+				error_log("ldapjson: " . $ldapjson);
+			}
 			if($ldapjson["auth"]){
 				$result = 1; //SUCCESS!!
 				$message = "Success";

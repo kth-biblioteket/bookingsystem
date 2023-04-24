@@ -242,7 +242,7 @@ services:
       - "apps-net"
 
   cas-db:
-    container_name: handledning-db
+    container_name: cas-db
     image: mysql:8.0
     restart: unless-stopped
     env_file:
@@ -269,7 +269,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.openinghours.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_OPENINGHOURS}`)"
       - "traefik.http.routers.openinghours.middlewares=openinghours-stripprefix"
-      - "traefik.http.middlewares.openinghours-stripprefix.stripprefix.prefixes=${PATHPREFIX_OPERNINGHOURS}"
+      - "traefik.http.middlewares.openinghours-stripprefix.stripprefix.prefixes=${PATHPREFIX_OPENINGHOURS}"
       - "traefik.http.routers.openinghours.entrypoints=websecure"
       - "traefik.http.routers.openinghours.tls=true"
       - "traefik.http.routers.openinghours.tls.certresolver=myresolver"
@@ -293,7 +293,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - persistent-openinghours-db:/var/lib/mysql
-      - ./dbinit_cas:/docker-entrypoint-initdb.d
+      - ./dbinit_openinghours:/docker-entrypoint-initdb.d
     networks:
       - "apps-net"
 
