@@ -5,7 +5,7 @@ services:
     container_name: grouprooms1
     depends_on:
       - grouprooms-db
-    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
     restart: unless-stopped
     env_file:
       - .env
@@ -29,7 +29,7 @@ services:
     container_name: grouprooms2
     depends_on:
       - grouprooms-db
-    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
     env_file:
       - .env
     labels:
@@ -53,7 +53,7 @@ services:
     container_name: grouproomskiosk1
     depends_on:
       - grouprooms-db
-    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -91,7 +91,7 @@ services:
     container_name: readingstudios
     depends_on:
       - readingstudios-db
-    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -111,7 +111,7 @@ services:
     container_name: readingstudioskiosk
     depends_on:
       - readingstudios-db
-    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -149,7 +149,7 @@ services:
     container_name: handledning
     depends_on:
       - handledning-db
-    image: ghcr.io/kth-biblioteket/bookingsystem:main
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -183,10 +183,127 @@ services:
     networks:
       - "apps-net"
 
+  talbok:
+    container_name: talbok
+    depends_on:
+      - talbok-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.talbok.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_TALBOK}`)"
+      - "traefik.http.routers.talbok.middlewares=talbok-stripprefix"
+      - "traefik.http.middlewares.talbok-stripprefix.stripprefix.prefixes=${PATHPREFIX_TALBOK}"
+      - "traefik.http.routers.talbok.entrypoints=websecure"
+      - "traefik.http.routers.talbok.tls=true"
+      - "traefik.http.routers.talbok.tls.certresolver=myresolver"
+    volumes:
+      - /local/docker/bookingsystem/config_talbok.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_talbok.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  talbok-db:
+    container_name: talbok-db
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - persistent-talbok-db:/var/lib/mysql
+      - ./dbinit_talbok:/docker-entrypoint-initdb.d
+    networks:
+      - "apps-net"
+
+  cas:
+    container_name: cas
+    depends_on:
+      - cas-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cas.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_CAS}`)"
+      - "traefik.http.routers.cas.middlewares=cas-stripprefix"
+      - "traefik.http.middlewares.cas-stripprefix.stripprefix.prefixes=${PATHPREFIX_CAS}"
+      - "traefik.http.routers.cas.entrypoints=websecure"
+      - "traefik.http.routers.cas.tls=true"
+      - "traefik.http.routers.cas.tls.certresolver=myresolver"
+    volumes:
+      - /local/docker/bookingsystem/config_cas.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_cas.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  cas-db:
+    container_name: handledning-db
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - persistent-cas-db:/var/lib/mysql
+      - ./dbinit_cas:/docker-entrypoint-initdb.d
+    networks:
+      - "apps-net"
+
+  openinghours:
+    container_name: openinghours
+    depends_on:
+      - openinghours-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.openinghours.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_OPENINGHOURS}`)"
+      - "traefik.http.routers.openinghours.middlewares=openinghours-stripprefix"
+      - "traefik.http.middlewares.openinghours-stripprefix.stripprefix.prefixes=${PATHPREFIX_OPERNINGHOURS}"
+      - "traefik.http.routers.openinghours.entrypoints=websecure"
+      - "traefik.http.routers.openinghours.tls=true"
+      - "traefik.http.routers.openinghours.tls.certresolver=myresolver"
+    volumes:
+      - /local/docker/bookingsystem/config_openinghours.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_openinghours.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+
+  openinghours-db:
+    container_name: openinghours-db
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - persistent-openinghours-db:/var/lib/mysql
+      - ./dbinit_cas:/docker-entrypoint-initdb.d
+    networks:
+      - "apps-net"
+
 volumes:
   persistent-grouprooms-db:
   persistent-readingstudios-db:
   persistent-handledning-db:
+  persistent-talbok-db:
+  persistent-cas-db:
+  persistent-openinghours-db:
 
 networks:
   apps-net:

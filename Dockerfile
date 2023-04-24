@@ -2,7 +2,6 @@
 FROM php:7.3-apache
 
 RUN a2enmod rewrite
-RUN docker-php-ext-install mysqli
 
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
