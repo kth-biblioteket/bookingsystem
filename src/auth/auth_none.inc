@@ -79,6 +79,8 @@ Funktion som hämtar autentiserar användare mot KTH LDAP
 function authenticateuser($user_id, $password) {
 	global $ldap_api_key;
 	global $ldap_api_url;
+	global $environment;
+
 	$data = array("username" => $user_id, "password" => $password);                                                                    
 	$data_string = json_encode($data);
 	$ch = curl_init();
@@ -93,6 +95,9 @@ function authenticateuser($user_id, $password) {
 	);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 	$response = curl_exec($ch);
+	if($environment == 'development') {
+		error_log("authenticateuser()  " . $response);
+	}
 	if(curl_errno($ch)) {
 		$json = '"error":{"Error connecting to loginserver."}' . curl_errno($ch);
 		$error = $json;
