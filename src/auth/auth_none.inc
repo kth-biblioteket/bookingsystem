@@ -145,6 +145,7 @@ function authValidateUser($user, $pass, $kthcas)
 {
 	//KTH
 	global $auth, $ldap_user_domain, $alma_user_domain;
+	global $environment;
 	//anropa alma här (kth-konto/lånekort plus persnr)
 	$returnvalue = 0;
 	$result = 0; //0=Error 1=Success
