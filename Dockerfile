@@ -5,7 +5,7 @@ RUN a2enmod rewrite
 
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql php7.3-soap
 
 RUN apt-get update
 RUN apt-get -y install locales
