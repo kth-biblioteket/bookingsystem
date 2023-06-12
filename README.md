@@ -14,8 +14,10 @@ Deploy via github actions som anropar en webhook
 
 #### Dependencies
 php:7.3-apache
-docker-php-ext-install mysqli pdo pdo_mysql php7.3-soap
+libxml2-dev
 locales en_GB.UTF-8
+docker-php-ext-install mysqli pdo pdo_mysql php7.3-soap
+
 
 ##### Installation
 
