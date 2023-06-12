@@ -1,7 +1,7 @@
 <?php
 //191003
 //KTH 20230316
-//require_once($_SERVER['DOCUMENT_ROOT'] . '/ews/vendor/autoload.php');
+require_once('/ews/vendor/autoload.php');
 
 use \jamesiarmes\PhpEws\Client;
 use \jamesiarmes\PhpEws\Request\CreateItemType;
