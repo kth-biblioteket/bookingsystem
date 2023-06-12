@@ -382,10 +382,8 @@ function sql_rollback()
 
 
 // Get a mutex lock
-//191003 Lägg till app_name så det blir exklusivt för varje app
 function sql_mutex_lock($name)
 {
-  global $app_name;
   // Turn off ignore_user_abort until the lock has been freed.  See
   // the warning at http://php.net/manual/en/features.persistent-connections.php
   // (Only applies to persistent connections, but we'll do it for all cases to keep
@@ -407,15 +405,13 @@ function sql_mutex_lock($name)
   }
 
   $f = "sql_${db_sys}_mutex_lock";
-  return $f($app_name.$name, $db_conn);
+  return $f($name, $db_conn);
 }
 
 
 // Return a mutex lock
-//191003 Lägg till app_name så det blir exklusivt för varje app
 function sql_mutex_unlock($name)
 {
-  global $app_name;
   if (func_num_args() > 1)
   {
     $handle = func_get_arg(1);
@@ -431,7 +427,7 @@ function sql_mutex_unlock($name)
   }
 
   $f = "sql_${db_sys}_mutex_unlock";
-  $f($app_name.$name, $db_conn);
+  $f($name, $db_conn);
   
   mrbs_ignore_user_abort(FALSE);
 }
