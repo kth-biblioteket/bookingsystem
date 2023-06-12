@@ -18,6 +18,6 @@ ENV LC_ALL en_GB.UTF-8
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql soap
 
-RUN sed -i -e 's/^display_errors\s*=\s*On/display_errors = Off/g' $PHP_INI_DIR/php.ini
+## RUN sed -i -e 's/^display_errors\s*=\s*On/display_errors = Off/g' $PHP_INI_DIR/php.ini
 
 COPY ./src/ /var/www/html/
