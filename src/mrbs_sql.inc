@@ -2755,7 +2755,7 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, $
     $repeat_id = NULL;
   }
   if($environment == 'development') {
-    error_log("Before sql_mutex_lock entry table");
+    error_log("Before sql_mutex_lock entry table tbl_entry $tbl_entry");
   }
 
   // Acquire mutex to lock out others trying to book the same slot(s).
