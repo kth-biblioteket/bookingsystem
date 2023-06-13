@@ -139,11 +139,14 @@ function print_theme_header($day, $month, $year, $area, $room) {
 			}
 		}
 		$myURL = $_SERVER["REQUEST_URI"];
-		//rensa bort
+		//rensa bort eventuella nuvarande språkparameter
 		$myURL = str_replace("&lang=en", "", $myURL);
 		$myURL = str_replace("&lang=sv", "", $myURL);
 		$myURL = str_replace("?lang=en", "", $myURL);
 		$myURL = str_replace("?lang=sv", "", $myURL);
+		//Ta bort inledande "/"
+		$myURL = substr($myURL,1);
+
 		if (isset($switchlanguage)) {
 			$pos = strpos($myURL, "?");
 			if ($pos === false) {
