@@ -163,10 +163,10 @@ function print_theme_header($day, $month, $year, $area, $room) {
 				<div class="block list links secondaryMenu" data-cid="1.864801" lang="sv-SE">
 					<ul>
 					<?php if ($switchlanguage != "en") { ?>
-						<li><a href="<?php echo $myURL . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<li><a href="<?php echo $app_name . $myURL . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
 						</li>
 					<?php } else {?>
-						<li><a href="<?php echo $myURL . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<li><a href="<?php echo $app_name . $myURL . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
 						</li>
 					<?php }?>
 					</ul>

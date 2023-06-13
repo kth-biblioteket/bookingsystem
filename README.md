@@ -21,7 +21,7 @@ docker-php-ext-install mysqli pdo pdo_mysql php7.3-soap
 
 ##### Installation
 
-1.  Skapa folder på server med namnet på repot: "/local/docker/formtools"
+1.  Skapa folder på server med namnet på repot: "/local/docker/bookingsystem"
 2.  Skapa och anpassa docker-compose.yml i foldern
 ```
 version: "3.6"
