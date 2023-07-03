@@ -28,7 +28,7 @@ if ($mrbslang == 'sv') {
   </br>';
   $html_body['content'] .=    
   '<div>' .
-    'Din bokning var från ' . date("H:i",$data['start_time']) . ' till ' . date("H:i",$data['end_time']) . ', ' . utf8_encode(strftime("%A %d %B",$data['start_time'])) .
+    'Din bokning var från ' . date("H:i",$data['start_time']) . ' till ' . date("H:i",$data['end_time']) . ', ' . strftime("%A %d %B",$data['start_time']) .
   '</div>
   </br>';
   $html_body['content'] .=     
@@ -48,7 +48,7 @@ if ($mrbslang == 'sv') {
   </br>';
   $html_body['content'] .=    
   '<div>' .
-    'Your booking was from ' . date("H:i",$data['start_time']) . ' to ' . date("H:i",$data['end_time']) . ', ' . utf8_encode(strftime("%A %d %B",$data['start_time'])) .
+    'Your booking was from ' . date("H:i",$data['start_time']) . ' to ' . date("H:i",$data['end_time']) . ', ' . strftime("%A %d %B",$data['start_time']) .
   '</div>
   </br>';
   $html_body['content'] .=   
