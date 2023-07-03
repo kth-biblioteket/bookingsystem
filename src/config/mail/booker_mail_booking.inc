@@ -42,7 +42,7 @@ if ($data['campus'] > 0) {
 } else {
   $html_body['content'] = str_replace("@@place",($data['room_number'] != "" ? $data['room_number'] . ". " : "") . $data['room_name'],$html_body['content']);
 }
-$html_body['content'] = str_replace("@@timedate",date("H:i",$data['start_time']) . ', ' . utf8_encode(strftime("%A %d %B",$data['start_time'])),$html_body['content']);
+$html_body['content'] = str_replace("@@timedate",date("H:i",$data['start_time']) . ', ' . strftime("%A %d %B",$data['start_time']),$html_body['content']);
 //dont use $_SERVER['HTTP_HOST' for KIOSK
 if(stripos($_SERVER['PHP_SELF'], 'kiosk')==false) {
   $phpself = $_SERVER['PHP_SELF'];
