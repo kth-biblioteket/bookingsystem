@@ -354,15 +354,28 @@ DOMAIN_NAME=apps-ref.lib.kth.se
 REPO_TYPE=ref
 ```
 
-4.  Skapa folder "local/docker/bookingsystem"
 6.  Skapa folder "local/docker/bookingsystem/dbinit"
 7. Skapa init.sql från repots dbinit/init.sql
 8. Skapa deploy_ref.yml i github actions
 9. Skapa deploy_prod.yml i github actions
 10. Github Actions bygger en dockerimage i github packages
 11. Starta applikationen med docker compose up -d --build i "local/docker/bookingsystem
+12. Importera Data första gången
+```
+#!/bin/bash
 
+# Set variables for database credentials and backup destination
+DB_USER="root"
+DB_PASSWORD="xxxxxx"
+DB_NAME="bookingsystem"
 
+# Determine the container ID for the MySQL database
+CONTAINER_NAME="openinghours-db"
+CONTAINER_ID=$(docker ps -f "name=openinghours-db" -q)
+
+# Use mysql to import the database inside the container
+cat openinghours.sql | docker exec -i "$CONTAINER_ID" mysql -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME"
+```
 
 ## Starta om enskild tjänst
 - docker-compose restart [tjänstnamn]

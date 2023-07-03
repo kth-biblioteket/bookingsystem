@@ -57,14 +57,14 @@ $linktobooking = '<table border="0" cellspacing="0" cellpadding="0">
   <tbody>
     <tr>
       <td align="center" style="border-radius: 30px;" bgcolor="#B0C92B">
-        <a style="padding: 15px 25px; border-radius: 30px; border: 1px solid #B0C92B; border-image: none; color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold;text-decoration: none; display: inline-block;" href="https://' . dirname($_SERVER['HTTP_HOST'] . $phpself) . '/edit_entry.php?id=' . $data["id"] . '&lang=' . $mrbslang . '">' . get_vocab("mail_link_text") . '</a>
+        <a style="padding: 15px 25px; border-radius: 30px; border: 1px solid #B0C92B; border-image: none; color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold;text-decoration: none; display: inline-block;" href="' . $url_base . '/edit_entry.php?id="' . $data["id"] . '&lang=' . $mrbslang . '">' . get_vocab("mail_link_text") . '</a>
       </td>
     </tr>
   </tbody>
 </table>';
 $html_body['content'] = str_replace("@@linktobooking", $linktobooking, $html_body['content']);
 if($data['area_map']) {
-  $html_body['content'] = str_replace("@@map",'<br><br><img src="https://' . dirname($_SERVER['HTTP_HOST'].$phpself) . '/' . 'images' .'/' . $data['area_map_image'] .'"></img>', $html_body['content']);
+  $html_body['content'] = str_replace("@@map",'<br><br><img src="' . $url_base . '/' . 'images' .'/' . $data['area_map_image'] .'"></img>', $html_body['content']);
 }
 $html_body['content'] .= '
 </body>
