@@ -25,10 +25,10 @@ $html_body['content'] = '
   <![endif]-->';
 
 if ($mrbslang == 'sv') {
-  setlocale(LC_ALL,"swedish");
+  setlocale(LC_ALL,"sv_SE.UTF-8");
 }
 else {
-  setlocale(LC_ALL,"eng");
+  setlocale(LC_ALL,"en_GB.UTF-8");
 }
 
 if(stripos(get_campus($data['campus'], $mrbslang), 'zoom')==false) {

@@ -18,7 +18,7 @@ $html_body['content'] = '
   <![endif]-->';
 
 if ($mrbslang == 'sv') {
-  setlocale(LC_ALL,"swedish");
+  setlocale(LC_ALL,"sv_SE.UTF-8");
   $html_body['content'] .=   
   '<div>Hej!</div>
   </br>
@@ -38,7 +38,7 @@ if ($mrbslang == 'sv') {
   <div>08 - 790 70 88</div>
   <div>www.kth.se/biblioteket</div>';
 } else {
-  setlocale(LC_ALL,"eng");
+  setlocale(LC_ALL,"en_GB.UTF-8");
   $html_body['content'] .=   '
   <div>Hi!</div>
     </br>

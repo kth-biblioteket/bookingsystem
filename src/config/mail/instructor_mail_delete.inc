@@ -1,6 +1,6 @@
 <?php
 global $area, $tbl_entry;
-setlocale(LC_ALL,"swedish");
+setlocale(LC_ALL,"sv_SE.UTF-8");
 $custom_fields_toshow = array();
 $sql = "SELECT entry_field_name, type, mandatory, enabled, user_hidden, field_type
         FROM kth_entry_custom_fields
@@ -40,7 +40,7 @@ $html_body['content'] = '
       </style>
   <![endif]-->';
 
-  setlocale(LC_ALL,"swedish");
+  setlocale(LC_ALL,"sv_SE.UTF-8");
   $html_body['content'] .=   
   '<div> 
     Avbokad tid!
