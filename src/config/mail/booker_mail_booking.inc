@@ -1,5 +1,5 @@
 <?php
-global $mrbslang, $environment;
+global $mrbslang, $environment, $url_base;
 $css = '';
 $css_file = 'css/mrbs-mail.css';
 if (file_exists($css_file))
