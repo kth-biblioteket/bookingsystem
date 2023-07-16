@@ -96,8 +96,8 @@ function print_theme_header($day, $month, $year, $area, $room) {
 	// Put the filename in as a class to aid styling.   
 	// (Use a class rather than id to avoid specificity problems)
 	if ($environment != "production") {
-		echo "<body style=\"border: 1px solid red\" class=\"developmentborder non_js ".htmlspecialchars($page)."\">\n";
-		echo "<div class= \"developmentheader\" style=\"color:red;font-size:10px;text-align:center;\">!!! " . strtoupper($environment) . ", " . $db_database . " !!!</div>";
+		echo "<body class=\"developmentborder non_js ".htmlspecialchars($page)."\">\n";
+		echo "<div class= \"developmentheader\">!!! " . strtoupper($environment) . ", " . $db_database . " !!!</div>";
 	}
 	else {
 		echo "<body class=\"non_js ".htmlspecialchars($page)."\">\n";
