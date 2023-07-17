@@ -124,16 +124,15 @@ function print_theme_header($day, $month, $year, $area, $room) {
 			<div class="header-container__top">
 				<figure class="block figure defaultTheme mainLogo" data-cid="1.77257" lang="sv-SE">
 					<?php if ($is_support_kiosk) { ?>
-						<a href="<?php echo get_vocab("supportkiosklink");?>">
+						<!--a href="<?php echo get_vocab("supportkiosklink");?>">
 							<svg style="width:70px; height:70px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill: #1954A6;" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256S114.6 512 256 512s256-114.6 256-256zM116.7 244.7l112-112c4.6-4.6 11.5-5.9 17.4-3.5s9.9 8.3 9.9 14.8l0 64 96 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32l-96 0 0 64c0 6.5-3.9 12.3-9.9 14.8s-12.9 1.1-17.4-3.5l-112-112c-6.2-6.2-6.2-16.4 0-22.6z"></path></svg>
-						</a>
+						</a-->
 					<?php } else {?>
 						<a href="<?php echo get_vocab("logolink");?>">
 						<img class="figure-img img-fluid" src="images/KTH_Logotyp.svg" alt="KTH:s logotyp" height="70" width="70">
 					</a>
 					<?php } ?>
 				</figure>
-				<h1 class="block siteName" data-cid="1.260060">
 		<?php
 		//KTH
 		//Byta språk
@@ -163,12 +162,11 @@ function print_theme_header($day, $month, $year, $area, $room) {
 		} 
 		?>
 		<?php //191003 KTH-sidhuvud ?>
-		<?php if ($switchlanguage != "en") { ?>
-			<a data-cid="1.260060" href="<?php echo get_vocab("sitenamelink");?>"><?php echo get_vocab("sitename")?></a>
-		<?php } else {?>
-			<a data-cid="1.260060" href="<?php echo get_vocab("sitenamelink");?>"><?php echo get_vocab("sitename")?></a>
-		<?php }?>
+			<?php if (!$is_support_kiosk) { ?>
+				<h1 class="block siteName" data-cid="1.260060">
+					<a data-cid="1.260060" href="<?php echo get_vocab("sitenamelink");?>"><?php echo get_vocab("sitename")?></a>
 				</h1>
+			<?php }?>
 				<div class="block list links secondaryMenu" data-cid="1.864801" lang="sv-SE">
 					<ul>
 					<?php if ($switchlanguage != "en") { ?>
@@ -187,104 +185,106 @@ function print_theme_header($day, $month, $year, $area, $room) {
 					</ul>
 				</div>
 			</div><!-- slut container__top-->
-			<div class="menuwrapper">
-				<div class="menu">
-					<?php if ($switchlanguage != "en") { ?>
-						<a href="<?php echo $redirect_str . "?area=$area"?>"> <?php echo get_vocab("homelink")?></a>
-					<?php } else {?>
-						<a href="<?php echo $redirect_str . "?area=$area"?>"> <?php echo get_vocab("homelink")?></a>
-					<?php }?>
-					<?php if (!$is_kiosk) {?>
+			<?php if (!$is_support_kiosk) { ?>
+				<div class="menuwrapper">
+					<div class="menu">
 						<?php if ($switchlanguage != "en") { ?>
-							<a class="hide-small" href="search.php?datatable=1&area=<?php echo $area?>"><?php echo get_vocab("mybookings")?></a>
-							<!--a class="nav-link null true" href="<?php echo $kth_www?>/utbildning"> Utbildning</a-->
+							<a href="<?php echo $redirect_str . "?area=$area"?>"> <?php echo get_vocab("homelink")?></a>
 						<?php } else {?>
-							<a class="hide-small" href="search.php?datatable=1&area=<?php echo $area?>"><?php echo get_vocab("mybookings")?></a>
-							<!--a class="nav-link null true" href="<?php echo $kth_www?>/en/studies"> Studies</a-->
+							<a href="<?php echo $redirect_str . "?area=$area"?>"> <?php echo get_vocab("homelink")?></a>
 						<?php }?>
-						<?php if ($is_admin) { ?>
+						<?php if (!$is_kiosk) {?>
 							<?php if ($switchlanguage != "en") { ?>
-								<a class="hide-small" href="admin.php"><?php echo get_vocab("settings")?></a>
-								<!--a class="nav-link null true" href="<?php echo $kth_www?>/forskning"> Forskning</a-->
+								<a class="hide-small" href="search.php?datatable=1&area=<?php echo $area?>"><?php echo get_vocab("mybookings")?></a>
+								<!--a class="nav-link null true" href="<?php echo $kth_www?>/utbildning"> Utbildning</a-->
 							<?php } else {?>
-								<a class="hide-small" href="admin.php"><?php echo get_vocab("settings")?></a>
-								<!--a class="nav-link null true" href="<?php echo $kth_www?>/en/forskning"> Research</a-->
+								<a class="hide-small" href="search.php?datatable=1&area=<?php echo $area?>"><?php echo get_vocab("mybookings")?></a>
+								<!--a class="nav-link null true" href="<?php echo $kth_www?>/en/studies"> Studies</a-->
+							<?php }?>
+							<?php if ($is_admin) { ?>
+								<?php if ($switchlanguage != "en") { ?>
+									<a class="hide-small" href="admin.php"><?php echo get_vocab("settings")?></a>
+									<!--a class="nav-link null true" href="<?php echo $kth_www?>/forskning"> Forskning</a-->
+								<?php } else {?>
+									<a class="hide-small" href="admin.php"><?php echo get_vocab("settings")?></a>
+									<!--a class="nav-link null true" href="<?php echo $kth_www?>/en/forskning"> Research</a-->
+								<?php }?>
 							<?php }?>
 						<?php }?>
-					<?php }?>
-				</div>
-				<div id="banner">
-					<?php
-					// Provide a link to the list of bookings awaiting approval
-					// (if there are any enabled areas where we require bookings to be approved)
+					</div>
+					<div id="banner">
+						<?php
+						// Provide a link to the list of bookings awaiting approval
+						// (if there are any enabled areas where we require bookings to be approved)
 
-					$approval_somewhere = some_area('approval_enabled', TRUE);
-					if ($approval_somewhere && (authGetUserLevel($user) >= 1)) {
-						$sql_approval_enabled = some_area_predicate('approval_enabled');
-						// Find out how many bookings are awaiting approval
-						// (but only for areas where approval is required)
-						$sql = "SELECT COUNT(*)
-								FROM $tbl_entry E, $tbl_room R, $tbl_area A
-								WHERE (status&" . STATUS_AWAITING_APPROVAL . " != 0)
-								AND E.room_id = R.id
-								AND R.area_id = A.id
-								AND R.disabled = 0
-								AND A.disabled = 0
-								AND $sql_approval_enabled";
-						if (!$is_admin) {
-							// Ordinary users can only see their own
-							$sql .= " AND create_by='" . sql_escape($user) . "'";
-						}
-						$n_outstanding = sql_query1($sql);
-						if ($n_outstanding < 0) {
-							trigger_error(sql_error(), E_USER_WARNING);
-							fatal_error(FALSE, get_vocab("fatal_db_error"));
-						}
-						echo "<div id=\"n_outstanding\"" . (($n_outstanding > 0) ? " class=\"outstanding\"" : '') . ">\n";
-						echo "<a href=\"pending.php?day=$day&amp;month=$month&amp;year=$year&amp;area=$area" . ((!empty($room)) ? "&amp;room=$room" : "") . "\">$n_outstanding " . get_vocab("outstanding") . "</a>\n";
-						echo "</div>\n";
-					}
-					?>
-					<?php
-					$query_str = "day=$day&amp;month=$month&amp;year=$year";
-					if (!empty($area)) {
-						$query_str .= "&amp;area=$area";
-					} else {
-						//KTH 2018 default area om det saknas som parameter
-						$area = 2;
-					}
-					if (!empty($room)) {
-						$query_str .= "&amp;room=$room";
-					}
-					?>
-					<?php
-					// For session protocols that define their own logon box...
-					if (function_exists('PrintLogonBox')) {
-						if ($is_kiosk) {
-							echo "<div id=\"sessionlabel\" style=\"display:none;float:right;width: 100%;text-align: right;\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
-						} else {
-							echo "<div style=\"float:none;width: 100%;text-align: right;\" id=\"logon_box\">\n";
-							//KTH area
-							PrintLogonBox($area); 
+						$approval_somewhere = some_area('approval_enabled', TRUE);
+						if ($approval_somewhere && (authGetUserLevel($user) >= 1)) {
+							$sql_approval_enabled = some_area_predicate('approval_enabled');
+							// Find out how many bookings are awaiting approval
+							// (but only for areas where approval is required)
+							$sql = "SELECT COUNT(*)
+									FROM $tbl_entry E, $tbl_room R, $tbl_area A
+									WHERE (status&" . STATUS_AWAITING_APPROVAL . " != 0)
+									AND E.room_id = R.id
+									AND R.area_id = A.id
+									AND R.disabled = 0
+									AND A.disabled = 0
+									AND $sql_approval_enabled";
+							if (!$is_admin) {
+								// Ordinary users can only see their own
+								$sql .= " AND create_by='" . sql_escape($user) . "'";
+							}
+							$n_outstanding = sql_query1($sql);
+							if ($n_outstanding < 0) {
+								trigger_error(sql_error(), E_USER_WARNING);
+								fatal_error(FALSE, get_vocab("fatal_db_error"));
+							}
+							echo "<div id=\"n_outstanding\"" . (($n_outstanding > 0) ? " class=\"outstanding\"" : '') . ">\n";
+							echo "<a href=\"pending.php?day=$day&amp;month=$month&amp;year=$year&amp;area=$area" . ((!empty($room)) ? "&amp;room=$room" : "") . "\">$n_outstanding " . get_vocab("outstanding") . "</a>\n";
 							echo "</div>\n";
 						}
-						
-					}
-					?>
-					<?php //KTH Mina bokningar?>
-						<form id="header_search" method="get" action="search.php">
-							<div>
-								<input type="hidden" name="advanced" value="0">
-								<input type="hidden" name="datatable" value="0">
-								<input type="hidden" name="search_str" value="<?php //echo htmlspecialchars($search_str) ?>">
-								<input type="hidden" name="day"        value="<?php //echo $day        ?>">
-								<input type="hidden" name="month"      value="<?php //echo $month      ?>">
-								<input type="hidden" name="year"       value="<?php //echo $year       ?>">
-								<input type="hidden" name="area"       value="<?php echo $area ?>">
-							</div>
-						</form>
-				</div><?php //slut banner ?>
-			</div> <!-- Slut containter bottom-->
+						?>
+						<?php
+						$query_str = "day=$day&amp;month=$month&amp;year=$year";
+						if (!empty($area)) {
+							$query_str .= "&amp;area=$area";
+						} else {
+							//KTH 2018 default area om det saknas som parameter
+							$area = 2;
+						}
+						if (!empty($room)) {
+							$query_str .= "&amp;room=$room";
+						}
+						?>
+						<?php
+						// For session protocols that define their own logon box...
+						if (function_exists('PrintLogonBox')) {
+							if ($is_kiosk) {
+								echo "<div id=\"sessionlabel\" style=\"display:none;float:right;width: 100%;text-align: right;\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
+							} else {
+								echo "<div style=\"float:none;width: 100%;text-align: right;\" id=\"logon_box\">\n";
+								//KTH area
+								PrintLogonBox($area); 
+								echo "</div>\n";
+							}
+							
+						}
+						?>
+						<?php //KTH Mina bokningar?>
+							<form id="header_search" method="get" action="search.php">
+								<div>
+									<input type="hidden" name="advanced" value="0">
+									<input type="hidden" name="datatable" value="0">
+									<input type="hidden" name="search_str" value="<?php //echo htmlspecialchars($search_str) ?>">
+									<input type="hidden" name="day"        value="<?php //echo $day        ?>">
+									<input type="hidden" name="month"      value="<?php //echo $month      ?>">
+									<input type="hidden" name="year"       value="<?php //echo $year       ?>">
+									<input type="hidden" name="area"       value="<?php echo $area ?>">
+								</div>
+							</form>
+					</div><?php //slut banner ?>
+				</div> <!-- Slut containter bottom-->
+			<?php }?>
 		</div> <!-- Slut container-->
 	</div> <!-- Slut container fluid-->
     <div id="gradientBorder"></div>
