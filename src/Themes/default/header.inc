@@ -18,7 +18,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 	//KTH
 	global $mrbslang;
 	//191003
-	global $session_name, $app_name, $kth_www, $is_kiosk, $environment, $db_database, $activitytimer, $enableactivitytimer;
+	global $session_name, $app_name, $kth_www, $is_kiosk, $is_support_kiosk, $environment, $db_database, $activitytimer, $enableactivitytimer;
   
 	$page = basename($PHP_SELF, ".php");
 	$user = getUserName();
