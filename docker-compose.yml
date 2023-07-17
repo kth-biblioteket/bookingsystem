@@ -69,6 +69,26 @@ services:
     networks:
       - "apps-net"
 
+  grouproomssupportkiosk:
+    container_name: grouproomssupportkiosk
+    depends_on:
+      - grouprooms-db
+    image: ghcr.io/kth-biblioteket/bookingsystem:${REPO_TYPE}
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grouproomssupportkiosk.rule=Host(`${DOMAIN_NAME}`) && PathPrefix(`${PATHPREFIX_GROUPROOMS_SUPPORT_KIOSK}`)"
+      - "traefik.http.routers.grouproomssupportkiosk.middlewares=grouproomssupportkiosk-stripprefix"
+      - "traefik.http.middlewares.grouproomssupportkiosk-stripprefix.stripprefix.prefixes=${PATHPREFIX_GROUPROOMS_SUPPORT_KIOSK}"
+      - "traefik.http.routers.grouproomssupportkiosk.entrypoints=websecure"
+      - "traefik.http.routers.grouproomssupportkiosk.tls=true"
+      - "traefik.http.routers.grouproomssupportkiosk.tls.certresolver=myresolver"
+    volumes:
+      - /local/docker/bookingsystem/config_grouprooms_support_kiosk.inc.php:/var/www/html/config.inc.php
+      - /local/docker/bookingsystem/custom_grouprooms_support_kiosk.css:/var/www/html/css/custom.css
+    networks:
+      - "apps-net"
+      
   grouprooms-db:
     container_name: grouprooms-db
     image: mysql:8.0

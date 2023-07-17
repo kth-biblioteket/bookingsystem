@@ -18,7 +18,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 	//KTH
 	global $mrbslang;
 	//191003
-	global $session_name, $app_name, $kth_www, $is_kiosk, $environment, $db_database;
+	global $session_name, $app_name, $kth_www, $is_kiosk, $environment, $db_database, $activitytimer, $enableactivitytimer;
   
 	$page = basename($PHP_SELF, ".php");
 	$user = getUserName();
@@ -85,7 +85,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 		<meta http-equiv="expires" content="0" />
 		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 		<meta http-equiv="pragma" content="no-cache" />
-		<title><?php echo get_vocab("mrbs") ?></title>
+		<title><?php echo get_vocab("sitename") ?></title>
 		<?php
 			require_once "style.inc";
 			require_once "js.inc";
@@ -123,9 +123,15 @@ function print_theme_header($day, $month, $year, $area, $room) {
     	<div class="container">      
 			<div class="header-container__top">
 				<figure class="block figure defaultTheme mainLogo" data-cid="1.77257" lang="sv-SE">
-					<a href="<?php echo (!$is_kiosk ? $kth_www : "#");?>">
-						<img class="figure-img img-fluid" src="images/KTH_Logotyp.svg" alt="KTH:s logotyp" height="70" width="70">
+					<?php if ($is_support_kiosk) { ?>
+						<a href="<?php echo get_vocab("supportkiosklink");?>">
+							<svg style="width:70px; height:70px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill: #1954A6;" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256S114.6 512 256 512s256-114.6 256-256zM116.7 244.7l112-112c4.6-4.6 11.5-5.9 17.4-3.5s9.9 8.3 9.9 14.8l0 64 96 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32l-96 0 0 64c0 6.5-3.9 12.3-9.9 14.8s-12.9 1.1-17.4-3.5l-112-112c-6.2-6.2-6.2-16.4 0-22.6z"></path></svg>
+						</a>
+					<?php } else {?>
+						<a href="<?php echo get_vocab("logolink");?>">
+						<img class="figure-img img-fluid" src="https://<?php echo $_SERVER['HTTP_HOST']?>/images/KTH_Logotyp.svg" alt="KTH:s logotyp" height="70" width="70">
 					</a>
+					<?php } ?>
 				</figure>
 				<h1 class="block siteName" data-cid="1.260060">
 		<?php
@@ -158,19 +164,25 @@ function print_theme_header($day, $month, $year, $area, $room) {
 		?>
 		<?php //191003 KTH-sidhuvud ?>
 		<?php if ($switchlanguage != "en") { ?>
-			<a data-cid="1.260060" href="<?php echo (!$is_kiosk ? $kth_www ."/biblioteket" : "#");?>">KTH Biblioteket</a>
+			<a data-cid="1.260060" href="<?php echo get_vocab("sitenamelink");?>"><?php echo get_vocab("sitename")?></a>
 		<?php } else {?>
-			<a data-cid="1.260060" href="<?php echo (!$is_kiosk ? $kth_www ."/en/biblioteket" : "#");?>">KTH Library</a>
+			<a data-cid="1.260060" href="<?php echo get_vocab("sitenamelink");?>"><?php echo get_vocab("sitename")?></a>
 		<?php }?>
 				</h1>
 				<div class="block list links secondaryMenu" data-cid="1.864801" lang="sv-SE">
 					<ul>
 					<?php if ($switchlanguage != "en") { ?>
 						<li><a href="<?php echo $myURL . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<?php if ($is_kiosk) {
+							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
+						}?>
 						</li>
 					<?php } else {?>
 						<li><a href="<?php echo $myURL . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
 						</li>
+						<?php if ($is_kiosk) {
+							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Time left: <span id=\"activitytimer\"></span></div>";
+						}?>
 					<?php }?>
 					</ul>
 				</div>
@@ -280,7 +292,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 	<div id="appheader">
 		<?php//191003?>
 		<div id="mrbs">
-			<h1><?php echo get_vocab("mrbs") ?></h1>
+			<h1><?php echo get_vocab("sitename") ?></h1>
 		</div>
 	</div><?php //slut mrbs + banner ?>
 <div id="contentwrapper">	
