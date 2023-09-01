@@ -115,7 +115,7 @@ if (!empty($auth["session_php"]["inactivity_expire_time"]))
   Target of the form with sets the URL argument "Action=SetName".
   Will eventually return to URL argument "TargetURL=whatever".
 */
-//KTH Inloggning via CAS(kthid) 
+//KTH Inloggning via OpenID(kthid) tidigare CAS
 if($auth["method"]=="kthcas") {
 	if (isset($_SESSION['kth_id']) && !isset($_SESSION["UserName"])){
     //validera med "u12125fd" kth-id
@@ -123,7 +123,10 @@ if($auth["method"]=="kthcas") {
 		$almavalidate = json_decode($response);
 		if ($almavalidate->result == 0)
 		{
-		  print_header(0, 0, 0, 0, "");
+      //Genererar redirect loop vid något "fel" på almakontot(finns inte, fel roll etc)
+		  //print_header(0, 0, 0, 0, "");
+
+
 		  echo "<p>".$almavalidate->message."</p>\n";
 		  //printLoginForm($TargetURL);
 		  unset($_SESSION["kth_id"]);
