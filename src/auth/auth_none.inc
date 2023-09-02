@@ -217,7 +217,7 @@ function authValidateUser($user, $pass, $kthcas)
 						//"Other";
 						$result = 0; //ERROR!!
 						$message = "User group: \"" . $source['user_group']['desc'] . "\" ej behörig.";
-						$valid_id == FALSE;
+						$valid_id = FALSE;
 					}
 				}
 			} else {
