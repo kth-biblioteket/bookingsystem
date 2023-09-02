@@ -215,21 +215,9 @@ function authValidateUser($user, $pass, $kthcas)
 						&& $source['user_group']['value'] != "23" 
 						&& $source['user_group']['value'] != "24") {
 						//"Other";
+						$result = 0; //ERROR!!
 						$message = "User group: \"" . $source['user_group']['desc'] . "\" ej behörig.";
-
-						$data = array(
-						"result"  => $result,
-						"message" => $message,
-						"primary_id" => $primary_id,
-						"full_name" => $full_name,
-						"email_address" => $email_address,
-						"phone_number" => $phone_number,
-						"user_group" => $user_group,
-						"admin_level" => $admin_level
-						);
-						$json_data = json_encode($data);
-						$returnvalue = $json_data;
-						return $returnvalue;
+						$valid_id == FALSE
 					}
 				}
 			} else {
@@ -274,11 +262,15 @@ function authValidateUser($user, $pass, $kthcas)
 				//User Administrator
 				if($value['role_type']['value'] == "50" && $value['status']['value'] == "ACTIVE") { 
 					$admin_level = 3; //sysadmin
+					$result = 1; //SUCCESS!!
+					$message = "Success";
 					break;
 				}
 				//User Manager
 				if($value['role_type']['value'] == "21" && $value['status']['value'] == "ACTIVE") { 
 					$admin_level = 2; //bookingadmin
+					$result = 1; //SUCCESS!!
+					$message = "Success";
 				}	
 			}
 		}
