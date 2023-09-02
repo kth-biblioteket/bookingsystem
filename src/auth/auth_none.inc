@@ -252,8 +252,6 @@ function authValidateUser($user, $pass, $kthcas)
 						$message = get_vocab("error_password");
 					}
 				}
-			} else {
-				$message = get_vocab("error_identifier");
 			}
 			//behörighetskontroll för bookingadmins = har aktiv roll "User Manager" i Alma
 			//Så att lånediskpersonal kan administrera alla bokningar
@@ -274,7 +272,7 @@ function authValidateUser($user, $pass, $kthcas)
 				}	
 			}
 		}
-		if ($auth["method"] == "ldap") {
+		if ($valid_id == TRUE && $auth["method"] == "ldap") {
 			$ldapuser = $user . "@" . $ldap_user_domain;
 			$ldapresponse = authenticateuser($ldapuser, $pass);
 			$ldapjson = json_decode($ldapresponse,TRUE);
