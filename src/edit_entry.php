@@ -1896,7 +1896,7 @@ foreach ($edit_entry_field_order as $key)
 
 //KTH custom_html(information text i edit room)
 
-$room_custom_html = ""
+$room_custom_html = "";
 $room_custom_html = get_room_custom_html($room_id,$lang);
 if ($room_custom_html != "") {
 	echo "<div id=\"extrainfo\" style=\"\">" . $room_custom_html ."</div>";
