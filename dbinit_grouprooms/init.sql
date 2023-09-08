@@ -699,6 +699,7 @@ CREATE TABLE IF NOT EXISTS `mrbs_room` (
   `capacity` int(11) NOT NULL DEFAULT '0',
   `room_admin_email` text,
   `custom_html` text,
+  `custom_html_en` text,
   `room_number` varchar(4) NOT NULL DEFAULT '',
   `screen` tinyint(4) NOT NULL DEFAULT '0',
   `mailtext` text,
