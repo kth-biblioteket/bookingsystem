@@ -1794,6 +1794,14 @@ else
   ?>
 
 <?php
+
+//KTH custom_html(information text i edit room)
+$room_custom_html = "";
+$room_custom_html = get_room_custom_html($room_id,$lang);
+if ($room_custom_html != "") {
+        echo "<div id=\"extrainfo\">" . $room_custom_html ."</div>";
+}
+
 //KTH ska extra fält visas?
 $extended_booking_form = is_extended_booking_form($area);
 
@@ -1893,14 +1901,6 @@ foreach ($edit_entry_field_order as $key)
   }
 }
 
-
-//KTH custom_html(information text i edit room)
-
-$room_custom_html = "";
-$room_custom_html = get_room_custom_html($room_id,$lang);
-if ($room_custom_html != "") {
-	echo "<div id=\"extrainfo\" style=\"\">" . $room_custom_html ."</div>";
-}
 //KTH Extra info(röd ruta om speciell info... bokningsregler eller dylikt)
 //191003
 /*
