@@ -1981,6 +1981,33 @@ function get_area_extra_info($id, $lang, $all=FALSE)
   return $row[0];
 }
 
+// KTH HTML att visa som info om rummet
+function get_room_custom_html($id, $lang, $all=FALSE)
+{
+ global $tbl_room;
+  
+  $id = (int)$id;
+  
+  if($lang=="sv") {
+	  $custom_html_field = "custom_html";
+  } else {
+	  $custom_html_field = "custom_html_en";
+  }
+  $res = sql_query("SELECT $custom_html_field FROM $tbl_room WHERE id=$id LIMIT 1");
+  if ($res === FALSE)
+  {
+    trigger_error(sql_error(), E_USER_WARNING);
+    return FALSE;
+  }
+  if (sql_count($res) == 0)
+  {
+    return NULL;
+  }
+  
+  $row = sql_row($res, 0);
+  return $row[0];
+}
+
 
 // Clean up a row from the area table, making sure there are no nulls, casting
 // boolean fields into bools and doing some sanity checking
