@@ -295,7 +295,7 @@ if ($user!="" && $is_kiosk) {
     if (isset($custom_js_url))
     {
 ?>
-      <script type="text/javascript" src="js/<?php echo $custom_js_url?>"></script>
+      <script type="text/javascript" src="<?php echo $custom_js_url?>"></script>
 <?php
     }
 ?>
