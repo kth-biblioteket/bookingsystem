@@ -1,5 +1,6 @@
 <?php 
 //KTH
+global $custom_js_url;
 require_once "functions.inc";
 
 //Lägg till full sökväg till script för att de ska fungera via polopoly reverse proxy
