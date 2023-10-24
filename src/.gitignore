@@ -4,3 +4,4 @@ web.config
 gitpullref.cmd
 gitpullprod.cmd
 /css/custom.css
+/js/custom.js

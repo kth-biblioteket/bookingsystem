@@ -22,6 +22,7 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_grouprooms.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_grouprooms.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_grouprooms.js:/var/www/html/js/custom.js
     networks:
       - "apps-net"
 
@@ -46,6 +47,7 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_grouprooms.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_grouprooms.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_grouprooms.js:/var/www/html/js/custom.js
     networks:
       - "apps-net"
 
@@ -88,14 +90,18 @@ services:
       - /local/docker/bookingsystem/custom_grouprooms_support_kiosk.css:/var/www/html/css/custom.css
     networks:
       - "apps-net"
-      
+
   grouprooms-db:
     container_name: grouprooms-db
     image: mysql:8.0
     restart: unless-stopped
     env_file:
       - .env
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=128M
+      - --performance-schema=OFF
+      - --log_error_verbosity=1
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -103,7 +109,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - persistent-grouprooms-db:/var/lib/mysql
-      - ./dbinit_grouprooms:/docker-entrypoint-initdb.d
+      - ./dbinit:/docker-entrypoint-initdb.d
     networks:
       - "apps-net"
 
@@ -124,9 +130,10 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_readingstudios.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_readingstudios.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_readingstudios.js:/var/www/html/js/custom.js
     networks:
       - "apps-net"
-  
+
   readingstudioskiosk:
     container_name: readingstudioskiosk
     depends_on:
@@ -153,7 +160,11 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=128M
+      - --performance-schema=OFF
+      - --log_error_verbosity=1
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -161,7 +172,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - persistent-readingstudios-db:/var/lib/mysql
-      - ./dbinit_readingstudios:/docker-entrypoint-initdb.d
+      - ./dbinit:/docker-entrypoint-initdb.d
     networks:
       - "apps-net"
 
@@ -182,6 +193,7 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_handledning.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_handledning.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_handledning.js:/var/www/html/js/custom.js
     networks:
       - "apps-net"
 
@@ -191,7 +203,11 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=128M
+      - --performance-schema=OFF
+      - --log_error_verbosity=1
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -199,7 +215,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - persistent-handledning-db:/var/lib/mysql
-      - ./dbinit_handledning:/docker-entrypoint-initdb.d
+      - ./dbinit:/docker-entrypoint-initdb.d
     networks:
       - "apps-net"
 
@@ -220,6 +236,7 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_talbok.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_talbok.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_talbok.js:/var/www/html/js/custom.js
     networks:
       - "apps-net"
 
@@ -229,7 +246,11 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=128M
+      - --performance-schema=OFF
+      - --log_error_verbosity=1
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -237,7 +258,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - persistent-talbok-db:/var/lib/mysql
-      - ./dbinit_talbok:/docker-entrypoint-initdb.d
+      - ./dbinit:/docker-entrypoint-initdb.d
     networks:
       - "apps-net"
 
@@ -258,6 +279,7 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_cas.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_cas.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_cas.js:/var/www/html/js/custom.js
     networks:
       - "apps-net"
 
@@ -267,7 +289,11 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=128M
+      - --performance-schema=OFF
+      - --log_error_verbosity=1
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -275,7 +301,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - persistent-cas-db:/var/lib/mysql
-      - ./dbinit_cas:/docker-entrypoint-initdb.d
+      - ./dbinit:/docker-entrypoint-initdb.d
     networks:
       - "apps-net"
 
@@ -305,7 +331,11 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb-buffer-pool-size=128M
+      - --performance-schema=OFF
+      - --log_error_verbosity=1
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USER}
@@ -313,7 +343,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - persistent-openinghours-db:/var/lib/mysql
-      - ./dbinit_openinghours:/docker-entrypoint-initdb.d
+      - ./dbinit:/docker-entrypoint-initdb.d
     networks:
       - "apps-net"
 
