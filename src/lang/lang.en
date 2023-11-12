@@ -164,6 +164,7 @@ $vocab["all_day"]            = "All day";
 $vocab["area"]               = "Area";
 $vocab["type"]               = "Type";
 $vocab["save"]               = "Save";
+$vocab["confirm_save"]       = "Confirm";
 $vocab["rep_type"]           = "Repeat type";
 $vocab["rep_type_0"]         = "None";
 $vocab["rep_type_1"]         = "Daily";

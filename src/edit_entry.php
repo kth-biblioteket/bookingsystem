@@ -585,10 +585,10 @@ function create_field_entry_type($disabled=FALSE)
   echo "</div>\n";
 }
 
-
+$confirm_kth = 0;
 function create_field_entry_confirmation_status($isbooking,$disabled=FALSE)
 {
-	global $confirmation_enabled, $confirmed, $start_time, $area, $enable_periods, $is_admin;
+	global $confirm_kth, $confirmation_enabled, $confirmed, $start_time, $area, $enable_periods, $is_admin;
   
 	//KTH
 	$confirm_kth = 0;
@@ -2222,9 +2222,14 @@ if (($edit_type == "series") && $repeats_allowed)
       echo "</div>\n";
       
       // The Submit button
+      $buttontext = get_vocab("save");
+      //Sätt knapptext till confirm_save om det är en bekräftelse
+      if ($confirm_kth == 1 && $confirmed != 1) { 
+        $buttontext = get_vocab("confirm_save");
+      }
       echo "<div id=\"edit_entry_submit_save\">\n";
-        //191003 bootstrapknappar
-        echo "<button class=\"btn btn-success submit default_action\" type=\"submit\" name=\"save_button\" value=\"" . get_vocab("save") . "\">" . get_vocab("save") . "</button>\n";
+      //191003 bootstrapknappar
+      echo "<button class=\"btn btn-success submit default_action\" type=\"submit\" name=\"save_button\" value=\"" . get_vocab("save") . "\">" . $buttontext . "</button>\n";
       echo "</div>\n";
     
     echo "</fieldset>";

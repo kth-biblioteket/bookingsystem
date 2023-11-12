@@ -4,4 +4,11 @@ npm-debug.log
 .nyc
 .env
 .DS_Store
-docker-compose-local.yml
+config.inc.php
+config_*.*
+custom.css
+custom.js
+custom_*.*
+Dockerfile-dev
+docker-compose-dev.yml
+test.php

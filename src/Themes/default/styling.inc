@@ -116,6 +116,7 @@ $main_cell_height             = '40'; // (px)  height of the cells in the main d
     
 // ***** FONTS ************************
 //191003
-$standard_font_family  = "\"Open Sans\",Arial,\"Helvetica Neue\",helvetica,sans-serif";    
+//$standard_font_family  = "\"Open Sans\",Arial,\"Helvetica Neue\",helvetica,sans-serif";
+$standard_font_family  = "Figtree,Arial,sans-serif";
 //$standard_font_family  = "Arial, 'Arial Unicode MS', Verdana, sans-serif";
 

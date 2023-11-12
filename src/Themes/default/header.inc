@@ -129,7 +129,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 						</a-->
 					<?php } else {?>
 						<a href="<?php echo get_vocab("logolink");?>">
-						<img class="figure-img img-fluid" src="images/KTH_Logotyp.svg" alt="KTH:s logotyp" height="70" width="70">
+						<img class="figure-img img-fluid" src="images/kth-logo.svg" alt="KTH:s logotyp" height="70" width="70">
 					</a>
 					<?php } ?>
 				</figure>

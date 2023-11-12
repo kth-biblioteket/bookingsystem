@@ -163,6 +163,7 @@ $vocab["all_day"]            = "hela dagen";
 $vocab["area"]               = "Område";
 $vocab["type"]               = "Bokningstyp";
 $vocab["save"]               = "Spara";
+$vocab["confirm_save"]       = "Kvittera";
 $vocab["rep_type"]           = "Repetitionstyp";
 $vocab["rep_type_0"]         = "ingen";
 $vocab["rep_type_1"]         = "dagligen";
