@@ -33,7 +33,7 @@
   }
   
   html {
-    font-family: sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -8958,7 +8958,7 @@
   }
   
   ol li,ul li {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     line-height: 1.6875
   }
@@ -8978,7 +8978,7 @@
   }
   
   .paragraphs p {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     line-height: 1.6875;
     margin: 0 0 27px;
@@ -10137,7 +10137,7 @@
   }
   
   article.article.standard .paragraphs ol,article.article.standard .paragraphs ul {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625;
@@ -10159,7 +10159,7 @@
   }
   
   article.article.standard .paragraphs ol li,article.article.standard .paragraphs ul li {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
@@ -10190,7 +10190,7 @@
   }
   
   article.article.standard.calendarevent .paragraphs p {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -11040,7 +11040,7 @@
   }
   
   article .paragraphs .block.list.links ul li a {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     font-size: 1rem
   }
@@ -11338,7 +11338,7 @@
   }
   
   article.article .paragraphs .block.list.compact .container .row .block.link {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
@@ -13417,7 +13417,7 @@
   
   @media (min-width: 768px) {
     .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody .teaserHeading {
-        font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+        font-family: Figtree,Arial,sans-serif;
         font-size: 1.25rem;
         font-weight: 600;
         color: #000;
@@ -17083,7 +17083,7 @@
   
   @media (min-width: 768px) {
     .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.pink .teaserBody .teaserHeading {
-        font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+        font-family: Figtree,Arial,sans-serif;
         font-size: 1.25rem;
         font-weight: 600;
         color: #000;
@@ -17143,7 +17143,7 @@
   
   @media (min-width: 768px) {
     .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.grey .teaserBody .teaserHeading {
-        font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+        font-family: Figtree,Arial,sans-serif;
         font-size: 1.25rem;
         font-weight: 600;
         color: #000;
@@ -18992,7 +18992,7 @@
   }
   
   article.article .paragraphs .block.attachment {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
@@ -19012,7 +19012,7 @@
   }
   
   article.article .paragraphs .blockAlign .block.attachment {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
@@ -19811,7 +19811,7 @@
   }
   
   .block.publications {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
@@ -19993,7 +19993,7 @@
   }
   
   .article.standard .paragraphs li a.block.link,.article.standard .paragraphs ol a.block.link,.article.standard .paragraphs p a.block.link,.article.standard .paragraphs ul a.block.link {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
@@ -20113,7 +20113,7 @@
   }
   
   .t12 {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     line-height: 1.5625
   }
   
@@ -20226,7 +20226,7 @@
   article.article.standard .paragraphs .block.rssReader ul.listing li {
     padding-bottom: 0;
     margin-bottom: 16px;
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
@@ -20239,7 +20239,7 @@
   }
   
   article.article.standard .paragraphs .block.rssReader ul.listing li p {
-    font-family: Georgia,garamond pro,garamond,times new roman,times,serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5625
