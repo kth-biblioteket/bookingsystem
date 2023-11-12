@@ -177,10 +177,10 @@ function print_theme_header($day, $month, $year, $area, $room) {
 						</li>
 					<?php } else {?>
 						<li><a href="<?php echo $myURL . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
-						</li>
 						<?php if ($is_kiosk) {
 							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Time left: <span id=\"activitytimer\"></span></div>";
 						}?>
+						</li>
 					<?php }?>
 					</ul>
 				</div>
