@@ -50,7 +50,7 @@
   }
   
   body {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     line-height: 1.5;
     color: #000;
@@ -322,7 +322,7 @@
   
   .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
     margin-bottom: .65rem;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     line-height: 1.375;
     color: #000
@@ -4899,7 +4899,7 @@
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -5010,7 +5010,7 @@
     left: 0;
     z-index: 1060;
     max-width: 276px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -8512,7 +8512,7 @@
   }
   
   h1 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600;
     margin: 0 0 22px;
     padding: 0;
@@ -8526,7 +8526,7 @@
   }
   
   h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600;
     margin: 0 0 8px;
     color: #000
@@ -8539,7 +8539,7 @@
   }
   
   h3 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600;
     margin: 0 0 8px;
     color: #000
@@ -8552,7 +8552,7 @@
   }
   
   h4 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600;
     margin: 0 0 8px;
     color: #000
@@ -8649,7 +8649,7 @@
   table caption {
     margin-bottom: 10px;
     caption-side: top;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -8682,7 +8682,7 @@
   }
   
   table tbody tr td p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   table th {
@@ -8714,7 +8714,7 @@
   
   label,textarea {
     font-size: .875rem;
-    font-family: Open Sans
+    font-family: Figtree,Arial,sans-serif;
   }
   
   textarea {
@@ -8755,7 +8755,7 @@
     background-color: #f6f6f6;
     border-radius: 4px;
     font-size: .875rem;
-    font-family: Open Sans;
+    font-family: Figtree,Arial,sans-serif;
     height: 38px;
     width: 100%;
     padding: 6px 10px
@@ -8786,7 +8786,7 @@
   .form-check input[type=radio]~label {
     margin: 0;
     font-size: .875rem;
-    font-family: Open Sans;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600
   }
   
@@ -8835,7 +8835,7 @@
   .form-check input[type=checkbox]~label {
     margin: 0;
     font-size: .875rem;
-    font-family: Open Sans;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600
   }
   
@@ -8871,7 +8871,7 @@
     overflow: hidden;
     border-radius: .25em;
     font-size: .875rem;
-    font-family: Open Sans
+    font-family: Figtree,Arial,sans-serif;
   }
   
   .form-select .select-wrapper:after {
@@ -8964,7 +8964,7 @@
   }
   
   .lead {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     font-size: 1.125rem;
     line-height: 1.5;
@@ -9158,7 +9158,7 @@
   body header .container-fluid .container .block.list.links.secondaryMenu ul li a {
     color: #000;
     font-size: 1rem;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
 
   body header .container-fluid .container .block.list.links.secondaryMenu ul li a[hreflang]:after {
@@ -9222,7 +9222,7 @@
   }
   
   footer.container .block.columnSplitter.row .col a.block.link {
-    font-family: Open Sans;
+    font-family: Figtree,Arial,sans-serif;
     color: #fff;
     line-height: 1.4375;
     font-weight: 100;
@@ -9232,7 +9232,7 @@
   
   footer.container .block.columnSplitter.row .col .block.list.links h2 {
     color: #fff;
-    font-family: Open Sans;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600;
     font-size: 1.25rem
   }
@@ -9250,7 +9250,7 @@
   }
   
   footer.container .block.columnSplitter.row .col .block.list.links ul li a {
-    font-family: Open Sans;
+    font-family: Figtree,Arial,sans-serif;
     color: #fff;
     line-height: 1.4375;
     font-weight: 100;
@@ -9311,7 +9311,7 @@
   }
   
   .block.siteName {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -9445,7 +9445,7 @@
   
   .block.megaMenu.navbar.navbar-light ul.menu.navbar-nav#megaMenu li.item.nav-item .headerItem a.nav-link {
     color: #000;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     line-height: 1.375;
     padding: 8px 3px
@@ -9542,7 +9542,7 @@
     #mainMenu.col.navbar.navbar-expand-lg.navbar-light #navbarNav.collapse.navbar-collapse ul.nav .nav-item.ancestor {
         display: block;
         padding: 8px 15px 8px 0;
-        font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+        font-family: Figtree,Arial,sans-serif;
         font-size: 1.25rem;
         font-weight: 600;
         line-height: 1.375
@@ -9553,7 +9553,7 @@
     }
   
     #mainMenu.col.navbar.navbar-expand-lg.navbar-light #navbarNav.collapse.navbar-collapse ul.nav li {
-        font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+        font-family: Figtree,Arial,sans-serif;
         font-size: 1rem;
         font-weight: 400;
         color: #000;
@@ -9578,7 +9578,7 @@
     }
   
     #mainMenu ul.nav li.nav-item.ancestor a.nav-link {
-        font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+        font-family: Figtree,Arial,sans-serif;
         font-size: 1.25rem;
         font-weight: 600;
         line-height: 1.375;
@@ -9689,7 +9689,7 @@
   }
   
   #tlc-on-off:hover .info {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     display: block
   }
@@ -9894,7 +9894,7 @@
   }
   
   .container.department.calendar article .row .calendarEventListing.col p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -9923,7 +9923,7 @@
   }
   
   .container.department.calendar article .row .calendarMatrix.col a,.container.department.calendar article .row .calendarMatrix.col p,.container.department.calendar article .row .calendarMatrix.col span {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -9991,7 +9991,7 @@
   }
   
   .container.department.news .container-fluid.newsListning .paragraphs ul.listing li .date,.container.department.news .container-fluid.newsListning .paragraphs ul.listing li p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -10000,7 +10000,7 @@
   }
   
   .container.department.news .container-fluid.newsListning .paragraphs ul.listing li .readMore {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -10076,7 +10076,7 @@
   }
   
   article.article.standard.news .backLink,article.article.standard.news .date {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -10105,7 +10105,7 @@
   }
   
   article.article.standard h3 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
     color: #000;
@@ -10130,7 +10130,7 @@
   }
   
   article.article.standard blockquote p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-style: italic;
     font-size: 1.375rem;
     line-height: 1.4375
@@ -10176,7 +10176,7 @@
   }
   
   article.article.standard.calendarevent .calendarevent__info--fixed {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -10204,7 +10204,7 @@
   }
   
   article.article.standard.calendarevent .backLink {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -10298,7 +10298,7 @@
   
     #breadcrumbs ol.breadcrumb li {
         font-size: 1rem;
-        font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+        font-family: Figtree,Arial,sans-serif;
     }
   
     #breadcrumbs ol.breadcrumb li.breadcrumb-item a {
@@ -10481,7 +10481,7 @@
   
   footer#articleFooter.row {
     clear: both;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -10580,7 +10580,7 @@
   
   footer#articleFooter.row .publicCategorization .categorization ul li {
     display: inline;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -10602,7 +10602,7 @@
   }
   
   .pagination,.pagination a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -10778,7 +10778,7 @@
   
   #mobileMenu.navbar.navbar-light ul.menu.navbar-nav#mobileMenuList li.parentLink a {
     padding-left: 15px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem
   }
   
@@ -10820,7 +10820,7 @@
   
   #mobileMenu.navbar.navbar-light ul.menu.navbar-nav#mobileMenuList li.nav-item .headerItem.mainMenuLink {
     color: #000;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.125rem;
     line-height: 1.375;
     padding: 8px 3px
@@ -10828,7 +10828,7 @@
   
   #mobileMenu.navbar.navbar-light ul.menu.navbar-nav#mobileMenuList li.nav-item .headerItem a.nav-link {
     color: #000;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     padding: 8px 3px
@@ -10840,7 +10840,7 @@
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.5;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   #mobileMenu.navbar.navbar-light ul.menu.navbar-nav#mobileMenuList .secondaryMenuContainer {
@@ -10875,7 +10875,7 @@
   #mobileMenu.navbar.navbar-light ul.menu.navbar-nav#mobileMenuList .secondaryMenuContainer li.nav-item.secondaryItem a.headerItem.secondaryMenu {
     padding: 8px 4px;
     margin: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   #mobileMenu.navbar.navbar-light ul.menu.navbar-nav#mobileMenuList .secondaryMenuContainer li.nav-item.secondaryItem a[hreflang=en-UK].headerItem.secondaryMenu,#mobileMenu.navbar.navbar-light ul.menu.navbar-nav#mobileMenuList .secondaryMenuContainer li.nav-item.secondaryItem a[hreflang=sv-SE].headerItem.secondaryMenu {
@@ -10944,7 +10944,7 @@
   }
   
   .block.list.links ul li a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400
   }
@@ -10968,13 +10968,13 @@
   }
   
   .block.columnSplitter.row .col .block.list.links ul li a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400
   }
   
   .block.megaMenu.navbar.navbar-light ul.menu.navbar-nav#megaMenu .menuItemContent .megaMenuBody .megaMenuBodyInner .block.list.links h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -10984,7 +10984,7 @@
   .block.megaMenu.navbar.navbar-light ul.menu.navbar-nav#megaMenu .menuItemContent .megaMenuBody .megaMenuBodyInner .block.list.links ul {
     list-style: none;
     padding: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -10993,7 +10993,7 @@
   
   .block.megaMenu.navbar.navbar-light ul.menu.navbar-nav#megaMenu .menuItemContent .megaMenuBody .megaMenuBodyInner .block.list.links ul li,.block.megaMenu.navbar.navbar-light ul.menu.navbar-nav#megaMenu .menuItemContent .megaMenuBody .megaMenuBodyInner .block.list.links ul li a {
     margin-bottom: 14px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -11014,7 +11014,7 @@
   }
   
   .block.teaser .teaserBody .lead .block.list.links ul li a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -11057,7 +11057,7 @@
   }
   
   article .paragraphs .blockAlign.floatLeft .block.list.links ul li a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 14px
@@ -11079,7 +11079,7 @@
   }
   
   article .paragraphs .blockAlign.floatRight .block.list.links ul li a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     margin-bottom: 14px
@@ -11195,7 +11195,7 @@
   }
   
   .block.list.accordion .block.list.links ul li a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     line-height: 1.5;
     font-size: 1rem
@@ -11327,7 +11327,7 @@
   
   .block.columnSplitter.row .col .block.list.compact .container .row .block.link,.block.list.compact .container .row a.block.link {
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -11351,7 +11351,7 @@
   }
   
   article.article .paragraphs .block.list.compact.border.solid .container .row .block.link,article.article .paragraphs .blockAlign .block.list.compact .container .row .block.link {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -11526,7 +11526,7 @@
   }
   
   .block.list.expandable .block.list.links ul li a {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 400;
     font-size: 1rem
   }
@@ -11707,7 +11707,7 @@
   }
   
   .block.list.tabs ul.nav.nav-tabs li.nav-item a.nav-link {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   .block.list.tabs ul.nav.nav-tabs li.nav-item a.nav-link:hover {
@@ -11762,7 +11762,7 @@
   }
   
   .paragraphs .block.teaser .teaserBody .teaserHeading,.paragraphs .block.teaser .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000
@@ -11782,14 +11782,14 @@
   .paragraphs .block.teaser .teaserBody .themeHeading,.paragraphs .block.teaser .teaserBody p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
   }
   
   .paragraphs .block.teaser .teaserBody .lead h2,.paragraphs .block.teaser .teaserBody .lead h3 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -11810,7 +11810,7 @@
   }
   
   .block.teaser .teaserHeading,.block.teaser h2,.block.teaser h3 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -11825,14 +11825,14 @@
   .block.teaser .themeHeading,.block.teaser p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
   }
   
   .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -11849,7 +11849,7 @@
   .block.teaser .teaserBody .themeHeading,.block.teaser .teaserBody p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -11860,7 +11860,7 @@
   }
   
   .block.teaser .teaserBody .lead h2,.block.teaser .teaserBody .lead h3 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -11870,7 +11870,7 @@
   }
   
   .block.teaser .teaserBody .lead p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -11888,7 +11888,7 @@
   }
   
   .block.teaser .teaserBody .lead ol li,.block.teaser .teaserBody .lead ul li {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -11902,7 +11902,7 @@
   }
   
   .block.teaser .teaserBody ul.teaserLinks,.block.teaser .teaserBody ul.teaserLinks li {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -11934,7 +11934,7 @@
   .block.teaser.top.pink .themeHeading,.block.teaser.top.pink p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -12020,7 +12020,7 @@
   .block.teaser.leftFloating.pink .themeHeading,.block.teaser.leftFloating.pink p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -12153,7 +12153,7 @@
   .block.teaser.rightFloating.pink .themeHeading,.block.teaser.rightFloating.pink p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -12215,7 +12215,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using1Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12270,7 +12270,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using2Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12319,7 +12319,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using2Columns.quarter .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12353,7 +12353,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using2Columns.big .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12393,7 +12393,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12442,7 +12442,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns.quarter .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12476,7 +12476,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns.medium .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12510,7 +12510,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns.medium .col.c3 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12544,7 +12544,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns.wide .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12578,7 +12578,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns.wide .col.c3 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12612,7 +12612,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns.big .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12646,7 +12646,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using3Columns.big .col.c3 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12680,7 +12680,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using4Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12720,7 +12720,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using4Columns.narrow .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12775,7 +12775,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using4Columns.medium .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12830,7 +12830,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using4Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12885,7 +12885,7 @@
   }
   
   .block.megaMenu .block.columnSplitter.using4Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12945,7 +12945,7 @@
   }
   
   article.article .paragraphs .blockAlign.floatLeft .block.list .block.teaser .teaserBody h2.teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -12963,7 +12963,7 @@
   }
   
   article.article .paragraphs .blockAlign.floatLeft .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13094,7 +13094,7 @@
   }
   
   article.article .paragraphs .blockAlign.floatRight .block.list .block.teaser .teaserBody h2.teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13113,7 +13113,7 @@
   }
   
   article.article .paragraphs .blockAlign.floatRight .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13262,7 +13262,7 @@
   }
   
   article.article .paragraphs .block.teaser.top .teaserBody .lead .block.figure figcaption.figure-caption {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -13353,7 +13353,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13365,7 +13365,7 @@
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter .teaserBody .themeHeading,.container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter .teaserBody p .themeHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter .teaserBody .themeHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter .teaserBody p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -13406,7 +13406,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13435,7 +13435,7 @@
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody .themeHeading,.container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody p .themeHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody .themeHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using1Columns .col .block.teaser.top .teaserBody p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -13466,7 +13466,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns .col .block.teaser.top .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13511,7 +13511,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns.wide .col.c2 .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns.wide .col.c2 .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13541,7 +13541,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns.big .col.c2 .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns.big .col.c2 .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13571,7 +13571,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns.quarter .col.c1 .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using2Columns.quarter .col.c1 .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13601,7 +13601,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using3Columns .col .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using3Columns .col .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13637,7 +13637,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using3Columns.wide .col.c1 .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using3Columns.wide .col.c1 .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13688,7 +13688,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using3Columns.big .col.c1 .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using3Columns.big .col.c1 .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13739,7 +13739,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using4Columns.wide .col.c1 .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using4Columns.wide .col.c1 .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13790,7 +13790,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using4Columns.big .col.c1 .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using4Columns.big .col.c1 .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13835,7 +13835,7 @@
   }
   
   .container.standard.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using4Columns .col .block.teaser .teaserBody .teaserHeading,.container.start.withMainMenu .row .col article.article .paragraphs .block.columnSplitter.row.using4Columns .col .block.teaser .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13887,7 +13887,7 @@
   }
   
   article.article .paragraphs .block.list .block.teaser.top.white .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -13976,7 +13976,7 @@
   }
   
   article.article .paragraphs .block.list.compact .container .row .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14019,7 +14019,7 @@
   }
   
   article.article .paragraphs .block.list.grid .gridContainer .gridRowItem article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14063,7 +14063,7 @@
   }
   
   .block.list.compact .container .row .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14089,7 +14089,7 @@
   }
   
   .block.list.compact .container .row .block.teaser .teaserBody .lead a.block.link {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   aside#sidebar article.block.teaser.leftFloating {
@@ -14207,7 +14207,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14262,7 +14262,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using1Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14317,7 +14317,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14366,7 +14366,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns.quarter .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14400,7 +14400,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns.big .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14440,7 +14440,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14489,7 +14489,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.quarter .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14523,7 +14523,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.medium .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14557,7 +14557,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.medium .col.c3 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14591,7 +14591,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.wide .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14625,7 +14625,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.wide .col.c3 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14659,7 +14659,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.big .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14693,7 +14693,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.big .col.c3 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14727,7 +14727,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14767,7 +14767,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns.narrow .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14822,7 +14822,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns.medium .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14877,7 +14877,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14932,7 +14932,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -14991,7 +14991,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.list.grid .gridContainer .gridRowItem article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15044,7 +15044,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.list.grid .gridContainer .gridRowItem.gridRowItem_4 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15074,7 +15074,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #secondaryBlocks .container-fluid .block.teaser.leftFloating .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15104,7 +15104,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #secondaryBlocks .container-fluid .block.teaser.rightFloating .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15134,7 +15134,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #secondaryBlocks .container-fluid .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15182,7 +15182,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks .block.list.grid .gridContainer .gridRowItem article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15235,7 +15235,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks .block.list.grid .gridContainer .gridRowItem_4 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15275,7 +15275,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15324,7 +15324,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15364,7 +15364,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15413,7 +15413,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.quarter .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15453,7 +15453,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.quarter .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15508,7 +15508,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15557,7 +15557,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.wide .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15597,7 +15597,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15646,7 +15646,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.big .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15680,7 +15680,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using3Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15720,7 +15720,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using3Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15775,7 +15775,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using3Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15824,7 +15824,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using4Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15868,7 +15868,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15917,7 +15917,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem.gridRowItem_3 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15951,7 +15951,7 @@
   }
   
   .container.start.noMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem.gridRowItem_4 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -15991,7 +15991,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16046,7 +16046,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using1Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16101,7 +16101,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16150,7 +16150,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns.quarter .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16184,7 +16184,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns.narrow .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16218,7 +16218,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns.wide .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16252,7 +16252,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using2Columns.big .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16286,7 +16286,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16326,7 +16326,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.quarter .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16381,7 +16381,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.quarter .col.c3 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16436,7 +16436,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.medium .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16491,7 +16491,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16546,7 +16546,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using3Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16595,7 +16595,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16635,7 +16635,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns.medium .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16690,7 +16690,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16745,7 +16745,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.columnSplitter.using4Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16804,7 +16804,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.list.grid .gridContainer .gridRowItem article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16853,7 +16853,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.list.grid .gridContainer .gridRowItem.gridRowItem_3 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16887,7 +16887,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid #topBlocks .container-fluid .row .block.list.grid .gridContainer .gridRowItem.gridRowItem_4 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16917,7 +16917,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #secondaryBlocks .container-fluid .block.teaser.leftFloating .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16947,7 +16947,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #secondaryBlocks .container-fluid .block.teaser.rightFloating .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -16977,7 +16977,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #secondaryBlocks .container-fluid .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17017,7 +17017,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17072,7 +17072,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.pink .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17101,7 +17101,7 @@
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.pink .teaserBody .themeHeading,.container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.pink .teaserBody p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -17132,7 +17132,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.grey .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17161,7 +17161,7 @@
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.grey .teaserBody .themeHeading,.container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top.grey .teaserBody p .themeHeading {
     text-transform: uppercase;
     margin-bottom: 0;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -17190,7 +17190,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem.gridRowItem_3 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17224,7 +17224,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem.gridRowItem_4 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17264,7 +17264,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17313,7 +17313,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17347,7 +17347,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17381,7 +17381,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.quarter .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17421,7 +17421,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.quarter .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17476,7 +17476,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17525,7 +17525,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.wide .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17565,7 +17565,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17614,7 +17614,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using2Columns.big .col.c2 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17648,7 +17648,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using3Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17688,7 +17688,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using3Columns.wide .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17743,7 +17743,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using3Columns.big .col.c1 .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17792,7 +17792,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.columnSplitter.using4Columns .col .block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17836,7 +17836,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17885,7 +17885,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem.gridRowItem_2 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17919,7 +17919,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem.gridRowItem_3 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -17953,7 +17953,7 @@
   }
   
   .container.start.withMainMenu .row .col .container-fluid .row #primaryBlocks.hasSecondaryBlocks .container-fluid .block.list.grid .gridContainer .gridRowItem.gridRowItem_4 article.block.teaser.top .teaserBody .teaserHeading {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -18181,7 +18181,7 @@
   }
   
   .block.columnSplitter.row h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -18896,7 +18896,7 @@
   
   .block.table table caption.figureTitle {
     caption-side: top;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -18921,7 +18921,7 @@
   }
   
   .paragraphs table tr td p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     margin-bottom: 0
   }
   
@@ -18934,7 +18934,7 @@
   }
   
   .block.attachment {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -19005,7 +19005,7 @@
   }
   
   article.article .paragraphs table a.block.attachment {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -19029,7 +19029,7 @@
   }
   
   .block.list.compact .block.attachment,.block.list.group .block.attachment {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -19044,7 +19044,7 @@
   }
   
   .block.teaser .teaserBody .lead .block.attachment {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -19056,7 +19056,7 @@
   }
   
   .block.news h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -19070,7 +19070,7 @@
   }
   
   .block.news .news__link {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -19119,7 +19119,7 @@
   
   .block.news.teaser .columns .column .description.withImage .text-container {
     padding: 0 15px 15px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -19127,7 +19127,7 @@
   }
   
   .block.news.teaser .columns .column .description.withImage .text-container h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -19137,7 +19137,7 @@
   }
   
   .block.news.teaser .columns .column .description.withImage .text-container p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -19154,7 +19154,7 @@
   }
   
   .block.news.top h2,.block.news.top ul.listing {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   .block.news.top ul.listing {
@@ -19185,7 +19185,7 @@
     border-bottom: 1px solid #d4d4d4;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -19212,7 +19212,7 @@
   }
   
   article.article.standard .paragraphs .block.news ul.listing,article.article.standard .paragraphs .block.news ul.listing li {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -19225,7 +19225,7 @@
   }
   
   article.article.standard .paragraphs .blockAlign.center .block.news ul.listing,article.article.standard .paragraphs .blockAlign.center .block.news ul.listing li,article.article.standard .paragraphs .blockAlign.floatLeft .block.news ul.listing,article.article.standard .paragraphs .blockAlign.floatLeft .block.news ul.listing li,article.article.standard .paragraphs .blockAlign.floatRight .block.news ul.listing,article.article.standard .paragraphs .blockAlign.floatRight .block.news ul.listing li,article.article.standard .paragraphs .blockAlign.left .block.news ul.listing,article.article.standard .paragraphs .blockAlign.left .block.news ul.listing li,article.article.standard .paragraphs .blockAlign.right .block.news ul.listing,article.article.standard .paragraphs .blockAlign.right .block.news ul.listing li {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -19240,7 +19240,7 @@
   }
   
   .calendar__heading,.calendar__listing {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     color: #000
   }
   
@@ -19258,7 +19258,7 @@
   }
   
   .calendar__alert--info,.calendar__link {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -19279,7 +19279,7 @@
     float: left;
     margin-right: 15px;
     margin-top: 5px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   .calendar__date-day {
@@ -19301,7 +19301,7 @@
   }
   
   .calendar__event,.calendar__eventinfo {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -19555,7 +19555,7 @@
   }
   
   .block.programme,.block.programme h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif
+    font-family: Figtree,Arial,sans-serif;
   }
   
   .block.programme h2 {
@@ -19571,7 +19571,7 @@
   }
   
   .block.programme .chart .ProgramChartWidget.SubjectsWidget .Chart .Chart-Labels .Chart-LabelsColumn .Chart-Label {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     color: #000;
@@ -19824,7 +19824,7 @@
   }
   
   .block.publications h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -19872,7 +19872,7 @@
   }
   
   .block.contactInfo.vcard {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -19986,7 +19986,7 @@
   }
   
   a.block.link {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -20006,7 +20006,7 @@
   }
   
   .article.standard .paragraphs .block.teaser a.block.link,.article.standard .paragraphs table a.block.link {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -20031,7 +20031,7 @@
   }
   
   .t1 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.75rem;
     font-weight: 600;
     color: #000;
@@ -20045,7 +20045,7 @@
   }
   
   .t2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.625rem;
     font-weight: 600;
     color: #000;
@@ -20063,7 +20063,7 @@
   }
   
   .t3,.t4 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600;
     color: #000;
     line-height: 1.375
@@ -20074,7 +20074,7 @@
   }
   
   .t24 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-weight: 600;
     color: #000;
     line-height: 1.3125
@@ -20088,7 +20088,7 @@
   }
   
   .t10 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     color: #000;
@@ -20102,7 +20102,7 @@
   }
   
   .t11 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     line-height: 1.5
   }
   
@@ -20175,7 +20175,7 @@
   }
   
   .block.rssReader h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -20196,7 +20196,7 @@
   }
   
   .block.rssReader ul.listing li,.block.rssReader ul.listing li p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -20256,7 +20256,7 @@
   }
   
   article.article.standard .paragraphs .block.rssReader ul.listing--separated li a.rssLink,article.article.standard .paragraphs .block.rssReader ul.listing--separated li p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -20278,7 +20278,7 @@
   }
   
   article.article.standard .paragraphs .blockAlign.center .block.rssReader h2,article.article.standard .paragraphs .blockAlign.floatLeft .block.rssReader h2,article.article.standard .paragraphs .blockAlign.floatRight .block.rssReader h2,article.article.standard .paragraphs .blockAlign.left .block.rssReader h2,article.article.standard .paragraphs .blockAlign.right .block.rssReader h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -20296,14 +20296,14 @@
   article.article.standard .paragraphs .blockAlign.center .block.rssReader ul.listing li,article.article.standard .paragraphs .blockAlign.floatLeft .block.rssReader ul.listing li,article.article.standard .paragraphs .blockAlign.floatRight .block.rssReader ul.listing li,article.article.standard .paragraphs .blockAlign.left .block.rssReader ul.listing li,article.article.standard .paragraphs .blockAlign.right .block.rssReader ul.listing li {
     padding-bottom: 0;
     margin-bottom: 10px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
   }
   
   article.article.standard .paragraphs .blockAlign.center .block.rssReader ul.listing li p,article.article.standard .paragraphs .blockAlign.floatLeft .block.rssReader ul.listing li p,article.article.standard .paragraphs .blockAlign.floatRight .block.rssReader ul.listing li p,article.article.standard .paragraphs .blockAlign.left .block.rssReader ul.listing li p,article.article.standard .paragraphs .blockAlign.right .block.rssReader ul.listing li p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -20328,7 +20328,7 @@
   }
   
   .block.columnSplitter .block.rssReader h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -20349,7 +20349,7 @@
   }
   
   .block.columnSplitter .block.rssReader ul.listing li,.block.columnSplitter .block.rssReader ul.listing li p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
@@ -20377,7 +20377,7 @@
   }
   
   article.article.standard .paragraphs .block.teaser .block.rssReader h2 {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #000;
@@ -20395,14 +20395,14 @@
   article.article.standard .paragraphs .block.teaser .block.rssReader ul.listing li {
     padding-bottom: 0;
     margin-bottom: 10px;
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5
   }
   
   article.article.standard .paragraphs .block.teaser .block.rssReader ul.listing li p {
-    font-family: Open Sans,Arial,Helvetica Neue,helvetica,sans-serif;
+    font-family: Figtree,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
