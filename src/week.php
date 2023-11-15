@@ -78,6 +78,11 @@ echo "</div>\n";
 $extra_info = "";
 $extra_info = get_area_extra_info($area,$lang);
 if ($extra_info != "") {
+  //Ta bort eventuella länkar för kioskdatorer
+  if ($is_support_kiosk) {
+    $extra_info = preg_replace("/<a\b[^>]*>/i", "<span>", $extra_info);
+    $extra_info = str_replace("</a>", "</span>", $extra_info);
+  }
 	echo "<div id=\"extrainfo\" style=\"\">" . $extra_info ."</div>";
 }
 
