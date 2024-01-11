@@ -1115,7 +1115,7 @@ function room_cell_html($row, $link)
   $html .= tdcell("row_labels", 1, array('name' => 'room', 'value' => $row['id']));
   $html .= "<div class=\"celldiv slots1\">\n";
   $html .= "<a href=\"$link\" title=\"" . get_vocab("viewweek") . " &#10;&#10;" . $row['description'] . "\">";
-  if ($row['room_number']!="") {
+  if ($row['room_number']!="" && $showroomnumber) {
 	$html .= $row['room_number'] . ". " . $row['room_name'] . " " . ($row['capacity'] > 0 ? $row['capacity']."<div class=\"personicon\"></div>" : "") . ($row['capacity'] > 0 ? $row['capacity']."<div class=\"personicon\"></div>" : ""); //KTH
   } else {
 	//$html .= $row['room_name'] . " " . ($row['capacity'] > 0 ? $row['capacity']."<div class=\"ui-icon ui-icon-person\" style=\"display: inline-block;top: 2px;position: relative;\"></div>" : ""); //KTH
@@ -1451,7 +1451,7 @@ if($lang=="en") {
       $header_inner .= "<th data-room=\"" . $row['id'] . "\" style=\"width: $column_width%\">
                         <a href=\"week.php?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\"
                         title=\"" . get_vocab("viewweek") . " &#10;&#10;".$row['description']. " &#10;" . $row['capacity']. " " . get_vocab("seats") . "\">";
-						if ($row['room_number']!="") {
+						if ($row['room_number']!="" && $showroomnumber) {
               //KTH 20180130 icon för att visa att rum har en skärm
               $header_inner .= "<div class=\"roomnumber\">" . $row['room_number'] . ".&nbsp;</div><div class=\"roomname\">" . $row['room_name'] . "</div>" . ($row['capacity'] > 0 ? " <div class=\"capacity\">" .$row['capacity']. "<div class=\"personicon\"></div></div>" : "") . ($row['screen'] > 0 ? " <div class=\"capacity\"><div class=\"screenicon\"></div></div>" : "") . "</a>" . "</th>\n"; //KTH
 						} else {

@@ -2722,7 +2722,7 @@ function make_area_select_html($link, $current, $year, $month, $day)
 
 function make_room_select_html ($link, $area, $current, $year, $month, $day, $lang)
 {
-  global $tbl_room, $tbl_area, $area_list_format;
+  global $tbl_room, $tbl_area, $area_list_format, $showroomnumber;
   
   $out_html = '';
   $sql = "SELECT R.id, R.room_name, R.description, R.room_name_english, R.room_number
@@ -2755,14 +2755,14 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day, $la
 		//if ($row['id'] != $current) {
 			$selected = ($row['id'] == $current) ? "selected=\"selected\"" : "";
 			if ($lang == "sv") {
-				if ($row['room_number']!="") {
+				if ($row['room_number']!="" && $showroomnumber) {
 					$out_html .= "<option $selected value=\"". $row['id']. "\" title=\"". htmlspecialchars($row['description'])."\">" . $row['room_number'] . ". " . $row['room_name'] . "</option>\n";
 				} else {
 						$out_html .= "<option $selected value=\"". $row['id']. "\" title=\"". htmlspecialchars($row['description'])."\">" . $row['room_name'] . "</option>\n";
 				}
 			}
 			else {
-				if ($row['room_number']!="") {
+				if ($row['room_number']!="" && $showroomnumber) {
 					$out_html .= "<option $selected value=\"". $row['id']. "\" title=\"". htmlspecialchars($row['description'])."\">" . $row['room_number'] . ". " . $row['room_name_english'] . "</option>\n";
 				} else {
 					$out_html .= "<option $selected value=\"". $row['id']. "\" title=\"". htmlspecialchars($row['description'])."\">" . $row['room_name_english'] . "</option>\n";
@@ -2794,14 +2794,14 @@ function make_room_select_html ($link, $area, $current, $year, $month, $day, $la
                     <a" . (($row['id'] == $current) ? ' class="btn btn-primary"' : ' class="btn btn-light"') . " href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=$area&amp;room=".$row['id']."\" title=\"". htmlspecialchars($row['description'])."\">";
 			$out_html .= "<span" . (($row['id'] == $current) ? ' class="current"' : '') . ">";
 			if ($lang == "sv") {
-				if ($row['room_number']!="") {
+				if ($row['room_number']!="" && $showroomnumber) {
 					$out_html .= $row['room_number'] . ". " . $row['room_name'] . "</span></a></li>\n";
 				} else {
 					$out_html .= $row['room_name'] . "</span></a></li>\n";
 				}
 			}
 			else {
-				if ($row['room_number']!="") {
+				if ($row['room_number']!="" && $showroomnumber) {
 					$out_html .= $row['room_number'] . ". " . $row['room_name_english'] . "</span></a></li>\n";
 				} else {
 					$out_html .= $row['room_name_english'] . "</span></a></li>\n";
