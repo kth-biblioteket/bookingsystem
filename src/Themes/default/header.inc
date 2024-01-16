@@ -85,6 +85,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 		<meta http-equiv="expires" content="0" />
 		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 		<meta http-equiv="pragma" content="no-cache" />
+		<link rel="shortcut icon" href="favicon.ico">
 		<title><?php echo get_vocab("sitename") ?></title>
 		<?php
 			require_once "style.inc";
