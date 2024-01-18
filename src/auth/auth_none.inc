@@ -147,7 +147,7 @@ function authValidateUser($user, $pass, $kthcas)
 {
 	//KTH
 	global $auth, $ldap_user_domain, $alma_user_domain;
-	global $environment;
+	global $allowedUserGroups, $environment;
 	//anropa alma här (kth-konto/lånekort plus persnr)
 	$returnvalue = 0;
 	$result = 0; //0=Error 1=Success
@@ -198,25 +198,14 @@ function authValidateUser($user, $pass, $kthcas)
 				}	
 			}
 			//kolla om användaren tillhör en behörig user group (gäller inte adminusers, authGetUserLevel($primary_id) < 2)
-			//10 = Staff
-			//20 = Student
-			//23 = Foreign student (gammal milleniumkvarleva som ska försvinna)
-			//24 = Distance student (gammal milleniumkvarleva som ska försvinna)
 			$checkusergroup = TRUE;
+
 			if ($valid_id == TRUE && (authGetUserLevel($primary_id) < 2)) {
-				if($source['user_group']['value'] == "10") {
-					//Staff, behövs hanteras?
-				}
-				
-				//191003
-				if ($checkusergroup) {
-					if($source['user_group']['value'] != "10" 
-						&& $source['user_group']['value'] != "20" 
-						&& $source['user_group']['value'] != "23" 
-						&& $source['user_group']['value'] != "24") {
-						//"Other";
-						$result = 0; //ERROR!!
-						$message = "User group: \"" . $source['user_group']['desc'] . "\" ej behörig.";
+				if ($checkusergroup) {			
+					if (!in_array($source['user_group']['value'], $allowedUserGroups)) {
+						$result = 0; // ERROR!!
+						$message = "User group: \"" . $source['user_group']['desc'] . "\" is not authorized.";
+						error_log($message);
 						$valid_id = FALSE;
 					}
 				}
