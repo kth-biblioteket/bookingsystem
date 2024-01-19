@@ -125,7 +125,7 @@ if($auth["method"]=="kthcas") {
 		{
 		  print_header_noauth(0, 0, 0, 0, "");
 
-		  echo "<p>".$almavalidate->message."</p>\n";
+		  echo "<h3>".$almavalidate->message."</h3>\n";
 		  //printLoginForm($TargetURL);
 		  unset($_SESSION["kth_id"]);
 		  exit();
