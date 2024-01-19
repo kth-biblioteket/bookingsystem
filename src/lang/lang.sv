@@ -321,6 +321,7 @@ $vocab["none_outstanding"]   = "Du har inga preliminära bokningar som väntar p
 
 // Authentication stuff
 $vocab["accessdenied"]       = "Åtkomst nekad";
+$vocab["not_authorized"]     = "Åtkomst nekad";
 $vocab["norights"]           = "";
 $vocab["please_login"]       = "Vänligen ange dina uppgifter";
 //KTH

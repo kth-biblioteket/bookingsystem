@@ -327,6 +327,7 @@ $vocab["none_outstanding"]   = "You have no bookings awaiting approval.";
 
 // Authentication stuff
 $vocab["accessdenied"]       = "Access Denied";
+$vocab["not_authorized"]     = "Access Denied";
 $vocab["norights"]           = "";
 $vocab["please_login"]       = "Please supply your credentials";
 //KTH

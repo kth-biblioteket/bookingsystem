@@ -123,9 +123,7 @@ if($auth["method"]=="kthcas") {
 		$almavalidate = json_decode($response);
 		if ($almavalidate->result == 0)
 		{
-      //Genererar redirect loop vid något "fel" på almakontot(finns inte, fel roll etc)
-		  //print_header(0, 0, 0, 0, "");
-
+		  print_header_noauth(0, 0, 0, 0, "");
 
 		  echo "<p>".$almavalidate->message."</p>\n";
 		  //printLoginForm($TargetURL);

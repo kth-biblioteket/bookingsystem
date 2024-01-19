@@ -3,6 +3,171 @@
 // $Id$
 
 
+// Print the page header for non authorized users
+function print_theme_header_noauth($day, $month, $year, $area, $room) {
+	global $mrbs_company, $mrbs_company_logo, $mrbs_company_url, $mrbs_company_more_info, $search_str, $locale_warning;
+	global $tbl_entry, $tbl_room, $tbl_area;
+	global $PHP_SELF, $HTTP_HOST, $QUERY_STRING;
+	global $view_week_number, $weekstarts, $times_along_top, $periods, $enable_periods;
+	global $auth, $max_level;
+	global $default_language_tokens, $disable_automatic_language_changing, $override_locale;
+	global $select_options;
+	global $ajax_refresh_rate;
+	global $main_table_cell_border_width, $main_cell_height;
+	global $timetohighlight;
+	//KTH
+	global $mrbslang;
+	//191003
+	global $session_name, $app_name, $kth_www, $is_kiosk, $is_support_kiosk, $environment, $db_database, $activitytimer, $enableactivitytimer;
+  
+	$page = basename($PHP_SELF, ".php");
+	$user = getUserName();
+
+	// Need to set the timezone before we can use date()
+	get_area_settings($area);
+
+?>
+
+<html>
+	<head>
+		<meta charset="<?php echo get_charset(); ?>">
+		<?php 
+			//KTH 
+			//Responsivt + no cache
+		?>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<title><?php echo get_vocab("sitename") ?></title>
+		<?php
+			require_once "style.inc";
+			require_once "js.inc";
+		?>
+  
+	</head>
+	<?php
+	// Put the filename in as a class to aid styling.   
+	// (Use a class rather than id to avoid specificity problems)
+	if ($environment != "production") {
+		echo "<body class=\"developmentborder non_js ".htmlspecialchars($page)."\">\n";
+		echo "<div class= \"developmentheader\">!!! " . strtoupper($environment) . ", " . $db_database . " !!!</div>";
+	}
+	else {
+		echo "<body class=\"non_js ".htmlspecialchars($page)."\">\n";
+	}
+    // Add a class of "js" so that we know if we're using JavaScript or not
+    // and remove the non_js class (it's sometimes useful to know that we're
+    // not running JavaScript)
+	?>
+	<script type="text/javascript">
+		//<![CDATA[
+		$('body').addClass('js').removeClass('non_js');
+		//]]>
+    </script>
+<?php
+	if (!empty($locale_warning)) {
+		echo "[Warning: ".$locale_warning."]";
+	}
+?>
+<?php //KTH?>
+	<!-- 191003 -->
+	<header>
+    <div class="container-fluid">
+    	<div class="container">      
+			<div class="header-container__top">
+				<figure class="block figure defaultTheme mainLogo" data-cid="1.77257" lang="sv-SE">
+					<?php if ($is_support_kiosk) { ?>
+						<!--a href="<?php echo get_vocab("supportkiosklink");?>">
+							<svg style="width:70px; height:70px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill: #1954A6;" d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256S114.6 512 256 512s256-114.6 256-256zM116.7 244.7l112-112c4.6-4.6 11.5-5.9 17.4-3.5s9.9 8.3 9.9 14.8l0 64 96 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32l-96 0 0 64c0 6.5-3.9 12.3-9.9 14.8s-12.9 1.1-17.4-3.5l-112-112c-6.2-6.2-6.2-16.4 0-22.6z"></path></svg>
+						</a-->
+					<?php } else {?>
+						<a href="<?php echo get_vocab("logolink");?>">
+						<img class="figure-img img-fluid" src="images/kth-logo.svg" alt="KTH:s logotyp" height="70" width="70">
+					</a>
+					<?php } ?>
+				</figure>
+		<?php
+		//KTH
+		//Byta språk
+		if(isset($_COOKIE["mrbslang"])) {
+			if(isset($mrbslang)) {
+				$switchlanguage = $mrbslang;
+			} else {
+				$switchlanguage = $_COOKIE["mrbslang"];
+			}
+		}
+		$myURL = $_SERVER["REQUEST_URI"];
+		//rensa bort eventuella nuvarande språkparameter
+		$myURL = str_replace("&lang=en", "", $myURL);
+		$myURL = str_replace("&lang=sv", "", $myURL);
+		$myURL = str_replace("?lang=en", "", $myURL);
+		$myURL = str_replace("?lang=sv", "", $myURL);
+		//Ta bort inledande "/"
+		$myURL = substr($myURL,1);
+
+		if (isset($switchlanguage)) {
+			$pos = strpos($myURL, "?");
+			if ($pos === false) {
+				$urlchar = "?";
+			} else {
+				$urlchar = "&";
+			}
+		} 
+		?>
+		<?php //191003 KTH-sidhuvud ?>
+			<?php if (!$is_support_kiosk) { ?>
+				<h1 class="block siteName" data-cid="1.260060">
+					<a data-cid="1.260060" href="<?php echo get_vocab("sitenamelink");?>"><?php echo get_vocab("sitename")?></a>
+				</h1>
+			<?php }?>
+				<div class="block list links secondaryMenu" data-cid="1.864801" lang="sv-SE">
+					<ul>
+					<?php if ($switchlanguage != "en") { ?>
+						<li><a href="<?php echo $myURL . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<?php if ($is_kiosk) {
+							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
+						}?>
+						</li>
+					<?php } else {?>
+						<li><a href="<?php echo $myURL . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<?php if ($is_kiosk) {
+							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Time left: <span id=\"activitytimer\"></span></div>";
+						}?>
+						</li>
+					<?php }?>
+					</ul>
+				</div>
+			</div><!-- slut container__top-->
+			<?php if (!$is_support_kiosk) { ?>
+				<div class="menuwrapper">
+					<div class="menu">
+						
+					</div>
+				</div> <!-- Slut containter bottom-->
+			<?php }?>
+		</div> <!-- Slut container-->
+	</div> <!-- Slut container fluid-->
+    <div id="gradientBorder"></div>
+	</header>
+	<div id="appheader">
+		<?php//191003?>
+		<div id="mrbs">
+			<h1><?php echo get_vocab("sitename") ?></h1>
+		</div>
+	</div><?php //slut mrbs + banner ?>
+<div id="contentwrapper">	
+	<div id="contents">
+<?php
+} //end of print_theme_header_noauth()
+
+
+// $Id$
+
+
 // Print the page header
 function print_theme_header($day, $month, $year, $area, $room) {
 	global $mrbs_company, $mrbs_company_logo, $mrbs_company_url, $mrbs_company_more_info, $search_str, $locale_warning;

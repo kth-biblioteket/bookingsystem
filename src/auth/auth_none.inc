@@ -204,7 +204,7 @@ function authValidateUser($user, $pass, $kthcas)
 				if ($checkusergroup) {			
 					if (!in_array($source['user_group']['value'], $allowedUserGroups)) {
 						$result = 0; // ERROR!!
-						$message = "User group: \"" . $source['user_group']['desc'] . "\" is not authorized.";
+						$message = get_vocab("not_authorized");
 						error_log($message);
 						$valid_id = FALSE;
 					}

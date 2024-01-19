@@ -214,6 +214,31 @@ function print_modal($area,$lang,$area_map,$area_map_image)
   echo  "</div>\n";
 }
 
+// Print the page header for non authorized users
+function print_header_noauth($day, $month, $year, $area, $room)
+{
+  global $theme, $done_header;
+  
+  if ($done_header)
+  {
+    return;
+  }
+  
+  // Load the print_theme_header function appropriate to the theme.    If there
+  // isn't one then fall back to the default header.
+  if (file_exists("Themes/$theme/header.inc"))
+  {
+    include_once "Themes/$theme/header.inc";
+  }
+  if (!function_exists("print_theme_header_noauth"))
+  {
+    require_once "Themes/default/header.inc";
+  }
+  // Now go and do it
+  print_theme_header_noauth($day, $month, $year, $area, $room);
+  $done_header = TRUE;
+}
+
 // Print the page header
 function print_header($day, $month, $year, $area, $room)
 {
