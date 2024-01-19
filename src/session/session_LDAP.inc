@@ -162,7 +162,7 @@ if (isset($Action) && ($Action == "SetName"))
     if ($almavalidate->result == 0)
     {
       print_header(0, 0, 0, 0, "");
-      echo "<p>".$almavalidate->message."</p>\n";
+      echo "<h3>".$almavalidate->message."</h3>\n";
       printLoginForm($TargetURL);
       unset($_SESSION["UserName"]);
       exit();
