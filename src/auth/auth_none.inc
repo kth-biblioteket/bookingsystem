@@ -109,13 +109,13 @@ function authenticateuser($user_id, $password) {
 Funktion som hämtar användare från LDAP
 
 **********/
-function getldapuser($user_id) {
+function getldapuser($user, $type) {
 	global $ldap_api_key;
 	global $ldap_api_url;
 	global $environment;
 
 	$ch = curl_init();
-	$url = $ldap_api_url . 'account/' . $user_id . '?token=' . $ldap_api_key;
+	$url = $ldap_api_url . $type . '/' . $user . '?token=' . $ldap_api_key;
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	curl_setopt($ch, CURLOPT_HEADER, FALSE);
@@ -184,12 +184,14 @@ function authValidateUser($user, $pass, $kthcas)
 	} else {
 		//191003
 		if ($auth["method"] != "kthcas") {
+			$ldapusertype = 'account';
 			$almauser = $user . "@" . $alma_user_domain; //Primary Id i alma
 		} else {
-			$almauser = $user; //identifier i alma kth_id: u1f7tfgo
+				$ldapusertype = 'kthid';
+				$almauser = $user; //identifier i alma kth_id: u1f7tfgo
 		}
 		//Hämta användare från LDAP
-		$currentldapuser = getldapuser($user);
+		$currentldapuser = getldapuser($user, $ldapusertype);
 		$jsonldap = json_decode($currentldapuser);
 		
 		//Hämta användare från Alma
@@ -246,15 +248,13 @@ function authValidateUser($user, $pass, $kthcas)
 					// För de som t ex har gruppen staff i Alma men som också är student.
 					if ($valid_id == FALSE ) {
 						$allowedUGAffiliations = isset($allowedUGAffiliations) ? $allowedUGAffiliations : array();
-						error_log(implode(', ', $allowedUGAffiliations));
-						error_log(implode(', ', $jsonldap->ugusers[0]->ugAffiliation));
 						$commonaff = array_intersect($allowedUGAffiliations,$jsonldap->ugusers[0]->ugAffiliation);
 						if (!empty($commonaff)) {
 							$valid_id = TRUE;
 						} else {
 							$result = 0; // ERROR!!
 							$message = get_vocab("not_authorized_UG");
-							error_log($message);
+							error_log($message . " " . implode(', ', $jsonldap->ugusers[0]->ugAffiliation));
 							$valid_id = FALSE;
 						}
 					}
