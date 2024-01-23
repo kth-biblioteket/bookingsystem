@@ -254,7 +254,7 @@ function authValidateUser($user, $pass, $kthcas)
 						} else {
 							$result = 0; // ERROR!!
 							$message = get_vocab("not_authorized_UG");
-							error_log($message . " " . implode(', ', $jsonldap->ugusers[0]->ugAffiliation));
+							error_log($message . " Användare: ", $user . " Affiliation: " . implode(', ', $jsonldap->ugusers[0]->ugAffiliation));
 							$valid_id = FALSE;
 						}
 					}
