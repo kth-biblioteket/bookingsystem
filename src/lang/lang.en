@@ -328,6 +328,7 @@ $vocab["none_outstanding"]   = "You have no bookings awaiting approval.";
 // Authentication stuff
 $vocab["accessdenied"]       = "Access Denied";
 $vocab["not_authorized"]     = "Access Denied";
+$vocab["not_authorized_UG"]  = "UG: The library's group rooms are only for students and cannot be booked by staff.";
 $vocab["norights"]           = "";
 $vocab["please_login"]       = "Please supply your credentials";
 //KTH

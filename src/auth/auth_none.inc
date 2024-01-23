@@ -106,6 +106,33 @@ function authenticateuser($user_id, $password) {
 }
 
 /********** 
+Funktion som hämtar användare från LDAP
+
+**********/
+function getldapuser($user_id) {
+	global $ldap_api_key;
+	global $ldap_api_url;
+	global $environment;
+
+	$ch = curl_init();
+	$url = $ldap_api_url . 'account/' . $user_id . '?token=' . $ldap_api_key;
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_HEADER, FALSE);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	$response = curl_exec($ch);
+	if(curl_errno($ch)) {
+		$json = '"error":{"Error connecting to ldap."}' . curl_errno($ch);
+		$error = $json;
+		curl_close($ch);
+		return $error;
+	}
+	curl_close($ch);
+	return $response;
+}
+
+/********** 
 
 Funktion som hämtar användarinformation från Alma utifrån angivet ID 
 
@@ -147,7 +174,7 @@ function authValidateUser($user, $pass, $kthcas)
 {
 	//KTH
 	global $auth, $ldap_user_domain, $alma_user_domain;
-	global $allowedUserGroups, $environment;
+	global $allowedUserGroups, $allowedUGAffiliations, $environment;
 	//anropa alma här (kth-konto/lånekort plus persnr)
 	$returnvalue = 0;
 	$result = 0; //0=Error 1=Success
@@ -161,6 +188,11 @@ function authValidateUser($user, $pass, $kthcas)
 		} else {
 			$almauser = $user; //identifier i alma kth_id: u1f7tfgo
 		}
+		//Hämta användare från LDAP
+		$currentldapuser = getldapuser($user);
+		$jsonldap = json_decode($currentldapuser);
+		
+		//Hämta användare från Alma
 		$currentuser = getalmauser($almauser);
 		//Kontrollera om Alma returnerat ett fel (användaren finns inte t ex)
 		$almaresponse = checkifAlmaerror($currentuser,"json");
@@ -201,20 +233,40 @@ function authValidateUser($user, $pass, $kthcas)
 			$checkusergroup = TRUE;
 
 			if ($valid_id == TRUE && (authGetUserLevel($primary_id) < 2)) {
-				if ($checkusergroup) {			
+				if ($checkusergroup) {
+					// Kontrollera mot alma
 					if (!in_array($source['user_group']['value'], $allowedUserGroups)) {
 						$result = 0; // ERROR!!
 						$message = get_vocab("not_authorized");
 						error_log($message);
 						$valid_id = FALSE;
 					}
+
+					// Kontrollera även mot LDAP/UG
+					// För de som t ex har gruppen staff i Alma men som också är student.
+					if ($valid_id == FALSE ) {
+						$allowedUGAffiliations = isset($allowedUGAffiliations) ? $allowedUGAffiliations : array();
+						error_log(implode(', ', $allowedUGAffiliations));
+						error_log(implode(', ', $jsonldap->ugusers[0]->ugAffiliation));
+						$commonaff = array_intersect($allowedUGAffiliations,$jsonldap->ugusers[0]->ugAffiliation);
+						if (!empty($commonaff)) {
+							$valid_id = TRUE;
+						} else {
+							$result = 0; // ERROR!!
+							$message = get_vocab("not_authorized_UG");
+							error_log($message);
+							$valid_id = FALSE;
+						}
+					}
 				}
 			} else {
 			}
+			//Om login sker via KTH SSO SAML
 			if ($valid_id == TRUE && $auth["method"] == "kthcas") {
 				$result = 1; //SUCCESS!!
 				$message = "Success";
 			}
+			//Om login sker via Alma
 			if ($valid_id == TRUE && $auth["method"] == "alma") {
 				//loopa igenom user identifiers och hitta:
 				// "PERSONAL_NUMBER" ="Personal Number KTH" (10 siffror)
