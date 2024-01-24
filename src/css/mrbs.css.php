@@ -1024,6 +1024,12 @@ table#colour_key {
     clear: both; float: left; border-spacing: 0; border-collapse: collapse; margin: 0.5em 0;
     width: unset;
 }
+/* KTH färgkodning storlek */
+#colour_key td .slots1 {
+    height: auto;
+    max-height: none;
+}
+
 /* KTH */
 #colour_key td {
 	width: 7.0em; 
