@@ -1190,6 +1190,7 @@ function notifyBookerOnBooking($data, $mail_previous, $new_entry, $series, $star
 
   if($environment == 'development') {
     error_log("MRBS, mailresult: " . $result);
+    error_log("MRBS, html_body: " . $html_body['content']);
   }
 
   if ($result == 1) {

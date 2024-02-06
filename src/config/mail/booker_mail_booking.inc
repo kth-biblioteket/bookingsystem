@@ -37,10 +37,13 @@ if(stripos(get_campus($data['campus'], $mrbslang), 'zoom')==false) {
   $html_body['content'] .= get_vocab("mail_text_digital");
 }
 
+
+$html_body['content'] = str_replace("@@room_number",$data['room_number'],$html_body['content']);
+
 if ($data['campus'] > 0) {
   $html_body['content'] = str_replace("@@place",get_campus($data['campus'], $mrbslang),$html_body['content']);
 } else {
-  $html_body['content'] = str_replace("@@place",($data['room_number'] != "" ? $data['room_number'] . ". " : "") . $data['room_name'],$html_body['content']);
+  $html_body['content'] = str_replace("@@place",$data['room_name'],$html_body['content']);
 }
 $html_body['content'] = str_replace("@@timedate",date("H:i",$data['start_time']) . ', ' . strftime("%A %d %B",$data['start_time']),$html_body['content']);
 //dont use $_SERVER['HTTP_HOST' for KIOSK
