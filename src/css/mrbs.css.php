@@ -424,6 +424,194 @@ foreach ($color_types as $type => $col)
   display: none;
 }
 
+.wrapper {
+      height: auto;
+}
+
+.wrapper thead>tr>th {
+  background-color: <?php echo $color_blue_sky; ?>;
+}
+
+.roomtableheader {
+  position: relative;
+  top: -25px;
+  right: -8px;
+  font-weight: normal;
+  font-style: italic;
+  width: 50px;
+}
+
+.timetableheader {
+  position: relative;
+  bottom: 8px;
+  left: -10px;
+  font-weight: normal;
+  font-style: italic;
+  width: 50px;
+}
+
+.dwm_main th.morerooms {
+  display: none;
+}
+
+.wrapper tr>td:last-child { 
+  display: none;
+}
+
+@media (max-height: 900px) {
+  .wrapper {
+        height: 700px;
+  }
+}
+@media (max-height: 800px) {
+  .wrapper {
+        height: 600px;
+  }
+}
+@media (max-height: 700px) {
+  .wrapper {
+        height: 450px;
+  }
+}
+
+@media (max-width: 700px){
+  .wrapper {
+    width: 100%;
+    overflow: auto;
+    display: block;
+    position: relative;
+  }
+
+  .wrapper th {
+    width: calc((100vw - 68px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
+  }
+
+  .wrapper table {
+    table-layout: fixed;
+  }
+
+  .wrapper table.dwm_main {
+    border-color: <?php echo $color_blue_kth; ?>;
+  }
+
+  .wrapper tbody tr > :first-child, 
+  .wrapper thead,
+  .wrapper tr>th {
+    position: sticky;
+  }
+
+  .wrapper thead>tr>th {
+    background-color: <?php echo $color_blue_sky; ?>;
+  }
+
+  .wrapper tr>th:last-child {
+    position: sticky;
+    right: 0;
+    z-index: 2; /* To layer above other elements */
+    border: none;
+    width: 40px !important;
+  }
+
+  .wrapper thead {
+    top: 0;
+    z-index: 2; /* To layer above other elements */
+  }
+
+  .wrapper tbody tr > :first-child, 
+  .wrapper tr>th {
+    left: 0;
+    z-index: 1;
+  }
+
+  .wrapper thead tr>th:first-child {
+    width: 58px !important;
+    z-index: 3;
+  }
+
+  .dwm_main th.morerooms {
+    display: table-cell;
+    background-color: transparent;
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  .morerooms-button {
+    border-radius: 36px 0 0 36px;
+    margin: auto;
+    right: 0px;
+    background-color: <?php echo $color_blue_kth; ?>b8;
+    bottom: 0;
+    box-shadow: -1px 0 6px rgba(0,0,0,.2);
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    width: 35px;
+    z-index: 999999999999999;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .morerooms svg {
+    bottom: 0;
+    display: block;
+    fill: #fff;
+    height: 40px;
+    margin: auto 0;
+    position: relative;
+    top: 0;
+    width: 40px;
+  }
+
+  .more-rooms-leftarrow {
+    /*transform: scaleX(-1);*/
+  }
+
+  .wrapper tr>th:last-child.more-rooms-indicator-left {
+    right: calc(100vw - 108px);
+    transform: scaleX(-1);
+  }
+
+  .morerooms .circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #0061ffba;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .morerooms .arrow {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid #ffffff;
+  }
+
+  .morerooms .text {
+      margin-top: 0px;
+      font-size: 10px;
+      text-align: center;
+  }
+
+  .more_rooms_indicator_text {
+    text-align: left;
+  }
+
+  .dwm_main th.morerooms.hide {
+    display: none;
+  }
+}
+
+
 .dwm_main#month_main th.hidden_day     
     {width: <?php echo $column_hidden_width ?>%; 
     <?php 
@@ -1037,6 +1225,13 @@ table#colour_key {
 	color: <?php echo $colour_key_font_color ?>;
 	border: <?php echo $main_table_cell_border_width ?>px solid <?php echo $main_table_body_h_border_color ?>
 }
+
+#colour_key td div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* 191003 */
 #colour_key .invalid {border: 1px solid #a9a9a9 !important;}
 #colour_key .I.tentative {border: 1px solid #a9a9a9 !important;} /*grön =48A537 orange =C9910A gul=A3A537 röd=A54637 röd=ff8080*/
@@ -1047,6 +1242,12 @@ table#colour_key {
 
 #colour_key .confirmed {
 	font-weight: normal;
+}
+@media (max-width: 700px){
+  table#colour_key {
+    margin: 10px 10px;
+    width: calc(100% - 20px);  
+  }
 }
 /* Slut KTH */
 #colour_key td#row_padding {border-right: 0; border-bottom: 0}
@@ -1500,7 +1701,7 @@ table.dwm_main {
 }
 
 .dwm_main .first_last {
-	background-color: #24a0d8;
+  background: linear-gradient(to bottom left, #6298d2 50%, <?php echo $color_blue_kth; ?> 51%);
 	color: #fff;
 }
 
@@ -1510,7 +1711,7 @@ table.dwm_main {
 }
 	
 .dwm_main th, .dwm_main td.row_labels {
-	background-color: #24a0d8;
+	background-color: <?php echo $color_blue_kth; ?>;
 	border-color: #8c8c8c; /* #d2d2d2; */
 }
 .dwm_main th:first-child {
@@ -1731,11 +1932,10 @@ div#trailer {
 
 div.date_nav {
     font-weight: bold;
-    background: #b0c92b;
     padding: 5px 5px;
     overflow: auto;
     color: #fff;
-	background: #1954A6;
+	  background: #232750;
 }
 
 div.date_now a, div.date_before a ,div.date_after a   {
@@ -1789,6 +1989,11 @@ div.date_now a, div.date_before a ,div.date_after a   {
 /* 191003 */
 .deletebutton {
     color: #ffffff !important;
+}
+
+.bluebutton {
+    background-color: <?php echo $color_blue_kth; ?> !important;
+    border-color: <?php echo $color_blue_kth; ?> !important;
 }
 
 /*
@@ -1952,6 +2157,12 @@ div.date_now a, div.date_before a ,div.date_after a   {
 	padding: 10px 0px 10px 0px;
   position: relative;
   font-size: 1.375rem;
+}
+
+@media (max-width: 700px){
+  #extrainfo {
+    font-size: 1rem;
+  }
 }
 
 .alert {

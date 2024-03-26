@@ -485,7 +485,7 @@ function PrintLogonBox($area = 2)
                     <?php //KTH area?>
                     <input type="hidden" name="area" value="<?php echo $area?>">
                     <?php //191003?>
-                    <input class="btn btn-info" type="submit" value=" <?php echo get_vocab('login') ?> ">
+                    <input class="bluebutton btn btn-info" type="submit" value=" <?php echo get_vocab('login') ?> ">
                   </div>
                 </form>
 <?php

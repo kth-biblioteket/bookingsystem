@@ -7,6 +7,13 @@
 // ***** COLOURS ************************
 // Colours used in MRBS.    All the colours are defined here as PHP variables
 
+$color_sand	= "#e6e1dd";
+$color_blue_kth	= "#004791";
+$color_blue_sky	= "#6298d2";
+$color_blue_marine= "#08004f";
+$color_blue_light = "#e0edfc";
+$color_blue_digital	= "#221dd9";
+
 $body_background_color          = "#ffffff";    // background colour for the main body //KTH original grå = "#e7ebee"
 $standard_font_color            = "#0B263B";    // default font color
 $header_font_color              = "#ffffff";    // font color for text in headers

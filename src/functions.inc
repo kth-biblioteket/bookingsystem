@@ -2497,7 +2497,7 @@ Visa förklaring till färgerna på sidan
 function show_colour_key_KTH()
 {
 	//191003
-	global $confirmation_enabled, $default_bookings_open;
+	global $confirmation_enabled, $default_bookings_open, $show_not_available_key, $show_to_be_comfirmed_key;
   global $booking_types;
 	
   $events = FALSE;
@@ -2527,11 +2527,13 @@ function show_colour_key_KTH()
 			echo "<div class=\"celldiv slots1\" " .  // put the description inside a div which will give clipping in case of long names
 			"title=\"" . get_vocab("colour_key_tentative") . "\">\n";        // but put the name in the title so you can still read it all if you hover over it
 			echo get_vocab("colour_key_tentative") . "</div></td>\n";
-			//K = ska konfirmeras = orange
-			echo "<td class=\"K\">\n";
-			echo "<div class=\"celldiv slots1\" " .  // put the description inside a div which will give clipping in case of long names
-			"title=\"" . get_vocab("colour_key_to_be_confirmed") . "\">\n";        // but put the name in the title so you can still read it all if you hover over it
-			echo get_vocab("colour_key_to_be_confirmed") . "</div></td>\n";
+			if ($show_to_be_comfirmed_key) {
+        //K = ska konfirmeras = orange
+        echo "<td class=\"K\">\n";
+        echo "<div class=\"celldiv slots1\" " .  // put the description inside a div which will give clipping in case of long names
+        "title=\"" . get_vocab("colour_key_to_be_confirmed") . "\">\n";        // but put the name in the title so you can still read it all if you hover over it
+        echo get_vocab("colour_key_to_be_confirmed") . "</div></td>\n";
+      }
     }
     //Bokade konfirmerade = röda
 		echo "<td class=\"I confirmed\">\n";
@@ -2547,12 +2549,13 @@ function show_colour_key_KTH()
       echo get_vocab("colour_key_special") . "</div></td>\n";
     }
     
-    //Otillgängliga = gråa
-		echo "<td class=\"invalid\">\n";
-		echo "<div class=\"celldiv slots1\" " .  // put the description inside a div which will give clipping in case of long names
-		"title=\"" . get_vocab("colour_key_invalid") . "\">\n";        // but put the name in the title so you can still read it all if you hover over it
-		echo get_vocab("colour_key_invalid") . "</div></td>\n";
-	
+    if ($show_not_available_key) {
+      //Otillgängliga = gråa
+      echo "<td class=\"invalid\">\n";
+      echo "<div class=\"celldiv slots1\" " .  // put the description inside a div which will give clipping in case of long names
+      "title=\"" . get_vocab("colour_key_invalid") . "\">\n";        // but put the name in the title so you can still read it all if you hover over it
+      echo get_vocab("colour_key_invalid") . "</div></td>\n";
+    }
 	echo "</tr></table>\n";
 }
 //Slut KTH

@@ -71,7 +71,9 @@ $vocab["remembertoconfirm"]  = "Kom ihåg att du måste kvittera den här prelim
 //191003
 $vocab["bookable_entry_text"]			= "Ledig";
 $vocab["bookable_entry_text_not_available"]	= "Ledig - inte tillgänglig för dig";
-$vocab["booked_entry_text"]			= "Bokad";
+$vocab["booked_entry_text_tentative"] = "Bokad";
+$vocab["booked_entry_text"]			= "Upptaget";
+
 $vocab_override['sv']["entry.instructor"]  = "Handledare";
 $vocab_override['sv']["entry.campus"]  = "Plats";
 $vocab_override['sv']["entry.my_campus"]  = "Mitt Campus";
@@ -210,7 +212,9 @@ $vocab["start_after_end_long"] = "Fel: Startdag är efter utgångsdagen";
 // Used in view_entry.php
 $vocab["description"]         = "Beskrivning";
 //KTH
-$vocab["room"]                = "Resurs";
+
+$vocab["more_rooms_indicator"] = "Fler rum";
+$vocab["room"]                = "Rum";
 $vocab["createdby"]           = "Skapad av";
 
 $vocab["lastupdate"]          = "Senast uppdaterad";
@@ -387,8 +391,8 @@ $vocab["nothing_found"]      = "Inga sökträffar hittades.";
 $vocab["records"]            = "Bokning ";
 $vocab["through"]            = " t.o.m. ";
 $vocab["of"]                 = " av ";
-$vocab["previous"]           = "Föregående";
-$vocab["next"]               = "Nästa";
+$vocab["previous"]           = "Föregående dag";
+$vocab["next"]               = "Nästa dag";
 $vocab["entry"]              = "Bokning";
 $vocab["advanced_search"]    = "Avancerad sökning";
 $vocab["search_button"]      = "Sök";

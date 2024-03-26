@@ -33,7 +33,7 @@ else
   	<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-	<link rel="stylesheet" href="css/mrbs.css.php" type="text/css">
+	<link rel="stylesheet" href="css/mrbs.css.php?ver=1.14" type="text/css">
 	
     <?php
     if ($using_rtl)
@@ -219,6 +219,12 @@ echo "@media only screen and (max-width: 600px) {";
 		width: 8em;
 		max-width: 8em;
 	}
+	#mrbs {
+		padding: 5px 0px 0px 0px;
+	}
+	#contentwrapper {
+    	padding: 0px;
+  	}
 	.dwm_main td {
 		word-break: break-all;
 		word-break: break-word;
@@ -247,7 +253,7 @@ echo "@media only screen and (max-width: 600px) {";
 	}
 
 	h1 {
-		font-size: 1.75rem;
+		font-size: 1.4rem;
 	}
 	
 	";

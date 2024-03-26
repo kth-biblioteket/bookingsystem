@@ -1034,7 +1034,11 @@ function cell_html($cell, $query_strings, $is_invalid = FALSE, $ajaxuser = NULL)
               $longbookingdesc = $long_descr;
         } else {
           if ($color != "B"){ 
-            $bookingdesc = get_vocab("booked_entry_text") ."\n";
+            if ($status == 0) {
+              $bookingdesc = get_vocab("booked_entry_text") ."\n";
+            } else {
+              $bookingdesc = get_vocab("booked_entry_text_tentative") ."\n";
+            }
           } else {
             if($color == "B" && $is_invalid==TRUE && !$is_admin) {
               $bookingdesc = get_vocab("bookable_entry_text_not_available");
@@ -1439,8 +1443,8 @@ if($lang=="en") {
   else
   {
     // the standard view, with rooms along the top and times down the side
-    $first_last_html = '<th class="first_last" style="width: ' . $first_last_width . '%">' . 
-                       ($enable_periods ? get_vocab('period') : get_vocab('time')) . ":</th>\n";
+    $first_last_html = '<th class="first_last" style="width: ' . $first_last_width . '%"><div class="roomtableheader">'. get_vocab('room') . '</div><div class="timetableheader">' . 
+                       ($enable_periods ? get_vocab('period') : get_vocab('time')) . "</div></th>\n";
     $header_inner .= $first_last_html;
   
     $column_width = get_main_column_width(sql_count($res));
@@ -1467,6 +1471,15 @@ if($lang=="en") {
     }
   }  // end standard view (for the header)
   
+  $header_inner .= 
+  '<th class="morerooms">
+    <div class="morerooms-button" style="">
+      <div>
+        <svg viewBox="0 0 24 24" focusable="false" class="dyAbMb"><path d="M0 0h24v24H0z" fill="none"></path><path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path></svg>
+      </div>
+      <!--div class="more_rooms_indicator_text">' .get_vocab("more_rooms_indicator"). '</div-->
+    </div>
+  </th>';
   $header_inner .= "</tr>\n";
   $thead .= $header_inner;
   $thead .= "</thead>\n";
@@ -1583,7 +1596,7 @@ if($lang=="en") {
       {
         $tbody .= time_cell_html($s, $url);
       }
-  
+      $tbody .= "<td></td>";
       $tbody .= "</tr>\n";
       reset($rooms);
     }

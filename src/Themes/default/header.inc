@@ -101,22 +101,24 @@ function print_theme_header_noauth($day, $month, $year, $area, $room) {
 			}
 		}
 		$myURL = $_SERVER["REQUEST_URI"];
-		//rensa bort eventuella nuvarande språkparameter
-		$myURL = str_replace("&lang=en", "", $myURL);
-		$myURL = str_replace("&lang=sv", "", $myURL);
-		$myURL = str_replace("?lang=en", "", $myURL);
-		$myURL = str_replace("?lang=sv", "", $myURL);
-		//Ta bort inledande "/"
-		$myURL = substr($myURL,1);
+
+		$url_components = parse_url($myURL);
+		$path = isset($url_components["path"]) ? basename($url_components["path"]) : '';
+		$query_string = isset($url_components["query"]) ? $url_components["query"] : '';
+		$current_page_with_params = $path . ($query_string ? '?' . $query_string : '');
+		$current_page_with_params = str_replace("&lang=en", "", $current_page_with_params);
+		$current_page_with_params = str_replace("&lang=sv", "", $current_page_with_params);
+		$current_page_with_params = str_replace("?lang=en", "", $current_page_with_params);
+		$current_page_with_params = str_replace("?lang=sv", "", $current_page_with_params);
 
 		if (isset($switchlanguage)) {
-			$pos = strpos($myURL, "?");
+			$pos = strpos($current_page_with_params, "?");
 			if ($pos === false) {
 				$urlchar = "?";
 			} else {
 				$urlchar = "&";
 			}
-		} 
+		}
 		?>
 		<?php //191003 KTH-sidhuvud ?>
 			<?php if (!$is_support_kiosk) { ?>
@@ -127,13 +129,13 @@ function print_theme_header_noauth($day, $month, $year, $area, $room) {
 				<div class="block list links secondaryMenu" data-cid="1.864801" lang="sv-SE">
 					<ul>
 					<?php if ($switchlanguage != "en") { ?>
-						<li><a href="<?php echo $myURL . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<li><a href="<?php echo $current_page_with_params . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
 						<?php if ($is_kiosk) {
 							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
 						}?>
 						</li>
 					<?php } else {?>
-						<li><a href="<?php echo $myURL . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<li><a href="<?php echo $current_page_with_params . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
 						<?php if ($is_kiosk) {
 							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Time left: <span id=\"activitytimer\"></span></div>";
 						}?>
@@ -310,22 +312,24 @@ function print_theme_header($day, $month, $year, $area, $room) {
 			}
 		}
 		$myURL = $_SERVER["REQUEST_URI"];
-		//rensa bort eventuella nuvarande språkparameter
-		$myURL = str_replace("&lang=en", "", $myURL);
-		$myURL = str_replace("&lang=sv", "", $myURL);
-		$myURL = str_replace("?lang=en", "", $myURL);
-		$myURL = str_replace("?lang=sv", "", $myURL);
-		//Ta bort inledande "/"
-		$myURL = substr($myURL,1);
+
+		$url_components = parse_url($myURL);
+		$path = isset($url_components["path"]) ? basename($url_components["path"]) : '';
+		$query_string = isset($url_components["query"]) ? $url_components["query"] : '';
+		$current_page_with_params = $path . ($query_string ? '?' . $query_string : '');
+		$current_page_with_params = str_replace("&lang=en", "", $current_page_with_params);
+		$current_page_with_params = str_replace("&lang=sv", "", $current_page_with_params);
+		$current_page_with_params = str_replace("?lang=en", "", $current_page_with_params);
+		$current_page_with_params = str_replace("?lang=sv", "", $current_page_with_params);
 
 		if (isset($switchlanguage)) {
-			$pos = strpos($myURL, "?");
+			$pos = strpos($current_page_with_params, "?");
 			if ($pos === false) {
 				$urlchar = "?";
 			} else {
 				$urlchar = "&";
 			}
-		} 
+		}
 		?>
 		<?php //191003 KTH-sidhuvud ?>
 			<?php if (!$is_support_kiosk) { ?>
@@ -336,13 +340,13 @@ function print_theme_header($day, $month, $year, $area, $room) {
 				<div class="block list links secondaryMenu" data-cid="1.864801" lang="sv-SE">
 					<ul>
 					<?php if ($switchlanguage != "en") { ?>
-						<li><a href="<?php echo $myURL . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<li><a href="<?php echo $current_page_with_params . $urlchar . "lang=en"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
 						<?php if ($is_kiosk) {
 							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
 						}?>
 						</li>
 					<?php } else {?>
-						<li><a href="<?php echo $myURL . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
+						<li><a href="<?php echo $current_page_with_params . $urlchar . "lang=sv"?>" hreflang=""><?php echo get_vocab("changelanguage")?></a>
 						<?php if ($is_kiosk) {
 							echo "<div id=\"sessionlabel\" style=\"display:none;width: 100%;font-family:Open Sans,Arial,Helvetica Neue,helvetica,sans-serif\" >Time left: <span id=\"activitytimer\"></span></div>";
 						}?>

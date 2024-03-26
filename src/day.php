@@ -199,11 +199,12 @@ $before_after_links_html = "
 
 // and output them
 echo $before_after_links_html;
-
+echo "<div class=\"wrapper\">\n";
 echo "<table class=\"dwm_main\" id=\"day_main\" data-resolution=\"$resolution\">\n";
 echo $inner_html;
 echo "</table>\n";
- 
+echo "</div>\n";
+
 //KTH
 //Rita upp egna färgkodningsnycklar
 //show_colour_key();
