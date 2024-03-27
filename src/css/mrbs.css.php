@@ -484,9 +484,11 @@ foreach ($color_types as $type => $col)
     position: relative;
   }
 
-  .wrapper th {
-    width: calc((100vw - 68px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
-  }
+  <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+    .wrapper th {
+      width: calc((100vw - 68px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
+    }
+  <?php } ?>
 
   .wrapper table {
     table-layout: fixed;
