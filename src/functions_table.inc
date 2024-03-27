@@ -1256,6 +1256,7 @@ function day_table_innerhtml($day, $month, $year, $room, $area, $timetohighlight
   global $resolution, $morningstarts, $morningstarts_minutes, $eveningends, $eveningends_minutes;
   global $first_last_width;
   global $mrbslang, $lang;
+  global $number_of_columns_mobile_view;
 
   //KTH kolla om bokningar ska tas bort (när tiden har gått ut och de inte konfirmerats)
   deletetentativebookings();
@@ -1470,16 +1471,17 @@ if($lang=="en") {
       $header_inner .= $first_last_html;
     }
   }  // end standard view (for the header)
-  
-  $header_inner .= 
-  '<th class="morerooms">
-    <div class="morerooms-button" style="">
-      <div>
-        <svg viewBox="0 0 24 24" focusable="false" class="dyAbMb"><path d="M0 0h24v24H0z" fill="none"></path><path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path></svg>
+  if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) {
+    $header_inner .= 
+    '<th class="morerooms">
+      <div class="morerooms-button" style="">
+        <div>
+          <svg viewBox="0 0 24 24" focusable="false" class="dyAbMb"><path d="M0 0h24v24H0z" fill="none"></path><path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path></svg>
+        </div>
+        <!--div class="more_rooms_indicator_text">' .get_vocab("more_rooms_indicator"). '</div-->
       </div>
-      <!--div class="more_rooms_indicator_text">' .get_vocab("more_rooms_indicator"). '</div-->
-    </div>
-  </th>';
+    </th>';
+  }
   $header_inner .= "</tr>\n";
   $thead .= $header_inner;
   $thead .= "</thead>\n";
@@ -1596,7 +1598,9 @@ if($lang=="en") {
       {
         $tbody .= time_cell_html($s, $url);
       }
-      $tbody .= "<td></td>";
+      if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) {
+        $tbody .= "<td></td>";
+      }
       $tbody .= "</tr>\n";
       reset($rooms);
     }

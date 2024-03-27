@@ -454,9 +454,11 @@ foreach ($color_types as $type => $col)
   display: none;
 }
 
-.wrapper tr>td:last-child { 
-  display: none;
-}
+<?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+  .wrapper tr>td:last-child { 
+    display: none;
+  }
+<?php } ?>
 
 @media (max-height: 900px) {
   .wrapper {
@@ -504,13 +506,15 @@ foreach ($color_types as $type => $col)
     background-color: <?php echo $color_blue_sky; ?>;
   }
 
-  .wrapper tr>th:last-child {
-    position: sticky;
-    right: 0;
-    z-index: 2; /* To layer above other elements */
-    border: none;
-    width: 40px !important;
-  }
+  <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+    .wrapper tr>th:last-child {
+      position: sticky;
+      right: 0;
+      z-index: 2; /* To layer above other elements */
+      border: none;
+      width: 40px !important;
+    }
+  <?php }?>
 
   .wrapper thead {
     top: 0;
