@@ -61,13 +61,16 @@ var refreshPage = function refreshPage() {
               table.empty();
               table.html(result);
               <?php //KTH ?>
-              createFloatingHeaders(table);
+              //createFloatingHeaders(table);
               //var $table = $('#dwm_main');
               //$table.floatThead();
               updateTableHeaders(table);
               window.clearInterval(intervalId);
               intervalId = undefined;
               table.trigger('load');
+              <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+                initmobilescroll()
+              <?php }?>
             }
           }
         },
