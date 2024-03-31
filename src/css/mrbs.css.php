@@ -498,12 +498,6 @@ foreach ($color_types as $type => $col)
     position: relative;
   }
 
-  <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
-    .wrapper th {
-      width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
-    }
-  <?php } ?>
-
   .wrapper table {
     table-layout: fixed;
   }
@@ -543,16 +537,23 @@ foreach ($color_types as $type => $col)
     z-index: 1;
   }
 
-  .wrapper thead tr>th:first-child {
+  .wrapper #day_main thead tr>th:first-child {
     width: 75px !important;
     z-index: 3;
   }
 
   .wrapper #week_main thead tr>th:first-child {
-    width: 60px !important;
+    width: 75px !important;
     z-index: 3;
     height: 50px;
+    max-width: 75px;
 }
+
+<?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+    .wrapper #day_main th {
+      width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
+    }
+  <?php } ?>
 
   .dwm_main th.morerooms {
     display: table-cell;
