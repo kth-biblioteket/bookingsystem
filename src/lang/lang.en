@@ -214,6 +214,7 @@ $vocab["description"]         = "Description";
 
 $vocab["more_rooms_indicator"] = "More rooms";
 $vocab["room"]                = "Room";
+$vocab["daystableheader"]     = "Day";
 $vocab["createdby"]           = "Created by";
 $vocab["modifiedby"]          = "Modified by";
 $vocab["lastupdate"]          = "Last updated";

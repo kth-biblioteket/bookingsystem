@@ -197,10 +197,11 @@ $before_after_links_html = "
   </div>
 </div>\n";
 echo $before_after_links_html;
-
+echo "<div class=\"wrapper\">\n";
 echo "<table class=\"dwm_main\" id=\"week_main\" data-resolution=\"$resolution\">";
 echo $inner_html; 
 echo "</table>\n";
+echo "</div>\n";
 
 //KTH
 //Rita upp egna färgkodningsnycklar

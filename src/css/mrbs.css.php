@@ -432,13 +432,27 @@ foreach ($color_types as $type => $col)
   background-color: <?php echo $color_blue_sky; ?>;
 }
 
+.wrapper thead tr>th:first-child {
+    width: 75px !important;
+    z-index: 3;
+  }
+
 .roomtableheader {
   position: relative;
-  top: -25px;
+  bottom: 25px;
   right: -8px;
   font-weight: normal;
   font-style: italic;
-  width: 50px;
+  width: 75px;
+}
+
+.daystableheader {
+  position: relative;
+  bottom: 8px;
+  right: -20px;
+  font-weight: normal;
+  font-style: italic;
+  width: 75px;
 }
 
 .timetableheader {
@@ -486,7 +500,7 @@ foreach ($color_types as $type => $col)
 
   <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
     .wrapper th {
-      width: calc((100vw - 68px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
+      width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
     }
   <?php } ?>
 
@@ -530,9 +544,15 @@ foreach ($color_types as $type => $col)
   }
 
   .wrapper thead tr>th:first-child {
-    width: 58px !important;
+    width: 75px !important;
     z-index: 3;
   }
+
+  .wrapper #week_main thead tr>th:first-child {
+    width: 60px !important;
+    z-index: 3;
+    height: 50px;
+}
 
   .dwm_main th.morerooms {
     display: table-cell;
@@ -578,7 +598,7 @@ foreach ($color_types as $type => $col)
   }
 
   .wrapper tr>th:last-child.more-rooms-indicator-left {
-    right: calc(100vw - 108px);
+    right: calc(100vw - 125px);
     transform: scaleX(-1);
   }
 

@@ -215,6 +215,7 @@ $vocab["description"]         = "Beskrivning";
 
 $vocab["more_rooms_indicator"] = "Fler rum";
 $vocab["room"]                = "Rum";
+$vocab["daystableheader"]     = "Dag";
 $vocab["createdby"]           = "Skapad av";
 
 $vocab["lastupdate"]          = "Senast uppdaterad";

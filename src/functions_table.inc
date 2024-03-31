@@ -1806,9 +1806,14 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
   else
   {
     // the standard view, with days along the top and times down the side
+    $first_last_html = '<th class="first_last" style="width: ' . $first_last_width . '%"><div class="daystableheader">'. get_vocab('daystableheader') . '</div><div class="timetableheader">' . 
+                       ($enable_periods ? get_vocab('period') : get_vocab('time')) . "</div></th>\n";
+    $header_inner .= $first_last_html;
+    /*
     $first_last_html = "<th class=\"first_last\" style=\"width: " . $first_last_width . "%\">" . 
                        ($enable_periods ? get_vocab('period') : get_vocab('time')) . ":</th>";
     $header_inner .= $first_last_html;
+    */
     
     $column_width = get_main_column_width($num_of_days, count($hidden_days));
     
