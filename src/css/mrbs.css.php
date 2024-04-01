@@ -433,6 +433,7 @@ foreach ($color_types as $type => $col)
 }
 
 .wrapper thead tr>th:first-child {
+    height: 60px;
     width: 75px !important;
     z-index: 3;
   }
@@ -575,6 +576,7 @@ foreach ($color_types as $type => $col)
     position: absolute;
     top: 0;
     width: 35px;
+    max-width: calc((100vw - 85px) / 9) !important;
     z-index: 999999999999999;
     user-select: none;
     display: flex;
@@ -600,6 +602,7 @@ foreach ($color_types as $type => $col)
 
   .wrapper tr>th:last-child.more-rooms-indicator-left {
     right: calc(100vw - 125px);
+    right: calc((100vw - 85px) / 9*8);
     transform: scaleX(-1);
   }
 
