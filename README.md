@@ -18,7 +18,6 @@ libxml2-dev
 locales en_GB.UTF-8
 docker-php-ext-install mysqli pdo pdo_mysql php7.3-soap
 
-
 ##### Installation
 
 1.  Skapa folder på server med namnet på repot: "/local/docker/bookingsystem"
@@ -354,7 +353,7 @@ DOMAIN_NAME=apps-ref.lib.kth.se
 REPO_TYPE=ref
 ```
 
-6.  Skapa folder "local/docker/bookingsystem/dbinit"
+6. Skapa folder "local/docker/bookingsystem/dbinit"
 7. Skapa init.sql från repots dbinit/init.sql
 8. Skapa deploy_ref.yml i github actions
 9. Skapa deploy_prod.yml i github actions
@@ -376,6 +375,8 @@ CONTAINER_ID=$(docker ps -f "name=openinghours-db" -q)
 # Use mysql to import the database inside the container
 cat openinghours.sql | docker exec -i "$CONTAINER_ID" mysql -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME"
 ```
+
+13. Skapa config och customfile4
 
 ## Starta om enskild tjänst
 - docker-compose restart [tjänstnamn]
