@@ -166,14 +166,15 @@ var updateTableHeaders = function updateTableHeaders(tables) {
     });
 
     const moreroomsbutton = document.querySelector('.morerooms');
-
-    moreroomsbutton.addEventListener('click', function() {
-        if (more_rooms_less_arrow.classList.contains('more-rooms-leftarrow')) {
-          tableContainer.scrollTo({left: 0, behavior: 'smooth'})
-        } else {
-          tableContainer.scrollTo({left: 1000, behavior: 'smooth'})
-        }
-    });
+    if (moreroomsbutton) {
+      moreroomsbutton.addEventListener('click', function() {
+          if (more_rooms_less_arrow.classList.contains('more-rooms-leftarrow')) {
+            tableContainer.scrollTo({left: 0, behavior: 'smooth'})
+          } else {
+            tableContainer.scrollTo({left: 1000, behavior: 'smooth'})
+          }
+      });
+    }
   }
   
 <?php
