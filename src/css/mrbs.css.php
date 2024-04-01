@@ -576,7 +576,7 @@ foreach ($color_types as $type => $col)
     position: absolute;
     top: 0;
     width: 35px;
-    max-width: calc((100vw - 85px) / 9) !important;
+    max-width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
     z-index: 999999999999999;
     user-select: none;
     display: flex;
@@ -601,8 +601,7 @@ foreach ($color_types as $type => $col)
   }
 
   .wrapper tr>th:last-child.more-rooms-indicator-left {
-    right: calc(100vw - 125px);
-    right: calc((100vw - 85px) / 9*8);
+    right: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?> * <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view - 1 : "8" ?>);
     transform: scaleX(-1);
   }
 
