@@ -216,7 +216,9 @@ echo $before_after_links_html;
 //if (isset($mobilescrollarrows) && !$mobilescrollarrows) {
   
 //}
-echo $more_arrows_html;
+if (isset($mobilescrollarrows) && $mobilescrollarrows) {
+  echo $more_arrows_html;
+}
 echo "<div class=\"wrapper\">\n";
 echo "<table class=\"dwm_main\" id=\"day_main\" data-resolution=\"$resolution\">\n";
 echo $inner_html;
