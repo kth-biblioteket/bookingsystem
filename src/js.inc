@@ -142,7 +142,7 @@ $is_admin = (authGetUserLevel($user) >= 2);
 ?>
 <script type="text/javascript" src="js/functions.js.php?<?php echo $standard_query_string ?>"></script>
 <script type="text/javascript" src="js/datepicker.js.php?<?php echo $standard_query_string ?>"></script>
-<script type="text/javascript" src="js/general.js.php?<?php echo $standard_query_string ?>%ver=1.11"></script>
+<script type="text/javascript" src="js/general.js.php?<?php echo $standard_query_string ?>&ver=<?php echo uniqid(); ?>"></script>
 <?php // KTH Counter, floatthead ?>
 <script type="text/javascript" src="jquery/jquery.plugin.min.js"></script>
 <script type="text/javascript" src="jquery/jquery.countdown.js"></script>
@@ -205,7 +205,7 @@ if (in_array($page, array('day', 'week')))
   ?>
   
 
-  <script type="text/javascript" src="js/refresh.js.php?<?php echo $standard_query_string ?>"></script>
+  <script type="text/javascript" src="js/refresh.js.php?<?php echo $standard_query_string ?>&ver=<?php echo uniqid(); ?>"></script>
   <?php
   //191003 Använd bara drag/resize för admins
   //200309 Använd inte alls.

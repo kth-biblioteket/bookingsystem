@@ -68,9 +68,13 @@ var refreshPage = function refreshPage() {
               window.clearInterval(intervalId);
               intervalId = undefined;
               table.trigger('load');
-              <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+              <?php 
+              if (isset($mobilescrollarrows) && $mobilescrollarrows) {
+                if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
                 initmobilescroll()
-              <?php }?>
+              <?php }
+              }
+              ?>
             }
           }
         },

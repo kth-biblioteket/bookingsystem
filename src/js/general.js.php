@@ -373,8 +373,12 @@ init = function(args) {
     .trigger('scroll');
     */
 
-    <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+    <?php 
+    if (isset($mobilescrollarrows) && $mobilescrollarrows) {
+      if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
       initmobilescroll()
-    <?php }?>
+    <?php }
+    }
+    ?>
     
 };

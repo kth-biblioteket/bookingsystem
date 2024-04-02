@@ -469,11 +469,15 @@ foreach ($color_types as $type => $col)
   display: none;
 }
 
-<?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+<?php 
+if (isset($mobilescrollarrows) && $mobilescrollarrows) {
+  if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
   .wrapper tr>td:last-child { 
     display: none;
   }
-<?php } ?>
+<?php } 
+}
+?>
 
 @media (max-height: 900px) {
   .wrapper {
@@ -517,7 +521,9 @@ foreach ($color_types as $type => $col)
     background-color: <?php echo $color_blue_sky; ?>;
   }
 
-  <?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+  <?php 
+  if (isset($mobilescrollarrows) && $mobilescrollarrows) {
+    if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
     .wrapper tr>th:last-child {
       position: sticky;
       right: 0;
@@ -525,7 +531,9 @@ foreach ($color_types as $type => $col)
       border: none;
       width: 40px !important;
     }
-  <?php }?>
+  <?php }
+  }
+  ?>
 
   .wrapper thead {
     top: 0;
@@ -550,7 +558,8 @@ foreach ($color_types as $type => $col)
     max-width: 75px;
 }
 
-<?php if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
+<?php //Bredd på kolumner i tabellen i mobil vy
+  if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
     .wrapper #day_main th {
       width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
     }
