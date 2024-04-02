@@ -608,7 +608,8 @@ foreach ($color_types as $type => $col)
   }
 
   .more-rooms-left-arrow.hide, .more-rooms-right-arrow.hide {
-    z-index: 0;
+    position: relative;
+    left: -1000px;
   }
 }
 
