@@ -197,8 +197,26 @@ $before_after_links_html = "
   </div>
 </div>\n";
 
+$more_arrows_html = '
+<div class="mobilescrollarrows">
+  <div class="arrows">
+    <div class="more-rooms-left-arrow hide">
+      <svg viewBox="0 0 24 24" focusable="false" class="dyAbMb"><path d="M0 0h24v24H0z" fill="none"></path><path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path></svg>
+    </div>
+    <div class="more-rooms-arrow-middle" style="flex:14;text-align: center;align-content: center;">
+    </div>
+    <div class="more-rooms-right-arrow">
+      <svg viewBox="0 0 24 24" focusable="false" class="dyAbMb"><path d="M0 0h24v24H0z" fill="none"></path><path d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z"></path></svg>
+    </div>
+  </div>
+</div>';
+
 // and output them
 echo $before_after_links_html;
+//if (isset($mobilescrollarrows) && !$mobilescrollarrows) {
+  
+//}
+echo $more_arrows_html;
 echo "<div class=\"wrapper\">\n";
 echo "<table class=\"dwm_main\" id=\"day_main\" data-resolution=\"$resolution\">\n";
 echo $inner_html;

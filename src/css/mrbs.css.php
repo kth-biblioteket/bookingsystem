@@ -433,27 +433,27 @@ foreach ($color_types as $type => $col)
 }
 
 .wrapper thead tr>th:first-child {
-    height: 60px;
-    width: 75px !important;
+    height: 70px;
+    width: 70px !important;
     z-index: 3;
   }
 
 .roomtableheader {
   position: relative;
-  bottom: 25px;
+  bottom: 30px;
   right: -8px;
   font-weight: normal;
   font-style: italic;
-  width: 75px;
+  width: 70px;
 }
 
 .daystableheader {
   position: relative;
-  bottom: 8px;
-  right: -20px;
+  bottom: 30px;
+  right: -8px;
   font-weight: normal;
   font-style: italic;
-  width: 75px;
+  width: 70px;
 }
 
 .timetableheader {
@@ -465,19 +465,23 @@ foreach ($color_types as $type => $col)
   width: 50px;
 }
 
-.dwm_main th.morerooms {
+.mobilescrollarrows {
   display: none;
 }
 
-<?php 
-if (isset($mobilescrollarrows) && $mobilescrollarrows) {
-  if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
-  .wrapper tr>td:last-child { 
-    display: none;
-  }
-<?php } 
+.mobilescrollarrows {
+  float:left;
+  position: relative;
+  width: 100%;
 }
-?>
+
+.arrows {
+  position:absolute;
+  top:0px;
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
 @media (max-height: 900px) {
   .wrapper {
@@ -521,20 +525,6 @@ if (isset($mobilescrollarrows) && $mobilescrollarrows) {
     background-color: <?php echo $color_blue_sky; ?>;
   }
 
-  <?php 
-  if (isset($mobilescrollarrows) && $mobilescrollarrows) {
-    if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
-    .wrapper tr>th:last-child {
-      position: sticky;
-      right: 0;
-      z-index: 2; /* To layer above other elements */
-      border: none;
-      width: 40px !important;
-    }
-  <?php }
-  }
-  ?>
-
   .wrapper thead {
     top: 0;
     z-index: 2; /* To layer above other elements */
@@ -547,15 +537,15 @@ if (isset($mobilescrollarrows) && $mobilescrollarrows) {
   }
 
   .wrapper #day_main thead tr>th:first-child {
-    width: 75px !important;
+    width: 70px !important;
     z-index: 3;
   }
 
   .wrapper #week_main thead tr>th:first-child {
-    width: 75px !important;
+    width: 70px !important;
     z-index: 3;
-    height: 50px;
-    max-width: 75px;
+    height: 70px;
+    max-width: 70px;
 }
 
 <?php //Bredd på kolumner i tabellen i mobil vy
@@ -564,26 +554,21 @@ if (isset($mobilescrollarrows) && $mobilescrollarrows) {
       width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
     }
   <?php } ?>
-
-  .dwm_main th.morerooms {
-    display: table-cell;
-    background-color: transparent;
-    font-weight: normal;
-    font-style: italic;
+  .mobilescrollarrows {
+    display: block;
   }
 
-  .morerooms-button {
+  .more-rooms-left-arrow{
+    flex:1;
+    transform: scaleX(-1);
+    margin-left: 70px;
+    z-index:99;
     border-radius: 36px 0 0 36px;
-    margin: auto;
-    right: 0px;
     background-color: <?php echo $color_blue_kth; ?>b8;
     bottom: 0;
     box-shadow: -1px 0 6px rgba(0,0,0,.2);
     cursor: pointer;
     display: block;
-    margin: auto;
-    position: absolute;
-    top: 0;
     width: 35px;
     max-width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
     z-index: 999999999999999;
@@ -594,58 +579,36 @@ if (isset($mobilescrollarrows) && $mobilescrollarrows) {
     align-items: center;
   }
 
-  .morerooms svg {
+  .more-rooms-right-arrow {
+    flex:1;
+    z-index:99;
+    border-radius: 36px 0 0 36px;
+    background-color: <?php echo $color_blue_kth; ?>b8;
     bottom: 0;
+    box-shadow: -1px 0 6px rgba(0,0,0,.2);
+    cursor: pointer;
     display: block;
-    fill: #fff;
-    height: 40px;
-    margin: auto 0;
-    position: relative;
-    top: 0;
-    width: 40px;
-  }
-
-  .more-rooms-leftarrow {
-    /*transform: scaleX(-1);*/
-  }
-
-  .wrapper tr>th:last-child.more-rooms-indicator-left {
-    right: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?> * <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view - 1 : "8" ?>);
-    transform: scaleX(-1);
-  }
-
-  .morerooms .circle {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background-color: #0061ffba;
+    width: 35px;
+    max-width: calc((100vw - 85px) / <?php echo isset($number_of_columns_mobile_view) ? $number_of_columns_mobile_view : "9" ?>) !important;
+    z-index: 999999999999999;
+    user-select: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: white;
   }
 
-  .morerooms .arrow {
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 16px solid #ffffff;
+  .more-rooms-left-arrow svg, .more-rooms-right-arrow svg {
+      bottom: 0;
+      display: block;
+      fill: #fff;
+      height: 70px;
+      margin: auto 0;
+      width: 40px;
   }
 
-  .morerooms .text {
-      margin-top: 0px;
-      font-size: 10px;
-      text-align: center;
-  }
-
-  .more_rooms_indicator_text {
-    text-align: left;
-  }
-
-  .dwm_main th.morerooms.hide {
-    display: none;
+  .more-rooms-left-arrow.hide, .more-rooms-right-arrow.hide {
+    z-index: 0;
   }
 }
 

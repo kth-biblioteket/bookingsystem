@@ -109,73 +109,6 @@ var updateTableHeaders = function updateTableHeaders(tables) {
         floatingHeader.css('left', offset.left - $(window).scrollLeft());
     });
   };
-
-  var initmobilescroll = function initmobilescroll() {
-
-    const tableContainer = document.querySelector('.wrapper');
-    const table = document.querySelector('.wrapper table');
-    const lastColumnHeader = document.querySelector('.wrapper th:last-child');
-    const lastColumnCells = document.querySelectorAll('.wrapper td:last-child');
-    const more_rooms_less_arrow = document.querySelector('.morerooms svg');
-    const more_rooms = document.querySelector('.morerooms');
-
-    //När ska pilarna döljas? (sätt hide-class)
-    //När scroll befinner sig mellan scrolleft > 20 och scrolleft < maxScroll-20
-    tableContainer.addEventListener('scroll', function() {
-      let maxScroll = tableContainer.scrollWidth - tableContainer.offsetWidth - lastColumnHeader.offsetWidth;
-
-        if (tableContainer.scrollLeft > maxScroll) {
-          tableContainer.scrollLeft = maxScroll;
-        }
-
-        if (tableContainer.scrollLeft > 20 && tableContainer.scrollLeft < maxScroll-20) {
-          if (lastColumnHeader.classList.contains('hide')) {
-          } else {
-            lastColumnHeader.classList.add('hide');
-            lastColumnCells.forEach(cell => cell.classList.add('hide'));
-          }
-        } else {
-          if (lastColumnHeader.classList.contains('hide')) {
-            lastColumnHeader.classList.remove('hide');
-            lastColumnCells.forEach(cell => cell.classList.remove('hide'));
-          } else {
-          } 
-        }
-        
-        // Visa pil tillbaka om användaren har scrollat hela vägen till höger
-        if (tableContainer.scrollLeft >= maxScroll - 20) {
-          //sätt transform class på svg-pilen
-          if (more_rooms_less_arrow.classList.contains('more-rooms-leftarrow')) {
-          } else {
-            more_rooms_less_arrow.classList.add('more-rooms-leftarrow');
-          }
-          if (more_rooms.classList.contains('more-rooms-indicator-left')) {
-          } else {
-            more_rooms.classList.add('more-rooms-indicator-left');
-          }
-        } else {
-          if (more_rooms_less_arrow.classList.contains('more-rooms-leftarrow')) {
-            more_rooms_less_arrow.classList.remove('more-rooms-leftarrow');
-          } else {
-          }
-          if (more_rooms.classList.contains('more-rooms-indicator-left')) {
-            more_rooms.classList.remove('more-rooms-indicator-left');
-          } else {
-          }
-        }
-    });
-
-    const moreroomsbutton = document.querySelector('.morerooms');
-    if (moreroomsbutton) {
-      moreroomsbutton.addEventListener('click', function() {
-          if (more_rooms_less_arrow.classList.contains('more-rooms-leftarrow')) {
-            tableContainer.scrollTo({left: 0, behavior: 'smooth'})
-          } else {
-            tableContainer.scrollTo({left: 1000, behavior: 'smooth'})
-          }
-      });
-    }
-  }
   
 <?php
 // =================================================================================
@@ -373,12 +306,51 @@ init = function(args) {
     .trigger('scroll');
     */
 
-    <?php 
-    if (isset($mobilescrollarrows) && $mobilescrollarrows) {
-      if (isset($number_of_columns_mobile_view) && $number_of_columns_mobile_view > 8) { ?>
-      initmobilescroll()
-    <?php }
-    }
-    ?>
+    const tableContainer = document.querySelector('.wrapper');
     
+    const more_rooms_right_arrow = document.querySelector('.more-rooms-right-arrow');
+    const more_rooms_left_arrow = document.querySelector('.more-rooms-left-arrow');
+    tableContainer.addEventListener('scroll', function() {
+      let maxScroll = tableContainer.scrollWidth - tableContainer.offsetWidth;
+        //scrollpil höger
+        if (more_rooms_right_arrow) {
+          if (tableContainer.scrollLeft > 20) {
+            if (more_rooms_right_arrow.classList.contains('hide')) {
+            } else {
+              more_rooms_right_arrow.classList.add('hide')
+            }
+          } else {
+            if (more_rooms_right_arrow.classList.contains('hide')) {
+              more_rooms_right_arrow.classList.remove('hide');
+            } else {
+            } 
+          }
+        }
+        
+        
+        //scrollpil vänster
+        if (more_rooms_left_arrow) {
+          if (tableContainer.scrollLeft >= maxScroll - 20) {
+            if (more_rooms_left_arrow.classList.contains('hide')) {
+              more_rooms_left_arrow.classList.remove('hide')
+            } else {
+            }
+          } else {
+            if (more_rooms_left_arrow.classList.contains('hide')) {
+            } else {
+              more_rooms_left_arrow.classList.add('hide');
+            } 
+          }
+        }
+    });
+    if (more_rooms_left_arrow) {
+      more_rooms_left_arrow.addEventListener('click', function() {
+            tableContainer.scrollTo({left: 0, behavior: 'smooth'})
+      });
+    }
+    if (more_rooms_right_arrow) {
+      more_rooms_right_arrow.addEventListener('click', function() {
+            tableContainer.scrollTo({left: 1000, behavior: 'smooth'})
+      });
+    }
 };
