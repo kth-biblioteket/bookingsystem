@@ -689,7 +689,7 @@ INSERT INTO `mrbs_repeat` (`id`, `exchange_event_id`, `start_time`, `end_time`, 
 DROP TABLE IF EXISTS `mrbs_room`;
 CREATE TABLE IF NOT EXISTS `mrbs_room` (
   `id` int(11) NOT NULL,
-  `disabled` tinyint(1) NOT NULL DEFAULT '0',
+  `disabled` tinyint(1) NOT NULL DEFAULT '1',
   `area_id` int(11) NOT NULL DEFAULT '0',
   `room_name` varchar(100) NOT NULL DEFAULT '',
   `room_name_english` varchar(100) NOT NULL DEFAULT '',
