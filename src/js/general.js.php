@@ -310,39 +310,41 @@ init = function(args) {
     
     const more_rooms_right_arrow = document.querySelector('.more-rooms-right-arrow');
     const more_rooms_left_arrow = document.querySelector('.more-rooms-left-arrow');
-    tableContainer.addEventListener('scroll', function() {
-      let maxScroll = tableContainer.scrollWidth - tableContainer.offsetWidth;
-        //scrollpil höger
-        if (more_rooms_right_arrow) {
-          if (tableContainer.scrollLeft > 20) {
-            if (more_rooms_right_arrow.classList.contains('hide')) {
+    if (tableContainer) {
+      tableContainer.addEventListener('scroll', function() {
+        let maxScroll = tableContainer.scrollWidth - tableContainer.offsetWidth;
+          //scrollpil höger
+          if (more_rooms_right_arrow) {
+            if (tableContainer.scrollLeft > 20) {
+              if (more_rooms_right_arrow.classList.contains('hide')) {
+              } else {
+                more_rooms_right_arrow.classList.add('hide')
+              }
             } else {
-              more_rooms_right_arrow.classList.add('hide')
+              if (more_rooms_right_arrow.classList.contains('hide')) {
+                more_rooms_right_arrow.classList.remove('hide');
+              } else {
+              } 
             }
-          } else {
-            if (more_rooms_right_arrow.classList.contains('hide')) {
-              more_rooms_right_arrow.classList.remove('hide');
-            } else {
-            } 
           }
-        }
-        
-        
-        //scrollpil vänster
-        if (more_rooms_left_arrow) {
-          if (tableContainer.scrollLeft >= maxScroll - 20) {
-            if (more_rooms_left_arrow.classList.contains('hide')) {
-              more_rooms_left_arrow.classList.remove('hide')
+          
+          
+          //scrollpil vänster
+          if (more_rooms_left_arrow) {
+            if (tableContainer.scrollLeft >= maxScroll - 20) {
+              if (more_rooms_left_arrow.classList.contains('hide')) {
+                more_rooms_left_arrow.classList.remove('hide')
+              } else {
+              }
             } else {
+              if (more_rooms_left_arrow.classList.contains('hide')) {
+              } else {
+                more_rooms_left_arrow.classList.add('hide');
+              } 
             }
-          } else {
-            if (more_rooms_left_arrow.classList.contains('hide')) {
-            } else {
-              more_rooms_left_arrow.classList.add('hide');
-            } 
           }
-        }
-    });
+      });
+    }
     if (more_rooms_left_arrow) {
       more_rooms_left_arrow.addEventListener('click', function() {
             tableContainer.scrollTo({left: 0, behavior: 'smooth'})
