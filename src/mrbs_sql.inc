@@ -139,6 +139,7 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
 
 		// Build an listing all the conflicts:
 		$err = array();
+    $is_admin = (authGetUserLevel($user) >= 2);
 		for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++) {
 			$starts = getdate($row['start_time']);
 			$param_ym = "area=$area&amp;year=$starts[year]&amp;month=".$starts['mon'];
@@ -158,9 +159,9 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
 			{
 			   $row['name'] = get_vocab("unavailable");
 			}
-
-			// enclose  the viewday etc. links in a span to make it easier for JavaScript to strip them out
-			$err[] = "<a href=\"view_entry.php?id=".$row['id']."\">".$row['name']."</a>"
+      // enclose  the viewday etc. links in a span to make it easier for JavaScript to strip them out
+      $conflictname = $is_admin ? $row['name'] : "";
+			$err[] = "<a href=\"view_entry.php?id=".$row['id']."\">". $conflictname ."</a>"
 			  . " (" . $startstr . ") "
 			  . "<span>(<a href=\"day.php?$param_ymd\">".get_vocab("viewday")."</a>"
 			  . " | <a href=\"week.php?room=$room_id&amp;$param_ymd\">".get_vocab("viewweek")."</a>"
