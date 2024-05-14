@@ -25,29 +25,51 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
 	
 	$room_id = $booking['room_id'];
 	$user = getUserName();
+
+  //Kolla om stängd period finns som innefattar bokningens tid
+  $is_admin = (authGetUserLevel($user) >= 2);
+  if (!$is_admin) {
+    $area = mrbsGetRoomArea($room_id);
+    $start_date = getdate($booking['start_time']);
+    $slotdate = date('Y-m-d',strtotime($start_date['year'] .'-' . $start_date['mon'] .'-' . $start_date['mday'] )); 
+    $sql = "SELECT * FROM mrbs_kth_closed_periods
+              WHERE
+              from_date <= '$slotdate'
+              AND
+              to_date >= '$slotdate'
+              AND area_id = $area"; 
+    $res = sql_query($sql);
+    if (isset($res)) {
+      for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++) {
+        $err = array();
+        $err[] = "Det går inte att boka den här tiden";
+				return $err;
+      }
+    }
+  }
   
    //KTH Kolla om bokad starttid redan är passerad med en timme (dvs unavailable)
     $is_admin = (authGetUserLevel($user) >= 2);
     if (!$is_admin) {
-		$start_date = getdate($booking['start_time']);
-		if ($enable_periods) {
-			$area = mrbsGetRoomArea($room_id);
-			$period_slot_starttime = get_period_slot_starttime($area,1 * date(gmdate("i", $booking['start_time'])));
-			$slotdate = date('Y-m-d',strtotime($start_date['year'] .'-' . $start_date['mon'] .'-' . $start_date['mday'] )); 
-			$slotinseconds = strtotime(date($slotdate . " " . $period_slot_starttime));
-		} else {
-			$slotinseconds = $booking['start_time'];
-		}
-		//echo $slotinseconds;
-		$today = date("Y-m-d H:i:s");
-		$todayinseconds = strtotime(date($today));
-		if ($todayinseconds - 3600 > $slotinseconds) {
-			$err = array();
-			$err[] = "Starttiden för bokningen har redan passerat med en timme";
-			//$err[] = $todayinseconds . "---" . $booking['start_time'];
-			return $err;
-		}
-	}
+      $start_date = getdate($booking['start_time']);
+      if ($enable_periods) {
+        $area = mrbsGetRoomArea($room_id);
+        $period_slot_starttime = get_period_slot_starttime($area,1 * date(gmdate("i", $booking['start_time'])));
+        $slotdate = date('Y-m-d',strtotime($start_date['year'] .'-' . $start_date['mon'] .'-' . $start_date['mday'] )); 
+        $slotinseconds = strtotime(date($slotdate . " " . $period_slot_starttime));
+      } else {
+        $slotinseconds = $booking['start_time'];
+      }
+      //echo $slotinseconds;
+      $today = date("Y-m-d H:i:s");
+      $todayinseconds = strtotime(date($today));
+      if ($todayinseconds - 3600 > $slotinseconds) {
+        $err = array();
+        $err[] = "Starttiden för bokningen har redan passerat med en timme";
+        //$err[] = $todayinseconds . "---" . $booking['start_time'];
+        return $err;
+      }
+    }
 	
 	//KTH Kolla(gäller inte admin) om bokad starttid är passerad men fortfarande inom en timme och vald status=tentative (då skulle bokningen raderas direkt om den sparades)
 	//Tentative = 4
