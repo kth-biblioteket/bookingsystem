@@ -12,6 +12,8 @@ $capacity = get_form_var('capacity', 'int');
 $email = get_form_var('email', 'string');
 $type = get_form_var('type', 'string');
 $room_id = get_form_var('room_id', 'int');
+$from_date = get_form_var('closed_periods_from_date', 'string');
+$to_date = get_form_var('closed_periods_to_date', 'string');
 
 // Check the user is authorised for this page
 checkAuthorised();
@@ -20,8 +22,13 @@ checkAuthorised();
 
 $error = '';
 
-// First of all check that we've got an area or room name
-if (!isset($name) || ($name === ''))
+if ($type == "closed_period")
+{
+  $room = mrbsAddClosedPeriod($description, $area, $error, $from_date, $to_date);
+}
+
+// First of all check that we've got an area or room name or 
+elseif (!isset($name) || ($name === ''))
 {
   $error = "empty_name";
 }

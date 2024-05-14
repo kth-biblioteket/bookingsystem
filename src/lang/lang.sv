@@ -469,6 +469,18 @@ $vocab["noareas"]            = "Inget område";
 $vocab["noareas_enabled"]    = "Inga områden har aktiverats.";
 $vocab["addarea"]            = "Lägg till område";
 $vocab["name"]               = "Namn";
+$vocab["places"]            = "Platser";
+$vocab["addplace"]            = "Lägg till plats";
+$vocab["noplaces"]            = "Inga platser";
+$vocab["no_closed_periods"] = "Inga stängda perioder";
+$vocab["closed_periods"] = "Stängda perioder";
+$vocab["add_closed_periods"] = "Lägg till period";
+$vocab["closed_periods_description"]     = "Beskrivning";
+$vocab["closed_periods_from_date"]     = "Från datum";
+$vocab["closed_periods_to_date"]     = "Till datum";
+$vocab["kth_closed_periods.from_date"]          = "Från datum";
+$vocab["kth_closed_periods.to_date"]            = "Till datum";
+$vocab["kth_closed_periods.description"]        = "Beskrivning";
 
 //KTH Engelska
 $vocab["name_en"]            = "Namn, Engelska";
@@ -610,6 +622,12 @@ $vocab["book_ahead_note_periods"] = "När man använder perioder är förbokning
 // Used in edit_users.php
 $vocab["name_empty"]         = "Du måste ange ett namn.";
 $vocab["name_not_unique"]    = "finns redan.   Ange ett annat namn.";
+
+// Used in edit_closed_period.php
+$vocab["edit_closed_period"]                = "Uppdatera stängd period";
+$vocab["closed_period_from_date"]           = "Från datum";
+$vocab["closed_period_to_date"]             = "Till datum";
+$vocab["closed_period_description"]         = "Beskrivning";
 
 // Used in del.php
 $vocab["deletefollowing"]    = "Detta raderar följande bokningar";

@@ -310,6 +310,26 @@ function checkifslotenabled($area, $room_id, $month, $day, $year, $s) {
     }
   }
 
+  //kolla om det finns en stängd period på arean som gäller för aktuell slot.
+	if ($disabled == FALSE) {
+		if (isset($slotinseconds)){ // om inställning är på perioder så kan slotinseconds bli NULL. Hur sätta/kontrollera perioders tillgänglighet?
+			if ($slotinseconds !="") {
+				$sql = "SELECT * FROM mrbs_kth_closed_periods
+                WHERE
+                from_date <= '$slotdate'
+                AND
+                to_date >= '$slotdate'
+                AND area_id = $area";            
+				$res = sql_query($sql);
+				if (isset($res)) {
+					for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++) {
+						$disabled = TRUE;
+					}
+				}
+			}
+		}
+  }
+
 	//kolla om sloten är tillgänglig för veckodagen, dvs om det är gjort en type C(closed) adminbokning så är tiden stängd
 	if ($disabled == FALSE) {
 		if (isset($slotinseconds)){ // om inställning är på perioder så kan slotinseconds bli NULL. Hur sätta/kontrollera perioders tillgänglighet?

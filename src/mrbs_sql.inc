@@ -2585,6 +2585,51 @@ function mrbsAddRoom($name, $area, &$error, $description='', $capacity='')
   return $room;
 }
 
+// Adds a closed period, returning the new id, or FALSE on failure with the
+// error in $error
+function mrbsAddClosedPeriod($description, $area, $error, $from_date, $to_date)
+{
+  global $maxlength;
+
+  // First of all check that we've got a from_date/to date
+  if (!isset($from_date) || ($from_date === ''))
+  {
+    $error = "empty from date";
+    return FALSE;
+  }
+
+  if (!isset($to_date) || ($to_date === ''))
+  {
+    $error = "empty to date";
+    return FALSE;
+  }
+  
+  // Truncate the name and description fields to the maximum length as a precaution.
+  $description = utf8_substr($description, 0, 250);
+  // Add SQL escaping
+  $description_q = sql_escape($description);
+
+  // Acquire a mutex to lock out others who might be editing rooms
+  if (!sql_mutex_lock("mrbs_kth_closed_periods"))
+  {
+    fatal_error(TRUE, get_vocab("failed_to_acquire"));
+  }
+  
+  // Insert the instructor into the database
+  $sql = "INSERT INTO mrbs_kth_closed_periods (description, from_date, to_date, area_id)
+          VALUES ('$description_q', '$from_date', '$to_date', $area)";
+
+  if (sql_command($sql) < 0)
+  {
+    trigger_error(sql_error(), E_USER_WARNING);
+    fatal_error(TRUE, get_vocab("fatal_db_error"));
+  }
+  $closed_periods = sql_insert_id('mrbs_kth_closed_periods', 'id');
+  // Release the mutex
+  sql_mutex_unlock("mrbs_kth_closed_periods");
+  return $closed_periods;
+}
+
 // Adds an instructor, returning the new id, or FALSE on failure with the
 // error in $error
 function mrbsAddInstructor($name, $area, &$error, $email='')

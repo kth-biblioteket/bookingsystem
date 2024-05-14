@@ -97,6 +97,20 @@ CREATE TABLE IF NOT EXISTS `kth_exchange_events` (
 -- --------------------------------------------------------
 
 --
+-- Tabellstruktur `mrbs_kth_closed_periods`
+--
+
+CREATE TABLE IF NOT EXISTS `mrbs_kth_closed_periods` (
+  `id` int NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `area_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur `kth_instructors`
 --
 
@@ -660,6 +674,12 @@ ALTER TABLE `kth_exchange_events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index för tabell `mrbs_kth_closed_periods`
+--
+ALTER TABLE `mrbs_kth_closed_periods`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index för tabell `kth_instructors`
 --
 ALTER TABLE `kth_instructors`
@@ -781,6 +801,11 @@ ALTER TABLE `kth_entry_places`
 --
 ALTER TABLE `kth_exchange_events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT för tabell `mrbs_kth_closed_periods`
+--
+ALTER TABLE `mrbs_kth_closed_periods`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT för tabell `kth_instructors`
 --

@@ -294,7 +294,7 @@ if ($is_admin || ($n_displayable_areas > 0))
         
         if ($is_admin)
         {
-          echo "<th>&nbsp;</th>\n";
+          echo "<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>\n";
         }
         
         echo "</tr>\n";
@@ -426,6 +426,221 @@ if ($is_admin || ($n_displayable_areas > 0))
        
         <div>
           <input type="submit" class="submit" value="<?php echo get_vocab("addroom") ?>">
+        </div>
+        
+      </fieldset>
+    </form>
+  <?php
+  }
+  echo "</div>\n";
+}
+
+// KTH
+// BOTTOM SECTION: CLOSED_PERIODS IN THE SELECTED AREA
+// Only display the bottom section if the user is an admin or
+// else if there are some areas that can be displayed
+if ($is_admin || ($n_displayable_areas > 0))
+{
+  echo "<h2>\n";
+  echo get_vocab("closed_periods");
+  if(isset($area_name))
+  { 
+    echo " " . get_vocab("in") . " " . htmlspecialchars($area_name); 
+  }
+  echo "</h2>\n";
+
+  echo "<div id=\"closed_periods_form\">\n";
+  if (isset($area))
+  {
+    $res = sql_query("SELECT id, from_date, to_date, description
+                FROM mrbs_kth_closed_periods
+                WHERE area_id = $area
+                ORDER BY from_date");
+    if (! $res)
+    {
+      trigger_error(sql_error(), E_USER_WARNING);
+      fatal_error(FALSE, get_vocab("fatal_db_error"));
+    }
+    if (sql_count($res) == 0)
+    {
+      echo "<p>" . get_vocab("no_closed_periods") . "</p>\n";
+    }
+    else
+    {
+       // Get the information about the fields in the instructor table
+      $fields = sql_field_info('mrbs_kth_closed_periods');
+    
+      // Build an array with the instructor info and also see if there are going
+      // to be any instructors to display (in other words instructors if you are not an
+      // admin whether any instructors are enabled)
+      $closed_periods = array();
+      $n_displayable_closed_periods = 0;
+      for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++)
+      {
+        $closed_periods[] = $row;
+        if ($is_admin || !$row['disabled'])
+        {
+          $n_displayable_closed_periods++;
+        }
+      }
+
+      if ($n_displayable_closed_periods == 0)
+      {
+        echo "<p>" . get_vocab("no_closed_periods_enabled") . "</p>\n";
+      }
+      else
+      {
+        echo "<div id=\"closed_periods_info\" class=\"datatable_container\">\n";
+        // Build the table.    We deal with the name and disabled columns
+        // first because they are not necessarily the first two columns in
+        // the table (eg if you are running PostgreSQL and have upgraded your
+        // database)
+        echo "<table id=\"closed_periods_table\" class=\"admin_table display\">\n";
+        
+        // The header
+        echo "<thead>\n";
+        echo "<tr>\n";
+        echo "<th>&nbsp;</th>\n";
+        // ignore these columns, either because we don't want to display them,
+        // or because we have already displayed them in the header column
+		//KTH english
+        $ignore = array('id', 'area_id');
+        foreach($fields as $field)
+        {
+          if (!in_array($field['name'], $ignore))
+          {
+            switch ($field['name'])
+            {
+              // any user defined fields
+              default:
+                $text = get_loc_field_name('mrbs_kth_closed_periods', $field['name']);
+                break;
+            }
+            // We don't use htmlspecialchars() here because the column names are
+            // trusted and some of them may deliberately contain HTML entities (eg &nbsp;)
+            echo "<th>$text</th>\n";
+          }
+        }
+        
+        if ($is_admin)
+        {
+          echo "<th>&nbsp;</th>\n";
+        }
+        
+        echo "</tr>\n";
+        echo "</thead>\n";
+        
+        // The body
+        echo "<tbody>\n";
+        $row_class = "odd";
+        foreach ($closed_periods as $r)
+        {
+          if ($is_admin)
+          {
+            $row_class = ($row_class == "even") ? "odd" : "even";
+            echo "<tr class=\"$row_class\">\n";
+
+            echo "<td><div>" .
+                 "<span>" . htmlspecialchars($r['sort_key']) . "</span>" .
+                 "<a title=\"Uppdatera\" href=\"edit_closed_period.php?change_closed_period=1&amp;phase=1&amp;closed_period=" . $r['id'] . "\"><img src=\"images/edit.png\" width=\"16\" height=\"16\" 
+                 alt=\"" . get_vocab("edit") . "\"
+                 title=\"" . get_vocab("edit") . "\"></a>" .
+                 "</div></td>\n";
+
+            foreach($fields as $field)
+            {
+              if (!in_array($field['name'], $ignore))
+              {
+                switch ($field['name'])
+                {
+                  // any user defined fields
+                  default:
+                    if (($field['nature'] == 'boolean') || 
+                        (($field['nature'] == 'integer') && isset($field['length']) && ($field['length'] <= 2)) )
+                    {
+                      // booleans: represent by a checkmark
+                      echo "<td class=\"boolean\"><div>";
+                      echo (!empty($r[$field['name']])) ? "<img src=\"images/check.png\" alt=\"check mark\" width=\"16\" height=\"16\">" : "&nbsp;";
+                      echo "</div></td>\n";
+                    }
+                    elseif (($field['nature'] == 'integer') && isset($field['length']) && ($field['length'] > 2))
+                    {
+                      // integer values
+                      echo "<td class=\"int\"><div>" . $r[$field['name']] . "</div></td>\n";
+                    }
+                    else
+                    {
+                      // strings
+                      $value = $r[$field['name']];
+                      $html = "<td title=\"" . htmlspecialchars($value) . "\"><div>";
+                      // Truncate before conversion, otherwise you could chop off in the middle of an entity
+                      $html .= htmlspecialchars(utf8_substr($value, 0, 250));
+                      $html .= "</div></td>\n";
+                      echo $html;
+                    }
+                    break;
+                }  // switch
+              }  // if
+            }  // foreach
+            
+            // Give admins a delete link
+            if ($is_admin)
+            {
+              // Delete link
+              echo "<td><div>\n";
+              echo "<a href=\"del.php?type=closed_periods&amp;area=$area&amp;closed_period=" . $r['id']. "\">\n";
+              echo "<img src=\"images/delete.png\" width=\"16\" height=\"16\" 
+                         alt=\"" . get_vocab("delete") . "\"
+                         title=\"" . get_vocab("delete") . "\">\n";
+              echo "</a>\n";
+              echo "</div></td>\n";
+            }
+            
+            echo "</tr>\n";
+          }
+        }
+
+        echo "</tbody>\n";
+        echo "</table>\n";
+        echo "</div>\n";
+        
+      }
+    }
+  }
+  else
+  {
+    echo get_vocab("noarea");
+  }
+
+  // Give admins a form for adding rooms to the area - provided 
+  // there's an area selected
+  if ($is_admin && $areas_defined && !empty($area))
+  {
+  ?>
+    <form id="add_closed_periods" class="form_admin" action="add.php" method="post">
+      <fieldset>
+      <legend><?php echo get_vocab("add_closed_periods") ?></legend>
+        
+        <input type="hidden" name="type" value="closed_period">
+        <input type="hidden" name="area" value="<?php echo $area; ?>">
+        
+        <div>
+          <label for="description"><?php echo get_vocab("closed_periods_description") ?>:</label>
+          <input type="text" id="description" name="description" maxlength="<?php echo $maxlength['closed_periods.description'] ?>">
+        </div>
+        
+        <div>
+          <label for="closed_periods_from_date"><?php echo get_vocab("closed_periods_from_date") ?>:</label>
+          <input type="text" id="closed_periods_from_date" name="closed_periods_from_date" maxlength="<?php echo $maxlength['closed_periods.from_date'] ?>">
+        </div>
+
+        <div>
+          <label for="closed_periods_to_date"><?php echo get_vocab("closed_periods_to_date") ?>:</label>
+          <input type="text" id="closed_periods_to_date" name="closed_periods_to_date" maxlength="<?php echo $maxlength['closed_periods.to_date'] ?>">
+        </div>
+       
+        <div>
+          <input type="submit" class="submit" value="<?php echo get_vocab("add_closed_periods") ?>">
         </div>
         
       </fieldset>

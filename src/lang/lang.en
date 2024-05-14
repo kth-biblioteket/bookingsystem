@@ -473,6 +473,20 @@ $vocab["noareas"]            = "No areas have been defined.";
 $vocab["noareas_enabled"]    = "No areas have been enabled.";
 $vocab["addarea"]            = "Add Area";
 $vocab["name"]               = "Name";
+$vocab["places"]            = "Locations";
+$vocab["addplace"]            = "Add location";
+$vocab["noplaces"]            = "No locations";
+$vocab["no_closed_periods"] = "No closed periods";
+$vocab["closed_periods"] = "Closed periods";
+$vocab["add_closed_periods"] = "Add period";
+$vocab["closed_periods_description"]     = "Description";
+$vocab["closed_periods_from_date"]     = "From date";
+$vocab["closed_periods_to_date"]     = "To date";
+
+
+$vocab["kth_closed_periods.from_date"]          = "From date";
+$vocab["kth_closed_periods.to_date"]            = "To date";
+$vocab["kth_closed_periods.description"]        = "Description";
 
 //KTH Engelska
 $vocab["name_en"]            = "Name, English";
@@ -613,6 +627,12 @@ $vocab["book_ahead_note_periods"] = "When using periods, book ahead times are ro
 // Used in edit_users.php
 $vocab["name_empty"]         = "You must enter a name.";
 $vocab["name_not_unique"]    = "already exists.   Please choose another name.";
+
+// Used in edit_closed_period.php
+$vocab["edit_closed_period"]                = "Update closed period";
+$vocab["closed_period_from_date"]           = "From date";
+$vocab["closed_period_to_date"]             = "To date";
+$vocab["closed_period_description"]         = "Description";
 
 // Used in del.php
 $vocab["deletefollowing"]    = "This will delete the following bookings";

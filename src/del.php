@@ -9,6 +9,7 @@ $confirm = get_form_var('confirm', 'string');
 $instructor = get_form_var('instructor', 'int');
 $place = get_form_var('place', 'int');
 $email = get_form_var('email', 'string');
+$closed_period = get_form_var('closed_period', 'int');
 
 
 // Check the user is authorised for this page
@@ -71,6 +72,36 @@ if ($type == "room")
     echo "<p>" .  get_vocab("sure") . "</p>\n";
     echo "<div id=\"del_room_confirm_links\">\n";
     echo "<a href=\"del.php?type=room&amp;area=$area&amp;room=$room&amp;confirm=Y\"><span id=\"del_yes\">" . get_vocab("YES") . "!</span></a>\n";
+    echo "<a href=\"admin.php\"><span id=\"del_no\">" . get_vocab("NO") . "!</span></a>\n";
+    echo "</div>\n";
+    echo "</div>\n";
+    output_trailer();
+  }
+}
+
+if ($type == "closed_periods")
+{
+  // We are supposed to delete a period
+  if (isset($confirm))
+  {
+    // They have confirmed it already, so go blast!
+    sql_begin();
+   
+    // Now take out the instructor itself
+    sql_command("delete from mrbs_kth_closed_periods where id=$closed_period");
+    sql_commit();
+   
+    // Go back to the admin page
+    Header("Location: admin.php?area=$area");
+  }
+  else
+  {
+    print_header($day, $month, $year, $area, isset($room) ? $room : "");
+   
+    echo "<div id=\"del_room_confirm\">\n";
+    echo "<p>" .  get_vocab("sure") . "</p>\n";
+    echo "<div id=\"del_room_confirm_links\">\n";
+    echo "<a href=\"del.php?type=closed_periods&amp;area=$area&amp;closed_period=$closed_period&amp;confirm=Y\"><span id=\"del_yes\">" . get_vocab("YES") . "!</span></a>\n";
     echo "<a href=\"admin.php\"><span id=\"del_no\">" . get_vocab("NO") . "!</span></a>\n";
     echo "</div>\n";
     echo "</div>\n";
