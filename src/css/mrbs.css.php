@@ -426,6 +426,8 @@ foreach ($color_types as $type => $col)
 
 .wrapper {
       height: auto;
+      float: left;
+      position: relative;
 }
 
 .wrapper thead>tr>th {

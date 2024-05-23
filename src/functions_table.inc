@@ -446,7 +446,38 @@ function checkifslotenabled($area, $room_id, $month, $day, $year, $s) {
   }
 	//slut bokningspolicy
 	return $disabled;
-}							
+}		
+
+function is_closed_period($area, $month, $day, $year) {
+  $closed = FALSE;
+  $slotdate = date('Y-m-d',strtotime($year .'-' . $month .'-' . $day ));
+  $sql = "SELECT * FROM mrbs_kth_closed_periods
+                WHERE
+                from_date <= '$slotdate'
+                AND
+                to_date >= '$slotdate'
+                AND area_id = $area";            
+  $res = sql_query($sql);
+  if (isset($res)) {
+    for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++) {
+      $closed = TRUE;
+    }
+  }
+  return $closed;
+}
+
+function get_closed_period($area, $month, $day, $year) {
+  $closed = FALSE;
+  $slotdate = date('Y-m-d',strtotime($year .'-' . $month .'-' . $day ));
+  $sql = "SELECT * FROM mrbs_kth_closed_periods
+                WHERE
+                from_date <= '$slotdate'
+                AND
+                to_date >= '$slotdate'
+                AND area_id = $area";            
+  $res = sql_query($sql);
+  return $res;
+}
 
 function map_add_booking ($row, &$column, $am7, $pm7)
 {
@@ -1954,6 +1985,9 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
   else
   {
     // the standard view, with days of the week along the top and times down the side
+
+    //antal slots för dagen
+    $number_of_slots_day = ($evening_slot_seconds - $morning_slot_seconds + $resolution) / $resolution;
     for ($s = $morning_slot_seconds;
          $s <= $evening_slot_seconds;
          $s += $resolution,
@@ -1993,14 +2027,28 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
           $query_strings = get_query_strings($area, $room, $wmonth, $wday, $wyear, $s);
      
           // and then draw the cell
-          //KTH kontrollera slotens tillgänglighet
-          $slotdisabled = checkifslotenabled($area, $room, $wmonth, $wday, $wyear, $s);
-          $is_invalid = $slotdisabled;
-          if (!isset($week_map[$room][$thisday][$s]))
-          {
-            $week_map[$room][$thisday][$s] = array();  // to avoid an undefined index NOTICE error
+          //KTH om perioden är stängd för aktuell dag
+          if (is_closed_period($area, $wmonth, $wday, $wyear)) {
+            if ($s == $morning_slot_seconds) {
+              $res_closed_period = get_closed_period($area, $wmonth, $wday, $wyear);
+              for ($i = 0; ($row = sql_row_keyed($res_closed_period, $i)); $i++) {
+                $closed_overlay = TRUE;
+                $closed_overlay_text = $row['description'];
+                $closed_overlay_from_date = $row['from_date'];
+                $closed_overlay_to_date = $row['to_date'];
+              }
+              $tbody .= "<td rowspan=\"$number_of_slots_day\"><p>$closed_overlay_text</p></td>\n";
+            }
+          } else {
+            //KTH kontrollera slotens tillgänglighet
+            $slotdisabled = checkifslotenabled($area, $room, $wmonth, $wday, $wyear, $s);
+            $is_invalid = $slotdisabled;
+            if (!isset($week_map[$room][$thisday][$s]))
+            {
+              $week_map[$room][$thisday][$s] = array();  // to avoid an undefined index NOTICE error
+            }
+            $tbody .= cell_html($week_map[$room][$thisday][$s], $query_strings, $is_invalid,$ajaxuser);
           }
-          $tbody .= cell_html($week_map[$room][$thisday][$s], $query_strings, $is_invalid,$ajaxuser);
         }
   
       }    // for loop

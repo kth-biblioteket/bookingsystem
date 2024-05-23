@@ -219,7 +219,25 @@ echo $before_after_links_html;
 if (isset($mobilescrollarrows) && $mobilescrollarrows) {
   echo $more_arrows_html;
 }
+$closed_overlay = FALSE;
 echo "<div class=\"wrapper\">\n";
+$daydate = date('Y-m-d',strtotime($year .'-' . $month .'-' . $day ));
+$res = get_closed_period($area, $month, $day, $year);
+if (isset($res)) {
+  for ($i = 0; ($row = sql_row_keyed($res, $i)); $i++) {
+    $closed_overlay = TRUE;
+    $closed_overlay_text = $row['description'];
+    $closed_overlay_from_date = $row['from_date'];
+    $closed_overlay_to_date = $row['to_date'];
+  }
+}
+if ($closed_overlay) {
+  echo "<div style=\"position: absolute;top: 0;left: 0;right: 0;bottom: 0;background: rgba(255, 255, 255, 0.7);z-index: 1;\">\n";
+    echo "<div style=\"position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);\">\n";
+      echo "<div class=\"alert alert-info\"><p>$closed_overlay_text</p><p>($closed_overlay_from_date - $closed_overlay_to_date)</p></div>\n";
+    echo "</div>\n";
+  echo "</div>\n";
+}
 echo "<table class=\"dwm_main\" id=\"day_main\" data-resolution=\"$resolution\">\n";
 echo $inner_html;
 echo "</table>\n";
