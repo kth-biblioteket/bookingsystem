@@ -631,12 +631,12 @@ if ($is_admin || ($n_displayable_areas > 0))
         
         <div>
           <label for="closed_periods_from_date"><?php echo get_vocab("closed_periods_from_date") ?>:</label>
-          <input type="text" id="closed_periods_from_date" name="closed_periods_from_date" maxlength="<?php echo $maxlength['closed_periods.from_date'] ?>">
+          <input type="date" id="closed_periods_from_date" name="closed_periods_from_date" maxlength="<?php echo $maxlength['closed_periods.from_date'] ?>">
         </div>
 
         <div>
           <label for="closed_periods_to_date"><?php echo get_vocab("closed_periods_to_date") ?>:</label>
-          <input type="text" id="closed_periods_to_date" name="closed_periods_to_date" maxlength="<?php echo $maxlength['closed_periods.to_date'] ?>">
+          <input type="date" id="closed_periods_to_date" name="closed_periods_to_date" maxlength="<?php echo $maxlength['closed_periods.to_date'] ?>">
         </div>
        
         <div>

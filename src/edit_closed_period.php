@@ -249,6 +249,7 @@ if (isset($change_closed_period) && !empty($closed_period))
       echo "<div>\n";
       $params = array('label'         => get_vocab("closed_period_from_date") . ":",
                       'name'          => 'from_date',
+                      'type'          => 'date',
                       'value'         => $row['from_date'],
                       'disabled'      => $disabled,
                       'create_hidden' => FALSE);
@@ -259,6 +260,7 @@ if (isset($change_closed_period) && !empty($closed_period))
       echo "<div>\n";
       $params = array('label'         => get_vocab("closed_period_to_date") . ":",
                       'name'          => 'to_date',
+                      'type'          => 'date',
                       'value'         => $row['to_date'],
                       'disabled'      => $disabled,
                       'create_hidden' => FALSE);
