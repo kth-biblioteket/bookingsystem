@@ -427,6 +427,7 @@ foreach ($color_types as $type => $col)
 .wrapper {
       height: auto;
       float: left;
+      width:100%;
       position: relative;
 }
 
