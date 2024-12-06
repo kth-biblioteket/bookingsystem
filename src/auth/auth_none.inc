@@ -179,11 +179,11 @@ function authValidateUser($user, $pass, $kthcas)
 	$returnvalue = 0;
 	$result = 0; //0=Error 1=Success
 	$valid_id = FALSE;
-	if (strpos($user,"@" . $alma_user_domain) !== FALSE && !$kthcas) {
+	if (strpos($user,"@" . $alma_user_domain) !== FALSE && !$kthcas && $auth["method"] != "alma") {
 		$message = "Please do not write \"@" . $alma_user_domain . "\" in the KTH-account box";
 	} else {
 		//191003
-		if ($auth["method"] != "kthcas") {
+		if ($auth["method"] != "kthcas" && $auth["method"] != "alma") {
 			$ldapusertype = 'account';
 			$almauser = $user . "@" . $alma_user_domain; //Primary Id i alma
 		} else {
@@ -191,8 +191,10 @@ function authValidateUser($user, $pass, $kthcas)
 				$almauser = $user; //identifier i alma kth_id: u1f7tfgo
 		}
 		//Hämta användare från LDAP
-		$currentldapuser = getldapuser($user, $ldapusertype);
-		$jsonldap = json_decode($currentldapuser);
+		if ($auth["method"] != "alma") {
+			$currentldapuser = getldapuser($user, $ldapusertype);
+			$jsonldap = json_decode($currentldapuser);
+		}
 		
 		//Hämta användare från Alma
 		$currentuser = getalmauser($almauser);
@@ -246,7 +248,8 @@ function authValidateUser($user, $pass, $kthcas)
 
 					// Kontrollera även mot LDAP/UG
 					// För de som t ex har gruppen staff i Alma men som också är student.
-					if ($valid_id == FALSE ) {
+					// Utför inte för alma som loginmetod(interna alma-användare finns inte i LDAP)
+					if ($valid_id == FALSE && $auth["method"] != "alma") {
 						$allowedUGAffiliations = isset($allowedUGAffiliations) ? $allowedUGAffiliations : array();
 						$commonaff = array_intersect($allowedUGAffiliations,$jsonldap->ugusers[0]->ugAffiliation);
 						if (!empty($commonaff)) {
@@ -265,34 +268,6 @@ function authValidateUser($user, $pass, $kthcas)
 			if ($valid_id == TRUE && $auth["method"] == "kthcas") {
 				$result = 1; //SUCCESS!!
 				$message = "Success";
-			}
-			//Om login sker via Alma
-			if ($valid_id == TRUE && $auth["method"] == "alma") {
-				//loopa igenom user identifiers och hitta:
-				// "PERSONAL_NUMBER" ="Personal Number KTH" (10 siffror)
-				// "OTHER_ID_3" = "Personal Number" (10 siffror)
-				// "OTHER_ID_4 = "Personal Number 2" (12 siffror)
-				//(eller bara leta igenom alla efter personnumret, innebär att man kan använda vilken identifier som helst som "password")
-				$index = 0;
-				$activepatron = false;
-				foreach ($source['user_identifier'] as $value) {
-					//låt det räcka med att ange de sex första siffrorna i personnummer
-					if($value['id_type']['value'] == "PERSONAL_NUMBER" || $value['id_type']['value'] == "OTHER_ID_3" || $value['id_type']['value'] == "OTHER_ID_4") {
-						if($value['value'] == $pass || mb_substr($value['value'],0,6) == $pass) {
-							if($value['status'] == "ACTIVE") {
-								$result = 1; //SUCCESS!!
-								$message = "Success";
-								break;
-							} else {
-								$message = $value['status'];
-							}
-						} else {
-							$message = get_vocab("error_password");
-						}
-					} else {
-						$message = get_vocab("error_password");
-					}
-				}
 			}
 			//behörighetskontroll för bookingadmins = har aktiv roll "User Manager" i Alma
 			//Så att lånediskpersonal kan administrera alla bokningar
@@ -325,6 +300,19 @@ function authValidateUser($user, $pass, $kthcas)
 				$result = 0; //ERROR!!
 				$message = "Error, Wrong username/password " . $ldapjson["error"]["lde_message"];
 			}
+		}
+
+		//Om login sker via Alma PrimaryID + PIN
+		if ($valid_id == TRUE && $auth["method"] == "alma") {
+				if($source['pin_number'] == $pass) {
+					$result = 1; //SUCCESS!!
+					$message = "Success";
+
+				} else {
+					$result = 0; //ERROR!!
+					$message = "Error, Wrong username/pin " . $ldapjson["error"]["lde_message"];
+				}
+			
 		}
 	}
 	$data = array(

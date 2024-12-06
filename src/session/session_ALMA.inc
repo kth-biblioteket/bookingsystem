@@ -16,6 +16,7 @@
 *                                                                             *
 \*****************************************************************************/
 
+
 // $Id$
 global $PHP_SELF, $auth;
 $page = basename($PHP_SELF, "");
@@ -29,8 +30,8 @@ $returl = get_form_var('returl', 'string');
 $area = get_form_var('area', 'string');
 
 //191003
-$auth["method"]="alma";
 
+$auth["method"]="alma";
 //KTH logga ut vid timeout
 if (isset($_GET["logout"])) {
 	if ($_GET["logout"] == "true") {
@@ -53,9 +54,12 @@ if (!isset($auth["session_php"]["session_expire_time"])) {
 	$auth["session_php"]["session_expire_time"] = 0;
 }
 
+
 session_name($session_name);  // call before session_set_cookie_params() - see PHP manual
-session_set_cookie_params($auth["session_php"]["session_expire_time"], $cookie_path);
-                          
+//session_set_cookie_params($auth["session_php"]["session_expire_time"], $cookie_path);
+      
+
+
 // Checking the result of session_start() is not very reliable.   Before PHP 5.3.0
 // it always returned TRUE.   Even after 5.3.0 it seems to return TRUE even if the
 // session_save_path is not writable.  A warning is generated, but session_start()
@@ -64,23 +68,52 @@ if (FALSE === session_start()) {
 	trigger_error("MRBS: could not start session", E_USER_WARNING);
 	fatal_error(TRUE, "MRBS: server configuration error.", FALSE);
 }
+//191003 
+if ($is_kiosk) {
+  if (strpos($page, 'day.php') !== FALSE || strpos($page, 'week.php') !== FALSE) {
+    // Unset the session variables
+    if (isset($_SESSION))
+    {
+      $_SESSION = array();
+    }
+    else
+    {
+      global $HTTP_SESSION_VARS;
+      $HTTP_SESSION_VARS = array();
+    }
+  }
+}
+
+
+
+
+
 
 // Check to see if we've been inactive for longer than allowed and if so logout
 // the user 
 if (!empty($auth["session_php"]["inactivity_expire_time"]))
 {
+  $ajax = get_form_var('ajax', 'int');
+  $activity = get_form_var('activity', 'int');
   // KTH. gäller inte för adminusers
   $user = getUserName();
   $is_admin = (authGetUserLevel($user) >= 2);
   if ($is_admin == FALSE && isset($_SESSION) && isset($_SESSION['LastActivity']) && ((time() - $_SESSION['LastActivity']) > $auth["session_php"]["inactivity_expire_time"]))
   {
-    $auth['loggedin'] = FALSE;
-    unset($_SESSION["UserName"]);
+    if ($ajax) {
+      $auth['ajaxlogout'] = "TRUE";
+    } else {
+      unset($_SESSION["UserName"]);
+      unset($_SESSION["full_name"]);
+      unset($_SESSION["email_address"]);
+      unset($_SESSION["phone_number"]);
+      unset($_SESSION['CSRFToken']);
+      unset($_SESSION['CSRFToken_time']);
+    }
   }
   // Ajax requests don't count as activity, unless it's the special Ajax request used
   // to record client side activity
-  $ajax = get_form_var('ajax', 'int');
-  $activity = get_form_var('activity', 'int');
+
   if ($activity || !$ajax || !isset($_SESSION['LastActivity']))
   {
     $_SESSION['LastActivity'] = time();
@@ -114,27 +147,48 @@ if (isset($Action) && ($Action == "SetName"))
   }
   else
   { //KTH
+
+
+
+
+
+
+
+
+
+
   //191003
   $response = authValidateUser($NewUserName, $NewUserPassword, false);
 	$almavalidate = json_decode($response);
-    if ($almavalidate->result == 0)
-    {
-      print_header(0, 0, 0, 0, "");
-      echo "<p>".$almavalidate->message."</p>\n";
-	    printLoginForm($TargetURL);
-	    exit();
-    }
-
-    if (isset($_SESSION))
-    {
-      $auth['loggedin'] = TRUE;
-      $_SESSION["UserName"] = $almavalidate->primary_id;//$NewUserName;
-    }
-    else
-    {
-      global $HTTP_SESSION_VARS;
-      $HTTP_SESSION_VARS["UserName"] = $almavalidate->primary_id;//$NewUserName;
-    }
+  if ($almavalidate->result == 0)
+  {
+    print_header(0, 0, 0, 0, "");
+    echo "<h3>".$almavalidate->message."</h3>\n";
+    printLoginForm($TargetURL);
+    unset($_SESSION["UserName"]);
+    exit();
+  }
+  if (isset($_SESSION))
+  {
+    $auth['loggedin'] = "TRUE";
+    $_SESSION["UserName"] = $almavalidate->primary_id;
+    $_SESSION["full_name"] = $almavalidate->full_name;
+    $_SESSION["email_address"] = $almavalidate->email_address;
+    $_SESSION["phone_number"] = $almavalidate->phone_number;
+    $_SESSION["user_group"] = $almavalidate->user_group;
+    $_SESSION["admin_level"] = $almavalidate->admin_level;
+  }
+  else
+  {
+    $auth['loggedin'] = "TRUE";
+    global $HTTP_SESSION_VARS;
+    $HTTP_SESSION_VARS["UserName"] = $almavalidate->primary_id;//$NewUserName;
+    $HTTP_SESSION_VARS["full_name"] = $almavalidate->full_name;//$NewUserName;
+    $HTTP_SESSION_VARS["email_address"] = $almavalidate->email_address;
+    $HTTP_SESSION_VARS["phone_number"] = $almavalidate->phone_number;
+    $HTTP_SESSION_VARS["user_group"] = $almavalidate->user_group;
+    $HTTP_SESSION_VARS["admin_level"] = $almavalidate->admin_level;
+  }
   }
   // preserve the original $HTTP_REFERER by sending it as a GET parameter
   if (!empty($returl))
@@ -261,6 +315,7 @@ function authGet($area = 2)
 
 function getUserName()
 {
+  global $auth;
   if (isset($_SESSION) && isset($_SESSION["UserName"]) && ($_SESSION["UserName"] !== ''))
   {
     return $_SESSION["UserName"];
@@ -273,6 +328,82 @@ function getUserName()
       return $HTTP_SESSION_VARS["UserName"];
     }
   }
+}
+
+//191003
+function getFullName()
+{
+  //KTH Inloggning via LDAP(kthid)
+  global $auth;
+  if (isset($_SESSION) && isset($_SESSION["full_name"]) && ($_SESSION["full_name"] !== ''))
+    {
+      return $_SESSION["full_name"];
+    }
+    else
+    {
+      global $HTTP_SESSION_VARS;
+      if (isset($HTTP_SESSION_VARS["full_name"]) && ($HTTP_SESSION_VARS["full_name"] !== ''))
+      {
+        return $HTTP_SESSION_VARS["full_name"];
+      }
+    }
+}
+
+//191003
+function getEmail()
+{
+  //KTH Inloggning via LDAP(kthid)
+  global $auth;
+  if (isset($_SESSION) && isset($_SESSION["email_address"]) && ($_SESSION["email_address"] !== ''))
+    {
+      return $_SESSION["email_address"];
+    }
+    else
+    {
+      global $HTTP_SESSION_VARS;
+      if (isset($HTTP_SESSION_VARS["email_address"]) && ($HTTP_SESSION_VARS["email_address"] !== ''))
+      {
+      return $HTTP_SESSION_VARS["email_address"];
+      }
+    }
+}
+
+//191003
+function getPhone()
+{
+  //KTH Inloggning via LDAP(kthid)
+  global $auth;
+	if (isset($_SESSION) && isset($_SESSION["phone_number"]) && ($_SESSION["phone_number"] !== ''))
+		{
+			return $_SESSION["phone_number"];
+		}
+		else
+		{
+			global $HTTP_SESSION_VARS;
+			if (isset($HTTP_SESSION_VARS["phone_number"]) && ($HTTP_SESSION_VARS["phone_number"] !== ''))
+			{
+			return $HTTP_SESSION_VARS["phone_number"];
+			}
+		}
+}
+
+//191003
+function getUsergroup()
+{
+  //KTH Inloggning via LDAP(kthid)
+  global $auth;
+	if (isset($_SESSION) && isset($_SESSION["user_group"]) && ($_SESSION["user_group"] !== ''))
+		{
+			return $_SESSION["user_group"];
+		}
+		else
+		{
+			global $HTTP_SESSION_VARS;
+			if (isset($HTTP_SESSION_VARS["user_group"]) && ($HTTP_SESSION_VARS["user_group"] !== ''))
+			{
+			return $HTTP_SESSION_VARS["user_group"];
+			}
+		}
 }
 
 // Print the logon entry on the top banner.
@@ -295,6 +426,7 @@ function PrintLogonBox($area = 2)
   }
   $user=getUserName();
 
+  $full_name=getFullName();
   //KTH
   $userlevel = authGetUserLevel($user);
   if (isset($user))
@@ -315,14 +447,26 @@ function PrintLogonBox($area = 2)
 					$user = $user . ", (sysadmin)";
 				}
 				?>
-        <!--a href="<?php echo "$search_string\" title=\"" . get_vocab('show_my_entries') . "\">" . get_vocab('you_are') . " " . htmlspecialchars($user) ?></a-->
-				<div style="margin-bottom:10px"><?php echo get_vocab('you_are') . htmlspecialchars($full_name ."(". $user . ")") ?></div>
+        <!--a href="<?php echo "$search_string\" title=\"" . get_vocab('show_my_entries') . "\">" . get_vocab('you_are') . " " . htmlspecialchars($full_name ."(". $user . ")") ?></a-->
+        <div style="margin-bottom:10px"><?php echo get_vocab('you_are') . htmlspecialchars($full_name ."(". $user . ")") ?></div>
+          <?php //191003?>
+          <!--form method="post" action="/tandem/mrbs_login.php?returl=/<?php echo $app_name?>/<?php echo urlencode($TargetURL) ?>&sessionname=<?php echo $session_name?>&logout=true"-->
+          <script>
+            function logoutfromldap() {
+              $.post('logout.php?ldap=true',
+                      function(result) {
+                      },
+              'json');
+            }
+          </script>
           <form method="post" action="admin.php">
-              <input type="hidden" name="TargetURL" value="<?php echo htmlspecialchars($TargetURL) ?>">
-              <input type="hidden" name="Action" value="SetName">
-              <input type="hidden" name="NewUserName" value="">
-              <input type="hidden" name="NewUserPassword" value="">
-              <input type="submit" value=" <?php echo get_vocab('logoff') ?> ">
+            <input type="hidden" name="TargetURL" value="<?php echo htmlspecialchars($TargetURL) ?>">
+            <input type="hidden" name="Action" value="SetName">
+            <input type="hidden" name="NewUserName" value="">
+            <input type="hidden" name="NewUserPassword" value="">
+            <?php //191003?>
+            <input class="btn btn-info" type="submit" value=" <?php echo get_vocab('logoff') ?> ">
+            <!--input class="btn btn-info" type="button" value=" <?php echo get_vocab('logoff') . "_test" ?> " onclick="javascript:logoutfromldap(); return false;"-->
           </form>
 <?php
   }
@@ -330,14 +474,19 @@ function PrintLogonBox($area = 2)
   {
 ?>
                 <!--a href=""><?php echo get_vocab('unknown_user'); ?></a-->
-				<?php //echo get_vocab('unknown_user'); ?>
+				        <?php //echo get_vocab('unknown_user'); ?>
+                <?php //KTH KTHLDAP
+                  //echo "method: " . $auth["method"];
+                ?>
+                <?php //191003?>
                 <form method="post" action="admin.php">
                   <div>
                     <input type="hidden" name="TargetURL" value="<?php echo htmlspecialchars($TargetURL) ?>">
                     <input type="hidden" name="Action" value="QueryName">
-					          <?php //KTH area?>
-					          <input type="hidden" name="area" value="<?php echo $area?>">
-                    <input type="submit" value=" <?php echo get_vocab('login') ?> ">
+                    <?php //KTH area?>
+                    <input type="hidden" name="area" value="<?php echo $area?>">
+                    <?php //191003?>
+                    <input class="bluebutton btn btn-info" type="submit" value=" <?php echo get_vocab('login') ?> ">
                   </div>
                 </form>
 <?php
