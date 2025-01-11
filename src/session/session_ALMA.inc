@@ -264,8 +264,8 @@ function printLoginForm($TargetURL)
     <input type="hidden" name="Action" value="SetName">
 	<?php //KTH ?>
     <div id="logon_submit" style="width:100%;max-width:100%">
-		<input class="btn btn-info" type="button" value=" <?php echo get_vocab('back') ?> " style="clear:none;position:initial;position:static" onclick="javascript:location.href='<?php echo htmlspecialchars($returl) ?>'; return false;">
-		<input class="submit" type="submit" value=" <?php echo get_vocab('login') ?> " style="clear:none;position:initial;position:static">
+    <button class="btn btn-secondary" type="button" value=" <?php echo get_vocab('back') ?> " style="clear:none;position:initial;position:static" onclick="javascript:location.href='<?php echo htmlspecialchars($returl) ?>'; return false;"><?php echo get_vocab('back') ?></button>
+		<button class="btn btn-success submit default_action" type="submit" value=" <?php echo get_vocab('login') ?> " style="clear:none;position:initial;position:static"><?php echo get_vocab('login') ?></button>
     </div>
   </fieldset>
 </form>
