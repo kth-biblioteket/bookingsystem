@@ -134,6 +134,62 @@ function getldapuser($user, $type) {
 
 /********** 
 
+Funktion som autentiserar användare mot ALMA
+
+**********/
+
+function authenticate_almauser($user_id, $code, $type='password') {
+	global $alma_api_key, $alma_api_url;
+	global $environment;
+
+	$url = $alma_api_url . 'users/' . $user_id;
+
+	$ch = curl_init();
+	if( $type == 'password') {
+		$queryParams = '?' . urlencode('user_id_type') . '=' . urlencode('all_unique') . '&' . urlencode('op') . '=' . urlencode('auth') . '&' . urlencode('apikey') . '=' . urlencode($alma_api_key) . '&' . urlencode('format') . '=' . urlencode('json');
+
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array( 
+			'Exl-User-Pw: ' . $code,                                                                                                                                         
+		));
+	}
+
+	if( $type == 'pin') {
+		$queryParams = '?' . urlencode('user_id_type') . '=' . urlencode('all_unique') . '&' . urlencode('view') . '=' . urlencode('full') . '&' . urlencode('apikey') . '=' . urlencode($alma_api_key) . '&' . urlencode('format') . '=' . urlencode('json');
+		curl_setopt($ch, CURLOPT_HEADER, FALSE);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+	}
+
+	curl_setopt($ch, CURLOPT_URL, $url . $queryParams);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	$response = curl_exec($ch);
+	$http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	curl_close($ch);
+
+	if(curl_errno($ch)) {
+		$json = '"errorList":{"error":[{"errorCode":"401861","errorMessage":"Error connecting to loginserver.","trackingId":"null"}]}';
+		$data = array(
+			"errorList"  => array('error' => array("errorCode" => "401861", 'errorMessage' => 'Error connecting to loginserver')),
+			"message" => "Error connecting to loginserver"
+		);
+		$json_data = json_encode($data);
+		$error = $json;
+		return $error;
+	}
+
+	if ($http_status === 400) {
+		$data = array(
+			"errorList"  => array('error' => array("errorCode" => "400", 'errorMessage' => 'Bad Request')),
+			"message" => "Error wrong password"
+		);
+		return json_encode($data);
+	}
+	return "success";
+}
+
+/********** 
+
 Funktion som hämtar användarinformation från Alma utifrån angivet ID 
 
 **********/
@@ -205,7 +261,7 @@ function authValidateUser($user, $pass, $kthcas)
 			$message = $jsonalmaresponse->message;
 		} else {
 			$source = json_decode($currentuser,TRUE);
-			//kolla om angivet userid finns(Primary_id eller BARCODE eller UNIV_ID t ex "u1f7tfgo")
+			//kolla om angivet userid finns(Primary_id eller BARCODE eller UNIV_ID t ex "u1f7tfgo", kolla även personnummer)
 			$primary_id = $source['primary_id'];
 			$full_name = $source['full_name'];
 			$user_group = $source['user_group']['desc'];
@@ -213,7 +269,7 @@ function authValidateUser($user, $pass, $kthcas)
 				$valid_id = TRUE;
 			} else {
 				foreach ($source['user_identifier'] as $value) {
-					if($value['id_type']['value'] == "BARCODE" || $value['id_type']['value'] == "UNIV_ID") {
+					if($value['id_type']['value'] == "BARCODE" || $value['id_type']['value'] == "UNIV_ID" || $value['id_type']['value'] == "PERSONAL_NUMBER" || $value['id_type']['value'] == "OTHER_ID_3") {
 						if ($value['value'] == $almauser) {
 							$valid_id = TRUE;
 						}
@@ -302,8 +358,9 @@ function authValidateUser($user, $pass, $kthcas)
 			}
 		}
 
-		//Om login sker via Alma PrimaryID + PIN
+		//Om login sker via Alma identifier
 		if ($valid_id == TRUE && $auth["method"] == "alma") {
+			if($auth["logintype"] == "pin") {
 				if($source['pin_number'] == $pass) {
 					$result = 1; //SUCCESS!!
 					$message = "Success";
@@ -312,9 +369,19 @@ function authValidateUser($user, $pass, $kthcas)
 					$result = 0; //ERROR!!
 					$message = "Error, Wrong username/pin " . $ldapjson["error"]["lde_message"];
 				}
-			
+			} else {
+				$almaauth = authenticate_almauser($almauser, $pass);
+				if($almaauth == "success") {
+					$result = 1; //SUCCESS!!
+					$message = "Success";
+				} else {
+					$result = 0; //ERROR!!
+					$message = "Error, Wrong username/password " . $ldapjson["error"]["lde_message"];
+				}
+			}
 		}
 	}
+
 	$data = array(
 		"result"  => $result,
 		"message" => $message,
