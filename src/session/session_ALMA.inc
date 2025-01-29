@@ -68,8 +68,10 @@ if (FALSE === session_start()) {
 	trigger_error("MRBS: could not start session", E_USER_WARNING);
 	fatal_error(TRUE, "MRBS: server configuration error.", FALSE);
 }
-//191003 
-if ($is_kiosk) {
+//191003
+$user = getUserName();
+$is_admin = (authGetUserLevel($user) >= 2);
+if ($is_kiosk && !$is_admin) {
   if (strpos($page, 'day.php') !== FALSE || strpos($page, 'week.php') !== FALSE) {
     // Unset the session variables
     if (isset($_SESSION))

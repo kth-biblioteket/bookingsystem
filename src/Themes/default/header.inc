@@ -144,7 +144,7 @@ function print_theme_header_noauth($day, $month, $year, $area, $room) {
 					</ul>
 				</div>
 			</div><!-- slut container__top-->
-			<?php if (!$is_support_kiosk) { ?>
+			<?php if (!$is_support_ || $is_admin) { ?>
 				<div class="menuwrapper">
 					<div class="menu">
 						
@@ -355,7 +355,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 					</ul>
 				</div>
 			</div><!-- slut container__top-->
-			<?php if (!$is_support_kiosk) { ?>
+			<?php if (!$is_support_kiosk || $is_admin) { ?>
 				<div class="menuwrapper">
 					<div class="menu">
 						<?php if ($switchlanguage != "en") { ?>
@@ -363,7 +363,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 						<?php } else {?>
 							<a href="<?php echo $redirect_str . "?area=$area"?>"> <?php echo get_vocab("homelink")?></a>
 						<?php }?>
-						<?php if (!$is_kiosk) {?>
+						<?php if (!$is_kiosk || $is_admin) {?>
 							<?php if ($switchlanguage != "en") { ?>
 								<a class="hide-small" href="search.php?datatable=1&area=<?php echo $area?>"><?php echo get_vocab("mybookings")?></a>
 								<!--a class="nav-link null true" href="<?php echo $kth_www?>/utbildning"> Utbildning</a-->
@@ -429,7 +429,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 						<?php
 						// For session protocols that define their own logon box...
 						if (function_exists('PrintLogonBox')) {
-							if ($is_kiosk) {
+							if ($is_kiosk && !is_admin) {
 								echo "<div id=\"sessionlabel\" style=\"display:none;float:right;width: 100%;text-align: right;\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
 							} else {
 								echo "<div style=\"float:none;width: 100%;text-align: right;\" id=\"logon_box\">\n";

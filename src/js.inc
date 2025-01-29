@@ -1,6 +1,6 @@
 <?php 
 //KTH
-global $custom_js_url;
+global $custom_js_url, $disable_kiosk_timer;
 require_once "functions.inc";
 
 //Lägg till full sökväg till script för att de ska fungera via polopoly reverse proxy
@@ -275,7 +275,7 @@ $(window).on('load', function() {
 });
 
 <?php
-if ($user!="" && $is_kiosk) {
+if ($user!="" && $is_kiosk && !$is_admin && !$disable_kiosk_timer) {
 ?>
 	$( document ).ready(function() {
 		var date = new Date(new Date().valueOf() + 30000);
@@ -287,7 +287,7 @@ if ($user!="" && $is_kiosk) {
 		});
 		$('#sessionlabel').show();
 	});
-<?php } ?>
+<?php }?>
 //]]>
 </script>
 
