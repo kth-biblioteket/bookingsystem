@@ -144,7 +144,7 @@ function print_theme_header_noauth($day, $month, $year, $area, $room) {
 					</ul>
 				</div>
 			</div><!-- slut container__top-->
-			<?php if (!$is_support_ || $is_admin) { ?>
+			<?php if (!$is_support_kiosk || $is_admin) { ?>
 				<div class="menuwrapper">
 					<div class="menu">
 						
