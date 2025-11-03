@@ -18,6 +18,9 @@ libxml2-dev
 locales en_GB.UTF-8
 docker-php-ext-install mysqli pdo pdo_mysql php7.3-soap
 
+#### Mail
+Mailadress för användarna är deras username. Så om ett username endast är t ex "kalle" så kommer det inte skickas något mail.
+
 ##### Installation
 
 1.  Skapa folder på server med namnet på repot: "/local/docker/bookingsystem"
@@ -47,6 +50,8 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_grouprooms.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_grouprooms.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_grouprooms.js:/var/www/html/js/custom.js
+      - /local/docker/bookingsystem/memory-limit.ini:/usr/local/etc/php/conf.d/memory-limit.ini
     networks:
       - "apps-net"
 
@@ -71,6 +76,8 @@ services:
     volumes:
       - /local/docker/bookingsystem/config_grouprooms.inc.php:/var/www/html/config.inc.php
       - /local/docker/bookingsystem/custom_grouprooms.css:/var/www/html/css/custom.css
+      - /local/docker/bookingsystem/custom_grouprooms.js:/var/www/html/js/custom.js
+      - /local/docker/bookingsystem/memory-limit.ini:/usr/local/etc/php/conf.d/memory-limit.ini
     networks:
       - "apps-net"
 
