@@ -463,6 +463,7 @@ $extended_booking_form = get_form_var('extended_booking_form', 'string');
 $area_type = get_form_var('area_type', 'string');
 $area_map = get_form_var('area_map', 'string');
 $area_map_image = get_form_var('area_map_image', 'string');
+$area_map_html = get_form_var('area_map_html', 'string');
 //191003
 $area_sort_key = get_form_var('area_sort_key', 'int');
 $extra_info = get_form_var('extra_info', 'string');
@@ -863,6 +864,7 @@ if ($phase == 2)
     $assign_array[] = "extended_booking_form='" . sql_escape($extended_booking_form) . "'";
     $assign_array[] = "area_type='" . sql_escape($area_type) . "'";
     $assign_array[] = "area_map_image='" . sql_escape($area_map_image) . "'";
+    $assign_array[] = "area_map_html='" . sql_escape($area_map_html) . "'";
     //191003
     $assign_array[] = "area_sort_key='" . sql_escape($area_sort_key) . "'";
     $assign_array[] = "extra_info='" . sql_escape($extra_info) . "'";
@@ -1520,7 +1522,16 @@ if (isset($change_area) &&!empty($area))
                   'value'       => $row['area_map_image']);
   generate_input($params);
   echo "</div>\n";
-  
+  //maphtml
+  echo "<div>\n";
+  $params = array('label'       => get_vocab("area_map_html") . ":",
+                  'label_title' => get_vocab("area_map_html"),
+                  'name'        => 'area_map_html',
+                  'value'       => $row['area_map_html'],
+                  'attributes'  => array('rows="4"', 'cols="40"'));
+  generate_textarea($params);
+  echo "</div>\n";
+
   echo "</fieldset>\n";
 
   // If we're using JavaScript, don't display the time settings section

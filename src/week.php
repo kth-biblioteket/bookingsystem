@@ -104,7 +104,7 @@ $td = date("d",$i);
 
 get_area_settings($area);
 echo "<div style=\"padding-bottom:10px;overflow:auto\">";
-print_modal($area,$lang,$area_map,$area_map_image);
+print_modal($area,$lang,$area_map,$area_map_image,$area_map_html);
 //200309 visa länk till nästa lediga bokning om bokningar är stängda som default
 //hämta aktuell veckas sista slot och kolla om det finns lediga tider efter den
 $currentviewdate = mktime(0, 0, 0, $month, $day, $year);

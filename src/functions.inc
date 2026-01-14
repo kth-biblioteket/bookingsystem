@@ -167,7 +167,7 @@ function print_simple_header()
 }
 
 // 191003
-function print_modal($area,$lang,$area_map,$area_map_image)
+function print_modal($area,$lang,$area_map,$area_map_image,$area_map_html)
 {
 
   //KTH Modal box
@@ -194,7 +194,7 @@ function print_modal($area,$lang,$area_map,$area_map_image)
                   <button class=\"close\" type=\"button\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button>
                 </div>
                 <div class=\"modal-body\">
-                  <div id=\"modalhtml\"><img src=\"images/$area_map_image\"></img></div>
+                  <div id=\"modalhtml\">$area_map_html</div>
                 </div>
                 <div class=\"modal-footer\">
                   <button class=\"btn btn-primary\" type=\"button\">OK</button>
@@ -2147,7 +2147,7 @@ function get_area_settings($area)
   global $interval_types;
 
   //191003
-  global $area_map, $area_map_image;
+  global $area_map, $area_map_image, $area_map_html;
   
   if (empty($area))
   {
@@ -2183,7 +2183,7 @@ function get_area_settings($area)
                    'max_hours_per_year_enabled', 'max_hours_per_year',
 				   'max_hours_per_future_enabled', 'max_hours_per_future',
                    'approval_enabled', 'reminders_enabled, enable_periods',
-                   'confirmation_enabled', 'confirmed_default','area_map','area_map_image');
+                   'confirmation_enabled', 'confirmed_default','area_map','area_map_image', 'area_map_html');
                    
   $sql = "SELECT " . implode(',', $columns) . "
             FROM $tbl_area 

@@ -542,6 +542,8 @@ $vocab["extended_booking_form"]   = "Extended bookingform(CAS)";
 $vocab["area_type"]               = "Type"; 
 $vocab["area_map"]                = "Map"; 
 $vocab["area_map_image"]          = "Map image";
+$vocab["area_map_html"]           = "Map HTML";
+
 
 //KTH
 $vocab["settings"]                = "Settings";

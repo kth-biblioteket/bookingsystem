@@ -536,6 +536,7 @@ $vocab["extended_booking_form"]   = "Utökat bokningsformulär(CAS)";
 $vocab["area_type"]               = "Typ"; 
 $vocab["area_map"]                = "Karta";
 $vocab["area_map_image"]          = "Kartbild";
+$vocab["area_map_html"]           = "Kart HTML";
 
 //KTH
 $vocab["settings"]        		  = "Inställningar";

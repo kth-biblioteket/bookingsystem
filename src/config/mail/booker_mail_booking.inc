@@ -67,7 +67,8 @@ $linktobooking = '<table border="0" cellspacing="0" cellpadding="0">
 </table>';
 $html_body['content'] = str_replace("@@linktobooking", $linktobooking, $html_body['content']);
 if($data['area_map']) {
-  $html_body['content'] = str_replace("@@map",'<br><br><img src="' . $url_base . '/' . 'images' .'/' . $data['area_map_image'] .'"></img>', $html_body['content']);
+  //$html_body['content'] = str_replace("@@map",'<br><br><img src="' . $url_base . '/' . 'images' .'/' . $data['area_map_image'] .'"></img>', $html_body['content']);
+  $html_body['content'] = str_replace("@@map_html", $data['area_map_html'], $html_body['content']);
 }
 $html_body['content'] .= '
 </body>

@@ -765,7 +765,7 @@ if (!empty($result['id']) && $result['valid_booking'])
       // area map om kartbild ska bifogas
       // confirmed_default för att veta om bokningar är confirmed som default på en area
       $sql = "SELECT R.room_name, R.room_name_english, A.area_name, A.area_name_en, 
-              A.area_type, R.room_number, A.reminder_email_enabled, A.area_map, A.area_map_image, 
+              A.area_type, R.room_number, A.reminder_email_enabled, A.area_map, A.area_map_image, A.area_map_html,
               A.confirmed_default, R.mailtext, R.mailtext_en
               FROM $tbl_room R, $tbl_area A
               WHERE R.id=${booking['room_id']} AND R.area_id = A.id
@@ -780,6 +780,7 @@ if (!empty($result['id']) && $result['valid_booking'])
       $booking['reminder_email_enabled'] = $row['reminder_email_enabled'];
       $booking['area_map'] = $row['area_map'];
       $booking['area_map_image'] = $row['area_map_image'];
+      $booking['area_map_html'] = $row['area_map_html'];
       $booking['confirmed_default'] = $row['confirmed_default'];
       if ($lang == "sv") {
         $booking['room_name'] = $row['room_name'];

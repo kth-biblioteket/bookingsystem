@@ -287,7 +287,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_area` (
   `extended_booking_form` int(11) NOT NULL DEFAULT '0',
   `reminder_email_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `area_map` tinyint(1) NOT NULL DEFAULT '0',
-  `area_map_image` varchar(50) DEFAULT NULL
+  `area_map_image` varchar(50) DEFAULT NULL,
+  `area_map_html` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
