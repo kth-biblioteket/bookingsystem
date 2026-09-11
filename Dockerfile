@@ -8,7 +8,7 @@ RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 RUN echo "deb http://archive.debian.org/debian/ buster main" > /etc/apt/sources.list && \
     echo "deb http://archive.debian.org/debian/ buster-updates main" >> /etc/apt/sources.list && \
     apt-get -o Acquire::Check-Valid-Until=false update && \
-    apt-get -y install libxml2-dev
+    apt-get -y install libxml2=2.9.4+dfsg1-7+deb10u4 libxml2-dev=2.9.4+dfsg1-7+deb10u4
 
 RUN sed -i '/en_GB.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen
