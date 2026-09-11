@@ -8,10 +8,7 @@ RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 RUN echo "deb http://archive.debian.org/debian/ buster main" > /etc/apt/sources.list && \
     echo "deb http://archive.debian.org/debian/ buster-updates main" >> /etc/apt/sources.list && \
     apt-get -o Acquire::Check-Valid-Until=false update && \
-    apt-get -y --allow-downgrades install libxml2=2.9.4+dfsg1-7+deb10u4 libxml2-dev=2.9.4+dfsg1-7+deb10u4 locales-all
-
-RUN localedef -i en_GB -f UTF-8 en_GB.UTF-8 && \
-    localedef -i sv_SE -f UTF-8 sv_SE.UTF-8
+    apt-get -y --allow-downgrades install libxml2=2.9.4+dfsg1-7+deb10u4 libxml2-dev=2.9.4+dfsg1-7+deb10u4
 
 ENV LANG=en_GB.UTF-8
 ENV LANGUAGE=en_GB:en
