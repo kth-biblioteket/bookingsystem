@@ -4,10 +4,8 @@ RUN a2enmod rewrite
 
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
-RUN sed -i \
-    -e 's|http://deb.debian.org/debian |http://archive.debian.org/debian |g' \
-    -e 's|http://security.debian.org/debian-security|http://archive.debian.org/debian-security|g' \
-    /etc/apt/sources.list \
+RUN sed -i 's|http://deb.debian.org/debian |http://archive.debian.org/debian |g' /etc/apt/sources.list \
+    && sed -i '/security.debian.org/d' /etc/apt/sources.list \
     && sed -i '/bullseye-updates/d' /etc/apt/sources.list \
     && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
 
