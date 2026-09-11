@@ -6,8 +6,9 @@ RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
 # Peka om till Debian Archive för att klara EOL för PHP 7.3 samt installera paket
 RUN echo "deb http://archive.debian.org/debian/ buster main" > /etc/apt/sources.list && \
+    echo "deb http://archive.debian.org/debian/ buster-updates main" >> /etc/apt/sources.list && \
     apt-get -o Acquire::Check-Valid-Until=false update && \
-    apt-get -y install locales libxml2-dev
+    apt-get -y install libxml2-dev
 
 RUN sed -i '/en_GB.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen
