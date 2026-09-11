@@ -5,8 +5,8 @@ RUN a2enmod rewrite
 
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
-RUN apt-get update
-RUN apt-get -y install locales libxml2-dev
+RUN apt-get -o Acquire::Check-Valid-Until=false update && \
+    apt-get -y install locales libxml2-dev
 RUN sed -i '/en_GB.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen
 RUN sed -i '/sv_SE.UTF-8/s/^# //g' /etc/locale.gen && \
