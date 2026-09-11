@@ -5,7 +5,10 @@ RUN a2enmod rewrite
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
 # Peka om till Debian Archive för att klara EOL för PHP 7.3 samt installera paket
-RUN apt-get update && apt-get -y install wget binutils && \
+RUN echo "deb http://archive.debian.org/debian/ buster main" > /etc/apt/sources.list && \
+    echo "deb http://archive.debian.org/debian/ buster-updates main" >> /etc/apt/sources.list && \
+    apt-get -o Acquire::Check-Valid-Until=false update && \
+    apt-get -y install wget binutils && \
     wget http://archive.debian.org/debian/pool/main/g/glibc/locales_2.28-10+deb10u1_all.deb && \
     dpkg-deb -x locales_2.28-10+deb10u1_all.deb / && \
     rm locales_2.28-10+deb10u1_all.deb && \
