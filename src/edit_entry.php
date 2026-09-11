@@ -1006,7 +1006,7 @@ function create_field_entry_custom_field($field, $key, $is_admin, $user, $entry_
           //dummy för att ha ett "select an option"
           $params['options']['none'] = $vocab["select_an_option"];
           //Att välja om inga progam passar
-          $params['options']['other'] = $vocab["Other"];
+          $params['options']['other'] = "Other";
           //Loop all programs
           foreach($kth_programs->programmes as $key => $value)
           {
