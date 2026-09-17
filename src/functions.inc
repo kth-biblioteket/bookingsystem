@@ -209,16 +209,7 @@ function print_modal($area,$lang,$area_map,$area_map_image,$area_map_html)
   echo  "<div style=\"\">\n";
   echo    "<h2 id=\"ruleslink\" class=\"expandable-header\">". get_vocab('bookingrules') . "<span class=\"expandable\"></span></h2>\n";
   if ($area_map) {
-    $hide_map = false;
-    global $roomids_without_map; // Bra om den ligger i global scope från config
-    if (isset($roomids_without_map) && is_array($roomids_without_map)) {
-      if (in_array($data['room_id'], $roomids_without_map)) {
-        $hide_map = true;
-      }
-    }
-    if (!$hide_map) {
-      echo    "<h2 id=\"maplink\" class=\"expandable-header\">". get_vocab('map') . "<span class=\"expandable\"></span></h2>\n";
-    }
+    echo    "<h2 id=\"maplink\" class=\"expandable-header\">". get_vocab('map') . "<span class=\"expandable\"></span></h2>\n";
   }
   echo  "</div>\n";
 }

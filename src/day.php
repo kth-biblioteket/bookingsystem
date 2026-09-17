@@ -110,6 +110,17 @@ $td = date("d",$i);
 //191003
 get_area_settings($area);
 echo "<div style=\"padding-bottom:10px;overflow:auto\">";
+if ($area_map) {
+    $hide_map = false;
+    global $roomids_without_map;
+    if (isset($roomids_without_map) && is_array($roomids_without_map)) {
+      if (in_array($data['room_id'], $roomids_without_map)) {
+        $area_map = true;
+      } else {
+        $area_map = false;
+      }
+    }
+}
 print_modal($area,$lang,$area_map,$area_map_image,$area_map_html);
 //200309 visa länk till nästa lediga bokning om bokningar är stängda som default
 //hämta aktuell veckas sista slot och kolla om det finns lediga tider efter den
