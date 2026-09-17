@@ -66,9 +66,25 @@ $linktobooking = '<table border="0" cellspacing="0" cellpadding="0">
   </tbody>
 </table>';
 $html_body['content'] = str_replace("@@linktobooking", $linktobooking, $html_body['content']);
-if($data['area_map']) {
-  //$html_body['content'] = str_replace("@@map",'<br><br><img src="' . $url_base . '/' . 'images' .'/' . $data['area_map_image'] .'"></img>', $html_body['content']);
-  $html_body['content'] = str_replace("@@map_html", $data['area_map_html'], $html_body['content']);
+if ($data['area_map']) {
+  // 1. Anta att kartan ska visas som standard
+  $hide_map = false;
+
+  // 2. Kolla om variabeln finns i config och om aktuellt rums-ID finns med i den
+  global $roomids_without_map; // Bra om den ligger i global scope från config
+  if (isset($roomids_without_map) && is_array($roomids_without_map)) {
+    if (in_array($data['room_id'], $roomids_without_map)) {
+      $hide_map = true;
+    }
+  }
+
+  // 3. Byt ut eller rensa bort platshållaren baserat på kontrollen
+  if (!$hide_map) {
+    //$html_body['content'] = str_replace("@@map",'<br><br><img src="' . $url_base . '/' . 'images' .'/' . $data['area_map_image'] .'"></img>', $html_body['content']);
+    $html_body['content'] = str_replace("@@map_html", $data['area_map_html'], $html_body['content']);
+  } else {
+    $html_body['content'] = str_replace("@@map_html", "", $html_body['content']);
+  }
 }
 $html_body['content'] .= '
 </body>
