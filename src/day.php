@@ -115,9 +115,9 @@ if ($area_map) {
     global $roomids_without_map;
     if (isset($roomids_without_map) && is_array($roomids_without_map)) {
       if (in_array($room, $roomids_without_map)) {
-        $area_map = true;
-      } else {
         $area_map = false;
+      } else {
+        $area_map = true;
       }
     }
 }
