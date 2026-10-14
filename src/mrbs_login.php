@@ -44,7 +44,6 @@ if (!empty($_GET["page"])) {
 	}
 }
 
-$returl = str_replace('&','ampersand',$returl);
 //191003
 //Egna sessionnames per app från config.inc
 if(isset($session_name)) {
@@ -53,6 +52,32 @@ if(isset($session_name)) {
 }
 
 session_start();
+
+// Parametrarna skickas inte i redirect_uri (ADFS kräver exakt matchning mot den registrerade URI:n).
+// De sparas i sessionen vid första anropet och läses därifrån när ADFS skickar tillbaka användaren.
+if (!isset($_GET['code'])) {
+	// endast lokal sökväg, annars open redirect
+	if (!preg_match('#^/[A-Za-z0-9_\-/]*$#', $returl)) {
+		$returl = "/";
+	}
+	if (!in_array($page, array("day", "week", "month"), true)) {
+		$page = "day";
+	}
+	$_SESSION['login_params'] = array(
+		'formlanguage' => $formlanguage,
+		'returl'       => $returl,
+		'area'         => (int)$area,
+		'room'         => (int)$room,
+		'page'         => $page,
+	);
+}
+$login_params = isset($_SESSION['login_params']) ? $_SESSION['login_params'] : array(
+	'formlanguage' => 'en',
+	'returl'       => '/',
+	'area'         => 1,
+	'room'         => 1,
+	'page'         => 'day',
+);
 
 //210519 OpenID Connect framework(myits)
 require_once($_SERVER['DOCUMENT_ROOT'] .  '/myits/vendor/autoload.php');
@@ -73,7 +98,7 @@ try {
 	$oidc->setVerifyHost(false);
 	$oidc->setVerifyPeer(false);
 
-	$oidc->setRedirectURL(html_entity_decode("https://" . $_SERVER['HTTP_HOST'] . "/" . $app_name . "/mrbs_login.php?sessionname=" . $sessionname . "&formlanguage=" . $formlanguage . "&returl=" . $returl . "&area=" . $area . "&room=" . $room . "&page=" . $page)); // must be the same as you registered
+	$oidc->setRedirectURL("https://" . $_SERVER['HTTP_HOST'] . "/" . $app_name . "/mrbs_login.php"); // must be the same as you registered (utan parametrar)
 
 	//Skickar vidare till login på KTH om användaren inte redan är inloggad
 	$oidc->authenticate();
@@ -87,8 +112,7 @@ try {
 	//finns ett kthid så startas applikationen
 	if(isset($_SESSION['kth_id']) && $_SESSION['kth_id'] != "") {
 		$userid = $_SESSION['kth_id']  ;
-		$returl = str_replace('ampersand','&',$returl);
-		header("location: " . $returl . $page . ".php?area=" . $area . "&room=" . $room);
+		header("location: " . $login_params['returl'] . $login_params['page'] . ".php?area=" . $login_params['area'] . "&room=" . $login_params['room']);
 	}
   
 } catch (OpenIDConnectClientException $e) {
