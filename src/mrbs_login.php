@@ -27,6 +27,9 @@ if (!empty($_GET["room"])) {
 }
 if (!empty($_GET["page"])) {
 	$page = $_GET["page"];
+} elseif (isset($_GET["code"])) {
+	// Retur från ADFS: parametrarna läses från sessionen, ingen databas behövs här
+	$page = "day";
 } else {
 	$default_view = get_default_view($area); //KTH
 	switch ($default_view) {
