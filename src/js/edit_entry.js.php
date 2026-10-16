@@ -595,7 +595,7 @@ function checkConflicts(optional)
           {
             delete params[i];
           }
-        });
+      });
       
       checkConflicts.nOutstanding++; 
       $.post('edit_entry_handler.php', params, function(result) {
@@ -606,16 +606,16 @@ function checkConflicts(optional)
             var scheduleDetails = $('#schedule_details');
             var policyDetails = $('#policy_details');
             //KTH checkmark 2714 blir rött på mobiler så ändrat till 2713
-			var checkMark = "\u2713";
+			      var checkMark = "\u2713";
             var cross = "\u2718";
             var titleText, detailsHTML;
             if (result.conflicts.length === 0)
             {
-              conflictDiv.text(checkMark).attr('class', 'good');
-              titleText = '<?php echo escape_js(mrbs_entity_decode(get_vocab("no_conflicts"))) ?>';
-              detailsHTML = titleText;
-			  //KTH
-			  conflictDiv.text(checkMark + " " + titleText).attr('class', 'good');
+              //conflictDiv.text(checkMark).attr('class', 'good');
+              //titleText = '<?php echo escape_js(mrbs_entity_decode(get_vocab("no_conflicts"))) ?>';
+              //detailsHTML = titleText;
+			        //KTH
+			        //conflictDiv.text(checkMark + " " + titleText).attr('class', 'good');
             }
             else
             {
@@ -626,39 +626,39 @@ function checkConflicts(optional)
               var conflictsList = getErrorList(result.conflicts);
               detailsHTML += conflictsList.html;
               titleText += conflictsList.text;
-			  //KTH
-			  conflictDiv.text(cross + " " + titleText).attr('class', 'bad');
-			  //conflictDiv.html(cross + " " + detailsHTML).attr('class', 'bad');
+			        //KTH
+			        conflictDiv.text(cross + " " + titleText).attr('class', 'bad');
+			        //conflictDiv.html(cross + " " + detailsHTML).attr('class', 'bad');
             }
             conflictDiv.attr('title', titleText);
             scheduleDetails.html(detailsHTML);
             var policyDiv = $('#policy_check');
             if (result.rules_broken.length === 0)
             {
-              policyDiv.text(checkMark).attr('class', 'good');
-              titleText = '<?php echo escape_js(mrbs_entity_decode(get_vocab("no_rules_broken"))) ?>';
-              detailsHTML = titleText;
-			  //KTH
-			  policyDiv.text(checkMark + " " + titleText).attr('class', 'good');
+              //policyDiv.text(checkMark).attr('class', 'good');
+              //titleText = '<?php echo escape_js(mrbs_entity_decode(get_vocab("no_rules_broken"))) ?>';
+              //detailsHTML = titleText;
+			        //KTH
+			        //policyDiv.text(checkMark + " " + titleText).attr('class', 'good');
             }
             else
             {
               policyDiv.text(cross).attr('class', 'bad');
               //KTH
-			  detailsHTML = "";
+			        detailsHTML = "";
               titleText = '<?php echo escape_js(mrbs_entity_decode(get_vocab("rules_broken"))) ?>' + ":  \n\n";
               //KTH
-			  detailsHTML += titleText + "";
+			        detailsHTML += titleText + "";
               var rulesList = getErrorList(result.rules_broken);
               detailsHTML += rulesList.html;
               titleText += rulesList.text;
-			  //KTH
-			  //policyDiv.text(cross + " " + titleText).attr('class', 'bad');
-			  policyDiv.html(cross + " " + detailsHTML).attr('class', 'bad');
+			        //KTH
+			        //policyDiv.text(cross + " " + titleText).attr('class', 'bad');
+			        policyDiv.html(cross + " " + detailsHTML).attr('class', 'bad');
             }
             policyDiv.attr('title', titleText);
             policyDetails.html(detailsHTML);
-			console.log(detailsHTML);
+			      //console.log(detailsHTML);
           }  <?php // if (result) ?>
         }, 'json');
     }, timeout);  <?php // setTimeout()
