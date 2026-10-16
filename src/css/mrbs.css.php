@@ -1118,6 +1118,11 @@ div.bad {color: #9D102D}
   width: 50% !important
 }
 
+/* KTH confirm */
+#div_confirmation_status_kth {
+   padding-bottom: 20px;
+}
+
 /* ------------ EDIT_ENTRY_HANDLER.PHP ------------------*/
 .edit_entry_handler div#submit_buttons {float: left}
 .edit_entry_handler #submit_buttons form {float: left; margin: 1em 2em 1em 0}
