@@ -1834,7 +1834,10 @@ foreach ($edit_entry_field_order as $key)
 
   case 'description':
     //KTH
-	  create_field_entry_description();
+    if($is_admin) {
+      create_field_entry_description();
+    }
+	  
     break;
 
   case 'start_date':
