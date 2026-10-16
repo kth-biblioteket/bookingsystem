@@ -308,12 +308,7 @@ function create_field_entry_description($disabled=FALSE)
 {
   global $description, $select_options, $datalist_options, $is_mandatory_field, $maxlength;
   
-  if($is_admin) {
-    echo "<div id=\"div_description\">\n";
-  } else {
-    echo "<div id=\"div_description\" style=\"visibility:hidden; height: 0px;\">\n";
-  }
-  
+  echo "<div id=\"div_description\">\n";
   
   $params = array('label'       => get_vocab("fulldescription"),
                   'name'        => 'description',
@@ -1834,10 +1829,7 @@ foreach ($edit_entry_field_order as $key)
 
   case 'description':
     //KTH
-    if($is_admin) {
-      create_field_entry_description();
-    }
-	  
+	  create_field_entry_description();
     break;
 
   case 'start_date':
