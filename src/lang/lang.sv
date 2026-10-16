@@ -201,7 +201,7 @@ $vocab["private"]            = "Privat";
 $vocab["unavailable"]        = "ej tillgänglig";
 $vocab["is_mandatory_field"] = "är ett obligatoriskt fält, vänligen ange ett värde";
 $vocab["missing_mandatory_field"] = "Du har inte angett ett värde för det obligatoriska fältet";
-$vocab["confirmed"]          = "Bekraftad";
+$vocab["confirmed"]          = "Bekräftad";
 
 //KTH
 $vocab["to_be_confirmed"]    = "<strong>Bekräfta din bokning genom att spara!</strong>";
