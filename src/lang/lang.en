@@ -251,9 +251,9 @@ $vocab["no"]                  = "No";
 // Used in edit_entry_handler.php
 $vocab["error"]              = "Error";
 $vocab["sched_conflict"]     = "Scheduling Conflict";
-$vocab["conflict"]           = "The new booking will conflict with the following entries";
+$vocab["conflict"]           = "Booking cannot be completed, the selected booking period overlaps with another booking:";
 $vocab["no_conflicts"]       = "No scheduling conflicts";
-$vocab["rules_broken"]       = "The new booking will conflict with the following policies";
+$vocab["rules_broken"]       = "Booking limit reached";
 $vocab["no_rules_broken"]    = "No policy conflicts";
 $vocab["schedule"]           = "Schedule";
 $vocab["policy"]             = "Policy";
@@ -304,22 +304,42 @@ $vocab["earliest_booking_date"]   = "The earliest booking date is";
 $vocab["latest_booking_date"]     = "The latest booking date is";
 $vocab["max_booking_duration"]    = "The maximum duration of a booking is";
 //KTH Hours
-$vocab["max_hours_per_day_global"]      = "The maximum number of hours per day per user across the whole system is";
-$vocab["max_hours_per_day_area"]        = "The maximum number of hours per day per user across this area system is";
-$vocab["max_hours_per_week_global"]      = "The maximum number of hours per week per user across the whole system is";
-$vocab["max_hours_per_week_area"]        = "The maximum number of hours per week per user across this area system is";
-$vocab["max_hours_per_future_global"]   = "The maximum number of outstanding hours per user across the whole system is";
 
-$vocab["max_per_day_global"]      = "The maximum number of bookings per day per user across the whole system is";
-$vocab["max_per_week_global"]     = "The maximum number of bookings per week per user across the whole system is";
-$vocab["max_per_month_global"]    = "The maximum number of bookings per month per user across the whole system is";
-$vocab["max_per_year_global"]     = "The maximum number of bookings per year per user across the whole system is";
-$vocab["max_per_future_global"]   = "The maximum number of outstanding bookings per user across the whole system is";
-$vocab["max_per_day_area"]        = "The maximum number of bookings per day per user in this area is";
-$vocab["max_per_week_area"]       = "The maximum number of bookings per week per user in this area is";
-$vocab["max_per_month_area"]      = "The maximum number of bookings per month per user in this area is";
-$vocab["max_per_year_area"]       = "The maximum number of bookings per year per user in this area is";
-$vocab["max_per_future_area"]     = "The maximum number of outstanding bookings per user in this area is";
+$vocab["max_hours_per_day_global"]    = "Daily hour limit:";
+$vocab["max_hours_per_day_area"]      = "Daily hour limit:";
+$vocab["max_hours_per_week_global"]   = "Weekly hour limit:";
+$vocab["max_hours_per_week_area"]     = "Weekly hour limit:";
+$vocab["max_hours_per_future_global"] = "Active hour limit:";
+
+//$vocab["max_hours_per_day_global"]      = "The maximum number of hours per day per user across the whole system is";
+//$vocab["max_hours_per_day_area"]        = "The maximum number of hours per day per user across this area system is";
+//$vocab["max_hours_per_week_global"]      = "The maximum number of hours per week per user across the whole system is";
+//$vocab["max_hours_per_week_area"]        = "The maximum number of hours per week per user across this area system is";
+//$vocab["max_hours_per_future_global"]   = "The maximum number of outstanding hours per user across the whole system is";
+
+$vocab["max_per_day_global"]      = "Booking limit per day:";
+$vocab["max_per_week_global"]     = "Booking limit per week:";
+$vocab["max_per_month_global"]    = "Booking limit per month:";
+$vocab["max_per_year_global"]     = "Booking limit per year:";
+$vocab["max_per_future_global"]   = "Active booking limit:";
+
+//$vocab["max_per_day_global"]      = "The maximum number of bookings per day per user across the whole system is";
+//$vocab["max_per_week_global"]     = "The maximum number of bookings per week per user across the whole system is";
+//$vocab["max_per_month_global"]    = "The maximum number of bookings per month per user across the whole system is";
+//$vocab["max_per_year_global"]     = "The maximum number of bookings per year per user across the whole system is";
+//$vocab["max_per_future_global"]   = "The maximum number of outstanding bookings per user across the whole system is";
+
+$vocab["max_per_day_area"]      = "Maximum bookings per day:";
+$vocab["max_per_week_area"]     = "Maximum bookings per week:";
+$vocab["max_per_month_area"]    = "Maximum bookings per month:";
+$vocab["max_per_year_area"]     = "Maximum bookings per year:";
+$vocab["max_per_future_area"]   = "Maximum active bookings:";
+
+//$vocab["max_per_day_area"]        = "The maximum number of bookings per day per user in this area is";
+//$vocab["max_per_week_area"]       = "The maximum number of bookings per week per user in this area is";
+//$vocab["max_per_month_area"]      = "The maximum number of bookings per month per user in this area is";
+//$vocab["max_per_year_area"]       = "The maximum number of bookings per year per user in this area is";
+//$vocab["max_per_future_area"]     = "The maximum number of outstanding bookings per user in this area is";
 $vocab["skip_and_book"]           = "Skip and book";
 $vocab["skip_and_book_note"]      = "Carry on with the booking, skipping past the conflicting entries";
 $vocab["changes_saved"]           = "Changes saved";

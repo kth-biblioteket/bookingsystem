@@ -52,8 +52,8 @@ $vocab["map"]		 		 = "Hitta ditt rum";
 $vocab["colour_key_tentative"]			= "Preliminär bokning";
 //191003
 $vocab["colour_key_bookable"]			= "Ledig";
-$vocab["colour_key_to_be_confirmed"]	= "Bokad - Kvitteras";
-$vocab["colour_key_confirmed"]			= "Kvitterad bokning";
+$vocab["colour_key_to_be_confirmed"]	= "Bokad - Bekräftas";
+$vocab["colour_key_confirmed"]			= "Bekräftad bokning";
 $vocab["colour_key_invalid"]			= "Ej tillgänglig";
 $vocab["colour_key_special"]			= "Event";
 
@@ -67,7 +67,7 @@ $vocab["ppreview"]           = "Förhandsgranska";
 
 //KTH
 $vocab["select_an_option"]			= "Välj ett alternativ";
-$vocab["remembertoconfirm"]  = "Kom ihåg att du måste kvittera den här preliminära bokningen innan du börjar använda rummet! Det kan du endast göra från 15 minuter före till 15 minuter efter starttiden. ";
+$vocab["remembertoconfirm"]  = "Kom ihåg att du måste bekräfta den här preliminära bokningen innan du börjar använda rummet! Det kan du endast göra från 15 minuter före till 15 minuter efter starttiden. ";
 //191003
 $vocab["bookable_entry_text"]			= "Ledig";
 $vocab["bookable_entry_text_not_available"]	= "Ledig - inte tillgänglig för dig";
@@ -165,7 +165,7 @@ $vocab["all_day"]            = "hela dagen";
 $vocab["area"]               = "Område";
 $vocab["type"]               = "Bokningstyp";
 $vocab["save"]               = "Spara";
-$vocab["confirm_save"]       = "Kvittera";
+$vocab["confirm_save"]       = "Bekräfta";
 $vocab["rep_type"]           = "Repetitionstyp";
 $vocab["rep_type_0"]         = "ingen";
 $vocab["rep_type_1"]         = "dagligen";
@@ -201,10 +201,10 @@ $vocab["private"]            = "Privat";
 $vocab["unavailable"]        = "ej tillgänglig";
 $vocab["is_mandatory_field"] = "är ett obligatoriskt fält, vänligen ange ett värde";
 $vocab["missing_mandatory_field"] = "Du har inte angett ett värde för det obligatoriska fältet";
-$vocab["confirmed"]          = "Kvitterad";
+$vocab["confirmed"]          = "Bekräftad";
 
 //KTH
-$vocab["to_be_confirmed"]    = "<strong>Kvittera din bokning genom att spara!</strong>";
+$vocab["to_be_confirmed"]    = "<strong>Bekräfta din bokning genom att spara!</strong>";
 
 $vocab["start_after_end"]    = "Börja dagen efter sista dag";
 $vocab["start_after_end_long"] = "Fel: Startdag är efter utgångsdagen";
@@ -251,9 +251,11 @@ $vocab["no"]                  = "Nej";
 // Used in edit_entry_handler.php
 $vocab["error"]              = "Fel";
 $vocab["sched_conflict"]     = "Bokningskonflikt";
-$vocab["conflict"]           = "Den nya bokningen kolliderar med följande bokning(ar)";
+$vocab["conflict"]           = "Bokningen kan inte genomföras. Tiden överlappar en annan bokning:";
+$vocab["rules_broken"]       = "Bokningsgräns uppnådd";
+//$vocab["conflict"]           = "Den nya bokningen kolliderar med följande bokning(ar)";
 $vocab["no_conflicts"]       = "Inga schemakonflikter";
-$vocab["rules_broken"]       = "Den nya bokningen är i konflikt med följande regel";
+//$vocab["rules_broken"]       = "Den nya bokningen är i konflikt med följande regel";
 $vocab["no_rules_broken"]    = "Inga regelkonflikter";
 $vocab["schedule"]           = "Schema";
 $vocab["policy"]             = "Regel";
@@ -300,22 +302,44 @@ $vocab["max_time_before"]     = "Största intervall mellan nu och starten för e
 $vocab["latest_booking_date"]     = "Senaste bokningsdatum är";
 $vocab["max_booking_duration"]    = "Maximal löptid på en bokning är";
 //KTH Timmar
-$vocab["max_hours_per_day_global"]      = "Maximala antalet timmar per dag per användare över hela systemet är";
-$vocab["max_hours_per_day_area"]        = "Maximala antalet timmar per dag per användare inom detta område är";
-$vocab["max_hours_per_week_global"]      = "Maximala antalet timmar per vecka per användare över hela systemet är";
-$vocab["max_hours_per_week_area"]        = "Maximala antalet timmar per vecka per användare inom detta område är";
-$vocab["max_hours_per_future_global"]   = "Maximala antalet utgivna timmar per användare över hela systemet är";
 
-$vocab["max_per_day_global"]      = "Maximala antalet bokningar per dag per användare över hela systemet är";
-$vocab["max_per_week_global"]     = "Maximala antalet bokningar per vecka per användare över hela systemet är";
-$vocab["max_per_month_global"]    = "Maximala antalet bokningar per månad per användare över hela systemet är";
-$vocab["max_per_year_global"]     = "Maximala antalet bokningar per år per användare över hela systemet är";
-$vocab["max_per_future_global"]   = "Maximala antalet utgivna bokningar per användare över hela systemet är";
-$vocab["max_per_day_area"]        = "Maximala antalet bokningar per dag per användare inom detta område är";
-$vocab["max_per_week_area"]       = "Maximala antalet bokningar per vecka per användare inom detta område är";
-$vocab["max_per_month_area"]      = "Maximala antalet bokningar per månad per användare inom detta område är";
-$vocab["max_per_year_area"]       = "Maximala antalet bokningar per år per användare inom detta område är";
-$vocab["max_per_future_area"]     = "Maximala antalet utgivna bokningar per användare inom detta område är";
+$vocab["max_hours_per_day_global"]    = "Maximalt antal bokade timmar per dag:";
+$vocab["max_hours_per_day_area"]      = "Maximalt antal bokade timmar per dag:";
+$vocab["max_hours_per_week_global"]   = "Maximalt antal bokade timmar per vecka:";
+$vocab["max_hours_per_week_area"]     = "Maximalt antal bokade timmar per vecka:";
+$vocab["max_hours_per_future_global"] = "Maximalt antal aktiva bokade timmar:";
+
+//$vocab["max_hours_per_day_global"]      = "Maximala antalet timmar per dag per användare över hela systemet är";
+//$vocab["max_hours_per_day_area"]        = "Maximala antalet timmar per dag per användare inom detta område är";
+//$vocab["max_hours_per_week_global"]      = "Maximala antalet timmar per vecka per användare över hela systemet är";
+//$vocab["max_hours_per_week_area"]        = "Maximala antalet timmar per vecka per användare inom detta område är";
+//$vocab["max_hours_per_future_global"]   = "Maximala antalet utgivna timmar per användare över hela systemet är";
+
+
+$vocab["max_per_day_global"]      = "Maximalt antal bokningar per dag:";
+$vocab["max_per_week_global"]     = "Maximalt antal bokningar per vecka:";
+$vocab["max_per_month_global"]    = "Maximalt antal bokningar per månad:";
+$vocab["max_per_year_global"]     = "Maximalt antal bokningar per år:";
+$vocab["max_per_future_global"]   = "Maximalt antal aktiva bokningar:";
+
+//$vocab["max_per_day_global"]      = "Maximala antalet bokningar per dag per användare över hela systemet är";
+//$vocab["max_per_week_global"]     = "Maximala antalet bokningar per vecka per användare över hela systemet är";
+//$vocab["max_per_month_global"]    = "Maximala antalet bokningar per månad per användare över hela systemet är";
+//$vocab["max_per_year_global"]     = "Maximala antalet bokningar per år per användare över hela systemet är";
+//$vocab["max_per_future_global"]   = "Maximala antalet utgivna bokningar per användare över hela systemet är";
+
+$vocab["max_per_day_area"]        = "Maximalt antal bokningar per dag:";
+$vocab["max_per_week_area"]       = "Maximalt antal bokningar per vecka:";
+$vocab["max_per_month_area"]      = "Maximalt antal bokningar per månad:";
+$vocab["max_per_year_area"]       = "Maximalt antal bokningar per år:";
+$vocab["max_per_future_area"]     = "Maximalt antal aktiva bokningar:";
+
+//$vocab["max_per_day_area"]        = "Maximala antalet bokningar per dag per användare inom detta område är";
+//$vocab["max_per_week_area"]       = "Maximala antalet bokningar per vecka per användare inom detta område är";
+//$vocab["max_per_month_area"]      = "Maximala antalet bokningar per månad per användare inom detta område är";
+//$vocab["max_per_year_area"]       = "Maximala antalet bokningar per år per användare inom detta område är";
+//$vocab["max_per_future_area"]     = "Maximala antalet utgivna bokningar per användare inom detta område är";
+
 $vocab["skip_and_book"]           = "Hoppa över och boka";
 $vocab["skip_and_book_note"]      = "Fortsätta med bokningen och hoppa över bokningskonflikter";
 $vocab["changes_saved"]           = "Ändringarna är sparade";
