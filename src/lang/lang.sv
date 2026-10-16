@@ -300,22 +300,44 @@ $vocab["max_time_before"]     = "Största intervall mellan nu och starten för e
 $vocab["latest_booking_date"]     = "Senaste bokningsdatum är";
 $vocab["max_booking_duration"]    = "Maximal löptid på en bokning är";
 //KTH Timmar
-$vocab["max_hours_per_day_global"]      = "Maximala antalet timmar per dag per användare över hela systemet är";
-$vocab["max_hours_per_day_area"]        = "Maximala antalet timmar per dag per användare inom detta område är";
-$vocab["max_hours_per_week_global"]      = "Maximala antalet timmar per vecka per användare över hela systemet är";
-$vocab["max_hours_per_week_area"]        = "Maximala antalet timmar per vecka per användare inom detta område är";
-$vocab["max_hours_per_future_global"]   = "Maximala antalet utgivna timmar per användare över hela systemet är";
 
-$vocab["max_per_day_global"]      = "Maximala antalet bokningar per dag per användare över hela systemet är";
-$vocab["max_per_week_global"]     = "Maximala antalet bokningar per vecka per användare över hela systemet är";
-$vocab["max_per_month_global"]    = "Maximala antalet bokningar per månad per användare över hela systemet är";
-$vocab["max_per_year_global"]     = "Maximala antalet bokningar per år per användare över hela systemet är";
-$vocab["max_per_future_global"]   = "Maximala antalet utgivna bokningar per användare över hela systemet är";
-$vocab["max_per_day_area"]        = "Maximala antalet bokningar per dag per användare inom detta område är";
-$vocab["max_per_week_area"]       = "Maximala antalet bokningar per vecka per användare inom detta område är";
-$vocab["max_per_month_area"]      = "Maximala antalet bokningar per månad per användare inom detta område är";
-$vocab["max_per_year_area"]       = "Maximala antalet bokningar per år per användare inom detta område är";
-$vocab["max_per_future_area"]     = "Maximala antalet utgivna bokningar per användare inom detta område är";
+$vocab["max_hours_per_day_global"]    = "Maximalt antal bokade timmar per dag:";
+$vocab["max_hours_per_day_area"]      = "Maximalt antal bokade timmar per dag i området:";
+$vocab["max_hours_per_week_global"]   = "Maximalt antal bokade timmar per vecka:";
+$vocab["max_hours_per_week_area"]     = "Maximalt antal bokade timmar per vecka i området:";
+$vocab["max_hours_per_future_global"] = "Maximalt antal aktiva bokade timmar:";
+
+//$vocab["max_hours_per_day_global"]      = "Maximala antalet timmar per dag per användare över hela systemet är";
+//$vocab["max_hours_per_day_area"]        = "Maximala antalet timmar per dag per användare inom detta område är";
+//$vocab["max_hours_per_week_global"]      = "Maximala antalet timmar per vecka per användare över hela systemet är";
+//$vocab["max_hours_per_week_area"]        = "Maximala antalet timmar per vecka per användare inom detta område är";
+//$vocab["max_hours_per_future_global"]   = "Maximala antalet utgivna timmar per användare över hela systemet är";
+
+
+$vocab["max_per_day_global"]      = "Maximalt antal bokningar per dag:";
+$vocab["max_per_week_global"]     = "Maximalt antal bokningar per vecka:";
+$vocab["max_per_month_global"]    = "Maximalt antal bokningar per månad:";
+$vocab["max_per_year_global"]     = "Maximalt antal bokningar per år:";
+$vocab["max_per_future_global"]   = "Maximalt antal aktiva bokningar:";
+
+//$vocab["max_per_day_global"]      = "Maximala antalet bokningar per dag per användare över hela systemet är";
+//$vocab["max_per_week_global"]     = "Maximala antalet bokningar per vecka per användare över hela systemet är";
+//$vocab["max_per_month_global"]    = "Maximala antalet bokningar per månad per användare över hela systemet är";
+//$vocab["max_per_year_global"]     = "Maximala antalet bokningar per år per användare över hela systemet är";
+//$vocab["max_per_future_global"]   = "Maximala antalet utgivna bokningar per användare över hela systemet är";
+
+$vocab["max_per_day_area"]        = "Maximalt antal bokningar per dag i området:";
+$vocab["max_per_week_area"]       = "Maximalt antal bokningar per vecka i området:";
+$vocab["max_per_month_area"]      = "Maximalt antal bokningar per månad i området:";
+$vocab["max_per_year_area"]       = "Maximalt antal bokningar per år i området:";
+$vocab["max_per_future_area"]     = "Maximalt antal aktiva bokningar i området:";
+
+//$vocab["max_per_day_area"]        = "Maximala antalet bokningar per dag per användare inom detta område är";
+//$vocab["max_per_week_area"]       = "Maximala antalet bokningar per vecka per användare inom detta område är";
+//$vocab["max_per_month_area"]      = "Maximala antalet bokningar per månad per användare inom detta område är";
+//$vocab["max_per_year_area"]       = "Maximala antalet bokningar per år per användare inom detta område är";
+//$vocab["max_per_future_area"]     = "Maximala antalet utgivna bokningar per användare inom detta område är";
+
 $vocab["skip_and_book"]           = "Hoppa över och boka";
 $vocab["skip_and_book_note"]      = "Fortsätta med bokningen och hoppa över bokningskonflikter";
 $vocab["changes_saved"]           = "Ändringarna är sparade";
