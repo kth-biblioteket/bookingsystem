@@ -619,16 +619,17 @@ function checkConflicts(optional)
             }
             else
             {
-              conflictDiv.text(cross + "Test").attr('class', 'bad');
+              //conflictDiv.text(cross + "Test").attr('class', 'bad');
               detailsHTML = "";
               titleText = '<?php echo escape_js(mrbs_entity_decode(get_vocab("conflict"))) ?>' + ":  \n\n";
-              detailsHTML += titleText + "";
+              detailsHTML += '<?php echo escape_js(mrbs_entity_decode(get_vocab("conflict"))) ?><ul><li>';
               var conflictsList = getErrorList(result.conflicts);
-              detailsHTML += conflictsList.html;
+              //detailsHTML += conflictsList.html;
+              detailsHTML += conflictsList.text + "</li></ul>";
               titleText += conflictsList.text;
 			        //KTH
-			        conflictDiv.html(cross + " " + titleText).attr('class', 'bad');
-			        //conflictDiv.html(cross + " " + detailsHTML).attr('class', 'bad');
+			        //conflictDiv.text(cross + " " + titleText).attr('class', 'bad');
+			        conflictDiv.html(cross + " " + detailsHTML).attr('class', 'bad');
             }
             conflictDiv.attr('title', titleText);
             scheduleDetails.html(detailsHTML);
