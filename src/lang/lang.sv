@@ -251,9 +251,11 @@ $vocab["no"]                  = "Nej";
 // Used in edit_entry_handler.php
 $vocab["error"]              = "Fel";
 $vocab["sched_conflict"]     = "Bokningskonflikt";
-$vocab["conflict"]           = "Den nya bokningen kolliderar med följande bokning(ar)";
+$vocab["conflict"]           = "Bokningen kan inte genomföras. Tiden överlappar en annan bokning:";
+$vocab["rules_broken"]       = "Bokningsgräns uppnådd";
+//$vocab["conflict"]           = "Den nya bokningen kolliderar med följande bokning(ar)";
 $vocab["no_conflicts"]       = "Inga schemakonflikter";
-$vocab["rules_broken"]       = "Den nya bokningen är i konflikt med följande regel";
+//$vocab["rules_broken"]       = "Den nya bokningen är i konflikt med följande regel";
 $vocab["no_rules_broken"]    = "Inga regelkonflikter";
 $vocab["schedule"]           = "Schema";
 $vocab["policy"]             = "Regel";
