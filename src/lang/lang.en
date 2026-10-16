@@ -306,9 +306,9 @@ $vocab["max_booking_duration"]    = "The maximum duration of a booking is";
 //KTH Hours
 
 $vocab["max_hours_per_day_global"]    = "Daily hour limit:";
-$vocab["max_hours_per_day_area"]      = "Daily hour limit in this area:";
+$vocab["max_hours_per_day_area"]      = "Daily hour limit:";
 $vocab["max_hours_per_week_global"]   = "Weekly hour limit:";
-$vocab["max_hours_per_week_area"]     = "Weekly hour limit in this area:";
+$vocab["max_hours_per_week_area"]     = "Weekly hour limit:";
 $vocab["max_hours_per_future_global"] = "Active hour limit:";
 
 //$vocab["max_hours_per_day_global"]      = "The maximum number of hours per day per user across the whole system is";

@@ -627,7 +627,7 @@ function checkConflicts(optional)
               detailsHTML += conflictsList.html;
               titleText += conflictsList.text;
 			        //KTH
-			        conflictDiv.text(cross + " " + titleText).attr('class', 'bad');
+			        conflictDiv.html(cross + " " + titleText).attr('class', 'bad');
 			        //conflictDiv.html(cross + " " + detailsHTML).attr('class', 'bad');
             }
             conflictDiv.attr('title', titleText);
