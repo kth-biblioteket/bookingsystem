@@ -251,7 +251,7 @@ $vocab["no"]                  = "No";
 // Used in edit_entry_handler.php
 $vocab["error"]              = "Error";
 $vocab["sched_conflict"]     = "Scheduling Conflict";
-$vocab["conflict"]           = "Booking cannot be completed,the selected booking period overlaps with another booking:";
+$vocab["conflict"]           = "Booking cannot be completed, the selected booking period overlaps with another booking:";
 $vocab["no_conflicts"]       = "No scheduling conflicts";
 $vocab["rules_broken"]       = "Booking limit reached";
 $vocab["no_rules_broken"]    = "No policy conflicts";

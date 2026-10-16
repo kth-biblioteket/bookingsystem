@@ -616,6 +616,7 @@ function checkConflicts(optional)
               //detailsHTML = titleText;
 			        //KTH
 			        //conflictDiv.text(checkMark + " " + titleText).attr('class', 'good');
+              conflictDiv.html("").attr('class', 'good');
             }
             else
             {
@@ -641,6 +642,7 @@ function checkConflicts(optional)
               //detailsHTML = titleText;
 			        //KTH
 			        //policyDiv.text(checkMark + " " + titleText).attr('class', 'good');
+              policyDiv.html("").attr('class', 'good');
             }
             else
             {
