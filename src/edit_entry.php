@@ -308,7 +308,12 @@ function create_field_entry_description($disabled=FALSE)
 {
   global $description, $select_options, $datalist_options, $is_mandatory_field, $maxlength;
   
-  echo "<div id=\"div_description\">\n";
+  if($is_admin) {
+    echo "<div id=\"div_description\">\n";
+  } else {
+    echo "<div id=\"div_description\" style=\"visibility:hidden; height: 0px;\">\n";
+  }
+  
   
   $params = array('label'       => get_vocab("fulldescription"),
                   'name'        => 'description',
