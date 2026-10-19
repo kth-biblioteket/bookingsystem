@@ -486,17 +486,19 @@ foreach ($color_types as $type => $col)
   width: 100%;
 }
 
-@media (max-height: 900px) {
+/* Fast höjd (med scroll inuti .wrapper) bara i mobilvy. På bredare skärmar saknar .wrapper overflow,
+   så tabellen flödade över och färgförklaringen (#colour_key) hamnade mitt i schemat. */
+@media (max-width: 700px) and (max-height: 900px) {
   .wrapper {
         height: 700px;
   }
 }
-@media (max-height: 800px) {
+@media (max-width: 700px) and (max-height: 800px) {
   .wrapper {
         height: 600px;
   }
 }
-@media (max-height: 700px) {
+@media (max-width: 700px) and (max-height: 700px) {
   .wrapper {
         height: 450px;
   }
