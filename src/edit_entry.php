@@ -1455,9 +1455,9 @@ if (isset($id))
         $end_time = $row['end_time'];
       }
       
-      $rep_end_day   = (int)strftime('%d', $row['end_date']);
-      $rep_end_month = (int)strftime('%m', $row['end_date']);
-      $rep_end_year  = (int)strftime('%Y', $row['end_date']);
+      $rep_end_day   = (int)mrbs_strftime('%d', $row['end_date']);
+      $rep_end_month = (int)mrbs_strftime('%m', $row['end_date']);
+      $rep_end_year  = (int)mrbs_strftime('%Y', $row['end_date']);
       // Get the end date in string format as well, for use when
       // the input is disabled
       $rep_end_date = utf8_strftime('%A %d %B %Y',$row['end_date']);
@@ -1631,8 +1631,8 @@ if (!isset($month_absolute))
 }
 list($month_relative_ord, $month_relative_day) = byday_split($month_relative);
 
-$start_hour  = strftime('%H', $start_time);
-$start_min   = strftime('%M', $start_time);
+$start_hour  = mrbs_strftime('%H', $start_time);
+$start_min   = mrbs_strftime('%M', $start_time);
 
 // These next 4 if statements handle the situation where
 // this page has been accessed directly and no arguments have
@@ -1785,7 +1785,7 @@ else
 
 <form class="form_general" id="main" action="edit_entry_handler.php" method="post">
   <fieldset>
-  <?php//KTH visa areanamn(resursnamn?)?>
+  <?php //KTH visa areanamn(resursnamn?)?>
   <?php 
   //echo  get_area_name($area) . " - " . get_vocab($token) .  ", " . date("Y-m-d", $start_time) . "" ; 
   echo  "<h3>";

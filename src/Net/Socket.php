@@ -62,7 +62,7 @@ class Net_Socket extends PEAR {
      *
      * @access public
      */
-    function Net_Socket()
+    function __construct()
     {
         $this->PEAR();
     }

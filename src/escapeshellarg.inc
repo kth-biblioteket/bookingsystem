@@ -7,8 +7,11 @@
  *
  */
 
-function escapeshellarg($x)
+if (!function_exists('escapeshellarg'))
 {
-  return "'".preg_replace("/'/", "\\'", $x)."'";
-} 
+  function escapeshellarg($x)
+  {
+    return "'".preg_replace("/'/", "\\'", $x)."'";
+  }
+}
 

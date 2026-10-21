@@ -7,6 +7,7 @@ class DateTime extends \DateTime
   // Only supports a limited range of $modify strings for PHP < 5.3.6.   Throws
   // an exception if passed a string that it can't handle (maybe it should just
   // generate a warning? - that's what the global DateTime does)
+  #[\ReturnTypeWillChange]
   public function modify($modify)
   {
     if (version_compare(PHP_VERSION, '5.3.6') >= 0)

@@ -1069,7 +1069,9 @@ function generate_radio($params)
   // get the value and the text for the button.   Although there should only
   // be one element in the options array we use an array for consistency
   // with the other functions
-  $option = each($params['options']);
+  // KTH: each() är borttagen i PHP 8
+  reset($params['options']);
+  $option = array('key' => key($params['options']), 'value' => current($params['options']));
   // generate the HTML
   // no HTML escaping for the label - it is trusted
   $html  = "<label class=\"radio\">";
@@ -1165,8 +1167,9 @@ function generate_radio_group($params)
   echo $html;
   
   // Output each radio button
-  while ($option = each($params['options']))
+  foreach ($params['options'] as $option_key => $option_value)
   {
+    $option = array('key' => $option_key, 'value' => $option_value);
     // We can cope with both associative and ordinary arrays
     $button_label = $option['value'];
     if (is_assoc($params['options']) || $params['force_assoc'])
@@ -1657,7 +1660,7 @@ function generate_textarea($params)
 // created if the SELECT is disabled)
 //
 // Whether or not JavaScript is enabled the date is passed back in three separate
-// variables:  ${prefix}day, ${prefix}month and ${prefix}year
+// variables:  {$prefix}day, {$prefix}month and {$prefix}year
 //
 // The function passes back three separate variables, rather than a single date 
 // variable, partly for compatibility with previous implementations of genDateSelector()
@@ -1799,14 +1802,8 @@ function escape_js($str)
 // magic_quotes_gpc setting.
 function unslashes($s)
 {
-  if (get_magic_quotes_gpc())
-  {
-    return stripslashes($s);
-  }
-  else
-  {
-    return $s;
-  }
+  // KTH: get_magic_quotes_gpc() är borttagen i PHP 8 (magic quotes är alltid av)
+  return $s;
 }
 
 // Return a default area; used if no area is already known. This returns the
@@ -2064,7 +2061,7 @@ function clean_area_row($row)
       !in_array($row['private_override'], $private_override_options))
   {
     $row['private_override'] = 'private';  // the safest default
-    $message = "Invalid value for 'private_override' in the area table.  Using '${row['private_override']}'.";
+    $message = "Invalid value for 'private_override' in the area table.  Using '{$row['private_override']}'.";
     trigger_error($message, E_USER_WARNING);
   }
   // (2) 'resolution' must be positive
@@ -2072,7 +2069,7 @@ function clean_area_row($row)
       (empty($row['resolution']) || ($row['resolution'] < 0)))
   {
     $row['resolution'] = 30*60;  // 30 minutes, a reasonable fallback
-    $message = "Invalid value for 'resolution' in the area table.   Using ${row['resolution']} seconds.";
+    $message = "Invalid value for 'resolution' in the area table.   Using {$row['resolution']} seconds.";
     trigger_error($message, E_USER_WARNING);
   }
   
@@ -2215,21 +2212,21 @@ function get_area_settings($area)
   // which are handled slightly differently
   foreach ($interval_types as $interval_type)
   {
-    $var = "max_per_${interval_type}_enabled";
+    $var = "max_per_{$interval_type}_enabled";
     $max_per_interval_area_enabled[$interval_type] = $$var;
-    $var = "max_per_${interval_type}";
+    $var = "max_per_{$interval_type}";
     $max_per_interval_area[$interval_type] = $$var;
 	
 	  //KTH begränsa antal timmar
-	  $var = "max_hours_per_${interval_type}_enabled";
+	  $var = "max_hours_per_{$interval_type}_enabled";
     $max_hours_per_interval_area_enabled[$interval_type] = $$var;
-    $var = "max_hours_per_${interval_type}";
+    $var = "max_hours_per_{$interval_type}";
     $max_hours_per_interval_area[$interval_type] = $$var;
 	
 	  //KTH Globala regeler
-	  $var = "max_global_per_${interval_type}_enabled";
+	  $var = "max_global_per_{$interval_type}_enabled";
     $max_per_interval_global_enabled[$interval_type] = $$var;
-    $var = "max_global_per_${interval_type}";
+    $var = "max_global_per_{$interval_type}";
     $max_per_interval_global[$interval_type] = $$var;
   
   }
@@ -2735,8 +2732,8 @@ function make_area_select_html($link, $current, $year, $month, $day)
 					if ($first == TRUE) {$first = FALSE; $separator = "";} else {
             $separator = ""; //"|&nbsp&nbsp";
           }
-					//$out_html .= "<li>$separator<span style=\"background: transparent url(images/gray-arrow.svg) 0px 5px no-repeat;padding-right:7px\"></span><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area=${area_id}\">";
-					$out_html .= "<li" . (($area_id == $current) ? ' class="current"' : '') . ">$separator<span style=\"bSackground: transparent url(images/gray-arrow.svg) 0px 5px no-repeat;spadding-right:7px\"></span><a href=\"$link?area=${area_id}\">";
+					//$out_html .= "<li>$separator<span style=\"background: transparent url(images/gray-arrow.svg) 0px 5px no-repeat;padding-right:7px\"></span><a href=\"$link?year=$year&amp;month=$month&amp;day=$day&amp;area={$area_id}\">";
+					$out_html .= "<li" . (($area_id == $current) ? ' class="current"' : '') . ">$separator<span style=\"bSackground: transparent url(images/gray-arrow.svg) 0px 5px no-repeat;spadding-right:7px\"></span><a href=\"$link?area={$area_id}\">";
 					$out_html .= "<span" . (($area_id == $current) ? ' class="current"' : '') . ">";
 					$out_html .= htmlspecialchars($area_name) . "</span></a></li>\n";
 				//}

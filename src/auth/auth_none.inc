@@ -71,6 +71,24 @@ function checkifAlmaerror($response,$format) {
 	return $error ;
 }
 
+/**********
+KTH: Hämta felmeddelande ur LDAP-API:ts svar.
+"error" kan vara antingen ett objekt med "lde_message" eller en ren sträng (eller saknas om svaret
+inte var JSON). Strängindex på en sträng ($str["lde_message"]) ger TypeError i PHP 8.
+**********/
+function ldap_error_message($ldapjson)
+{
+	if (!is_array($ldapjson) || !isset($ldapjson["error"]))
+	{
+		return "";
+	}
+	if (is_array($ldapjson["error"]))
+	{
+		return isset($ldapjson["error"]["lde_message"]) ? (string) $ldapjson["error"]["lde_message"] : "";
+	}
+	return (string) $ldapjson["error"];
+}
+
 /********** 
 191003
 Funktion som hämtar autentiserar användare mot KTH LDAP 
@@ -354,7 +372,7 @@ function authValidateUser($user, $pass, $kthcas)
 				$message = "Success";
 			} else {
 				$result = 0; //ERROR!!
-				$message = "Error, Wrong username/password " . $ldapjson["error"]["lde_message"];
+				$message = "Error, Wrong username/password " . ldap_error_message($ldapjson);
 			}
 		}
 
@@ -367,7 +385,7 @@ function authValidateUser($user, $pass, $kthcas)
 
 				} else {
 					$result = 0; //ERROR!!
-					$message = "Error, Wrong username/pin " . $ldapjson["error"]["lde_message"];
+					$message = "Error, Wrong username/pin " . ldap_error_message($ldapjson);
 				}
 			} else {
 				$almaauth = authenticate_almauser($almauser, $pass);
@@ -376,7 +394,7 @@ function authValidateUser($user, $pass, $kthcas)
 					$message = "Success";
 				} else {
 					$result = 0; //ERROR!!
-					$message = "Error, Wrong username/password " . $ldapjson["error"]["lde_message"];
+					$message = "Error, Wrong username/password " . ldap_error_message($ldapjson);
 				}
 			}
 		}

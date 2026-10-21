@@ -156,7 +156,7 @@ function print_theme_header_noauth($day, $month, $year, $area, $room) {
     <div id="gradientBorder"></div>
 	</header>
 	<div id="appheader">
-		<?php//191003?>
+		<?php //191003?>
 		<div id="mrbs">
 			<h1><?php echo get_vocab("sitename") ?></h1>
 		</div>
@@ -429,7 +429,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
 						<?php
 						// For session protocols that define their own logon box...
 						if (function_exists('PrintLogonBox')) {
-							if ($is_kiosk && !is_admin) {
+							if ($is_kiosk && !$is_admin) {
 								echo "<div id=\"sessionlabel\" style=\"display:none;float:right;width: 100%;text-align: right;\" >Tid kvar: <span id=\"activitytimer\"></span></div>";
 							} else {
 								echo "<div style=\"float:none;width: 100%;text-align: right;\" id=\"logon_box\">\n";
@@ -460,7 +460,7 @@ function print_theme_header($day, $month, $year, $area, $room) {
     <div id="gradientBorder"></div>
 	</header>
 	<div id="appheader">
-		<?php//191003?>
+		<?php //191003?>
 		<div id="mrbs">
 			<h1><?php echo get_vocab("sitename") ?></h1>
 		</div>

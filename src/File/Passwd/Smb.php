@@ -108,7 +108,7 @@ class File_Passwd_Smb extends File_Passwd_Common
     function __construct($file = 'smbpasswd')
     {
         $this->setFile($file);
-        $this->msc = &new Crypt_CHAP_MSv1;
+        $this->msc = new Crypt_CHAP_MSv1;
     }     
     
     /**
@@ -137,7 +137,7 @@ class File_Passwd_Smb extends File_Passwd_Common
             return $line;
         }
         @list(,,$lm,$nt) = explode(':', $line);
-        $chap            = &new Crypt_CHAP_MSv1;
+        $chap            = new Crypt_CHAP_MSv1;
         
         switch(utf8_strtolower($nt_or_lm)){
         	case FILE_PASSWD_NT: 
@@ -407,7 +407,7 @@ class File_Passwd_Smb extends File_Passwd_Common
     */
     function generatePasswd($pass, $mode = 'nt')
     {
-        $chap = &new Crypt_CHAP_MSv1;
+        $chap = new Crypt_CHAP_MSv1;
         $hash = utf8_strtolower($mode) == 'nt' ? 
             $chap->ntPasswordHash($pass) :
             $chap->lmPasswordHash($pass);

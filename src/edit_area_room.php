@@ -275,11 +275,11 @@ function create_field_entry_max_hours_number()
   foreach ($interval_types as $interval_type)
   {
     echo "<tr>\n";
-    echo "<td><label>" . get_vocab("max_hours_per_${interval_type}") . ":</label></td>\n";
-    echo "<td><input class=\"enabler checkbox\" type=\"checkbox\" id=\"area_max_hours_per_${interval_type}_enabled\" name=\"area_max_hours_per_${interval_type}_enabled\"" .
+    echo "<td><label>" . get_vocab("max_hours_per_{$interval_type}") . ":</label></td>\n";
+    echo "<td><input class=\"enabler checkbox\" type=\"checkbox\" id=\"area_max_hours_per_{$interval_type}_enabled\" name=\"area_max_hours_per_{$interval_type}_enabled\"" .
          (($max_hours_per_interval_area_enabled[$interval_type]) ? " checked=\"checked\"" : "") .
          ">\n";
-    echo "<input class=\"text\" type=\"number\" min=\"0\" step=\"1\" name=\"area_max_hours_per_${interval_type}\" value=\"$max_hours_per_interval_area[$interval_type]\"></td>\n"; 
+    echo "<input class=\"text\" type=\"number\" min=\"0\" step=\"1\" name=\"area_max_hours_per_{$interval_type}\" value=\"$max_hours_per_interval_area[$interval_type]\"></td>\n"; 
     echo "<td>\n";
     echo "<input class=\"checkbox\" type=\"checkbox\" disabled=\"disabled\"" .
          (($max_hours_per_interval_global_enabled[$interval_type]) ? " checked=\"checked\"" : "") .
@@ -318,17 +318,17 @@ function create_field_entry_max_number()
   foreach ($interval_types as $interval_type)
   {
     echo "<tr>\n";
-    echo "<td><label>" . get_vocab("max_per_${interval_type}") . ":</label></td>\n";
-    echo "<td><input class=\"enabler checkbox\" type=\"checkbox\" id=\"area_max_per_${interval_type}_enabled\" name=\"area_max_per_${interval_type}_enabled\"" . (($max_per_interval_area_enabled[$interval_type]) ? " checked=\"checked\"" : "") . ">\n";
-    echo "<input class=\"text\" type=\"number\" min=\"0\" step=\"1\" name=\"area_max_per_${interval_type}\" value=\"$max_per_interval_area[$interval_type]\"></td>\n"; 
+    echo "<td><label>" . get_vocab("max_per_{$interval_type}") . ":</label></td>\n";
+    echo "<td><input class=\"enabler checkbox\" type=\"checkbox\" id=\"area_max_per_{$interval_type}_enabled\" name=\"area_max_per_{$interval_type}_enabled\"" . (($max_per_interval_area_enabled[$interval_type]) ? " checked=\"checked\"" : "") . ">\n";
+    echo "<input class=\"text\" type=\"number\" min=\"0\" step=\"1\" name=\"area_max_per_{$interval_type}\" value=\"$max_per_interval_area[$interval_type]\"></td>\n"; 
     echo "<td>\n";
     //KTH globala regler
     //echo "<input class=\"checkbox\" type=\"checkbox\" disabled=\"disabled\"" .
         //(($max_per_interval_global_enabled[$interval_type]) ? " checked=\"checked\"" : "") .
         //">\n";
-    echo "<input class=\"enabler checkbox\" type=\"checkbox\" id=\"max_global_per_${interval_type}_enabled\" name=\"max_global_per_${interval_type}_enabled\"" . (($max_per_interval_global_enabled[$interval_type]) ? " checked=\"checked\"" : "") . ">\n";
+    echo "<input class=\"enabler checkbox\" type=\"checkbox\" id=\"max_global_per_{$interval_type}_enabled\" name=\"max_global_per_{$interval_type}_enabled\"" . (($max_per_interval_global_enabled[$interval_type]) ? " checked=\"checked\"" : "") . ">\n";
     //echo "<input class=\"text\" disabled=\"disabled\" value=\"" . $max_per_interval_global[$interval_type] . "\">\n";
-    echo "<input class=\"text\" type=\"number\" min=\"0\" step=\"1\" name=\"max_global_per_${interval_type}\" value=\"" . $max_per_interval_global[$interval_type] . "\">\n";
+    echo "<input class=\"text\" type=\"number\" min=\"0\" step=\"1\" name=\"max_global_per_{$interval_type}\" value=\"" . $max_per_interval_global[$interval_type] . "\">\n";
     echo "</td>\n";
     echo "</tr>\n";
   }
@@ -476,21 +476,21 @@ $change_area = get_form_var('change_area', 'string');
 // Get the max_per_interval form variables
 foreach ($interval_types as $interval_type)
 {
-  $var = "area_max_per_${interval_type}";
+  $var = "area_max_per_{$interval_type}";
   $$var = get_form_var($var, 'int');
-  $var = "area_max_per_${interval_type}_enabled";
+  $var = "area_max_per_{$interval_type}_enabled";
   $$var = get_form_var($var, 'string');
   
   //KTH
-  $var = "area_max_hours_per_${interval_type}";
+  $var = "area_max_hours_per_{$interval_type}";
   $$var = get_form_var($var, 'int');
-  $var = "area_max_hours_per_${interval_type}_enabled";
+  $var = "area_max_hours_per_{$interval_type}_enabled";
   $$var = get_form_var($var, 'string');
   
   //KTH Globala regler
-  $var = "max_global_per_${interval_type}";
+  $var = "max_global_per_{$interval_type}";
   $$var = get_form_var($var, 'int');
-  $var = "max_global_per_${interval_type}_enabled";
+  $var = "max_global_per_{$interval_type}_enabled";
   $$var = get_form_var($var, 'string');
 }
 
@@ -790,13 +790,13 @@ if ($phase == 2)
                   'area_map');
     foreach ($interval_types as $interval_type)
     {
-      $vars[] = "area_max_per_${interval_type}_enabled";
+      $vars[] = "area_max_per_{$interval_type}_enabled";
 	  
 	  //KTH Timmar
-	  $vars[] = "area_max_hours_per_${interval_type}_enabled";
+	  $vars[] = "area_max_hours_per_{$interval_type}_enabled";
 	  
 	  //KTH Globala regler
-	  $vars[] = "max_global_per_${interval_type}_enabled";
+	  $vars[] = "max_global_per_{$interval_type}_enabled";
     }
     foreach ($vars as $var)
     {
@@ -913,11 +913,11 @@ if ($phase == 2)
       
       foreach($interval_types as $interval_type)
       {
-        $var = "max_per_${interval_type}_enabled";
+        $var = "max_per_{$interval_type}_enabled";
         $area_var = "area_" . $var;
         $assign_array[] = "$var=" . $$area_var;
         
-        $var = "max_per_${interval_type}";
+        $var = "max_per_{$interval_type}";
         $area_var = "area_" . $var;
         if (isset($$area_var))
         {
@@ -927,11 +927,11 @@ if ($phase == 2)
         }
 		
 		//KTH Timmar
-		$var = "max_hours_per_${interval_type}_enabled";
+		$var = "max_hours_per_{$interval_type}_enabled";
         $area_var = "area_" . $var;
         $assign_array[] = "$var=" . $$area_var;
         
-        $var = "max_hours_per_${interval_type}";
+        $var = "max_hours_per_{$interval_type}";
         $area_var = "area_" . $var;
         if (isset($$area_var))
         {
@@ -941,10 +941,10 @@ if ($phase == 2)
         }
 		
 		//KTH Globala regler
-		$var = "max_global_per_${interval_type}_enabled";
+		$var = "max_global_per_{$interval_type}_enabled";
         $assign_array[] = "$var=" . $$var;;
         
-        $var = "max_global_per_${interval_type}";
+        $var = "max_global_per_{$interval_type}";
 		if (isset($$var))
         {
           // only update these fields if they are set;  they might be NULL because

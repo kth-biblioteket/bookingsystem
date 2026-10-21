@@ -235,8 +235,8 @@ function get_area_admin_email($id, $series=FALSE)
     // ...use the repeat table
     $sql .= ", $tbl_repeat rep ";
   }
-  $sql .= "WHERE ${id_table}.id=$id 
-             AND r.id=${id_table}.room_id
+  $sql .= "WHERE {$id_table}.id=$id 
+             AND r.id={$id_table}.room_id
              AND a.id=r.area_id
            LIMIT 1";
   $email = sql_query1($sql);
@@ -265,8 +265,8 @@ function get_room_admin_email($id, $series=FALSE)
     // ...use the repeat table
     $sql .= ", $tbl_repeat rep ";
   }
-  $sql .= "WHERE ${id_table}.id=$id 
-             AND r.id=${id_table}.room_id
+  $sql .= "WHERE {$id_table}.id=$id 
+             AND r.id={$id_table}.room_id
            LIMIT 1";
   $email = sql_query1($sql);
   if ($email == -1)
@@ -387,7 +387,7 @@ function create_repeat_list($data, $action, $as_html, $reps)
 
 // $start_times is an array of start_times that have been created/modified/deleted.
 // If not specified the function works them out for itself from the repeat data
-function create_body($data, $mail_previous, $compare, $series, $action, $as_html=FALSE, $note='', $start_times)
+function create_body($data, $mail_previous, $compare, $series, $action, $as_html, $note, $start_times)
 {
   global $returl, $mrbs_company;
   global $enable_periods, $approval_enabled, $confirmation_enabled;
@@ -1434,7 +1434,7 @@ function notifyAdminOnBooking($data, $mail_previous, $new_entry, $series, $start
  * @param   string  $note      a note that is used with "reject"
  * @return  bool    TRUE or PEAR error object if fails
  */
-function notifyAdminOnDelete($data, $series=FALSE, $start_times, $action="delete", $note="")
+function notifyAdminOnDelete($data, $series, $start_times, $action="delete", $note="")
 {
   global $mail_settings, $enable_periods;
   

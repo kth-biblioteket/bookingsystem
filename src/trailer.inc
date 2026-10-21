@@ -11,17 +11,17 @@ function generate_trailer()
 
   if(!isset($year))
   {
-    $year = strftime("%Y");
+    $year = mrbs_strftime("%Y");
   }
 
   if (!isset($month))
   {
-    $month = strftime("%m");
+    $month = mrbs_strftime("%m");
   }
 
   if (!isset($day))
   {
-    $day = strftime("%d");
+    $day = mrbs_strftime("%d");
   }
 
   if (empty($area))

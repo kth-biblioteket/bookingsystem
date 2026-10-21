@@ -106,7 +106,7 @@ if (isset($Action) && ($Action == "SetName"))
                      );
 
     setcookie("SessionToken",
-              "${hash}_".base64_encode($json_data),
+              "{$hash}_".base64_encode($json_data),
               $expiry_time,
               $cookie_path);
     }

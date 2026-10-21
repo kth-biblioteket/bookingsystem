@@ -156,7 +156,7 @@ class File_Passwd_Custom extends File_Passwd_Common
         if (empty($delim)) {
             $this->_delim = ':';
         } else {
-            $this->_delim = $delim{0};
+            $this->_delim = $delim[0];
         }
     }
     

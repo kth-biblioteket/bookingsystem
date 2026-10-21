@@ -181,7 +181,7 @@ class Mail_mime
 
         // Update build parameters
         if (!empty($params) && is_array($params)) {
-            while (list($key, $value) = each($params)) {
+            foreach ($params as $key => $value) {
                 $this->build_params[$key] = $value;
             }
         }
@@ -496,7 +496,7 @@ class Mail_mime
         }
 
         // Temporarily reset magic_quotes_runtime and read file contents
-        if ($magic_quote_setting = get_magic_quotes_runtime()) {
+        if ($magic_quote_setting = false /* KTH: borttagen i PHP 8 */) {
             @ini_set('magic_quotes_runtime', 0);
         }
 
@@ -771,7 +771,7 @@ class Mail_mime
         }
 
         // Temporarily reset magic_quotes_runtime and read file contents
-        if ($magic_quote_setting = get_magic_quotes_runtime()) {
+        if ($magic_quote_setting = false /* KTH: borttagen i PHP 8 */) {
             @ini_set('magic_quotes_runtime', 0);
         }
 
@@ -824,7 +824,7 @@ class Mail_mime
         }
 
         // Temporarily reset magic_quotes_runtime and read file contents
-        if ($magic_quote_setting = get_magic_quotes_runtime()) {
+        if ($magic_quote_setting = false /* KTH: borttagen i PHP 8 */) {
             @ini_set('magic_quotes_runtime', 0);
         }
 
@@ -858,7 +858,7 @@ class Mail_mime
     public function get($params = null, $filename = null, $skip_head = false)
     {
         if (isset($params)) {
-            while (list($key, $value) = each($params)) {
+            foreach ($params as $key => $value) {
                 $this->build_params[$key] = $value;
             }
         }

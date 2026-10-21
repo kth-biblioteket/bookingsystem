@@ -581,6 +581,9 @@ function sql_mysqli_connect($host, $username, $password,
     $full_host = $host;
   }
   
+  // KTH: PHP 8.1 kastar mysqli_sql_exception som standard. MRBS är byggt för PHP 7-beteendet (false/-1 vid fel).
+  mysqli_report(MYSQLI_REPORT_OFF);
+
   $db_conn = new mysqli($full_host, $username, $password, $db_name, $db_port);
 
   /* check connection */
