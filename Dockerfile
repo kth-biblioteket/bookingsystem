@@ -1,19 +1,15 @@
-FROM php:7.3-apache
+FROM php:8.2.35-apache
 
 RUN a2enmod rewrite
 
 RUN cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 
-RUN sed -i 's|http://deb.debian.org/debian |http://archive.debian.org/debian |g' /etc/apt/sources.list \
-    && sed -i '/security.debian.org/d' /etc/apt/sources.list \
-    && sed -i '/bullseye-updates/d' /etc/apt/sources.list \
-    && echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends locales libxml2-dev && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update
-RUN apt-get -y install locales libxml2-dev
 RUN sed -i '/en_GB.UTF-8/s/^# //g' /etc/locale.gen && \
-    locale-gen
-RUN sed -i '/sv_SE.UTF-8/s/^# //g' /etc/locale.gen && \
+    sed -i '/sv_SE.UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen
 
 ENV LANG=en_GB.UTF-8
