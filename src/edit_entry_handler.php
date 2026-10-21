@@ -768,7 +768,7 @@ if (!empty($result['id']) && $result['valid_booking'])
               A.area_type, R.room_number, A.reminder_email_enabled, A.area_map, A.area_map_image, A.area_map_html,
               A.confirmed_default, R.mailtext, R.mailtext_en
               FROM $tbl_room R, $tbl_area A
-              WHERE R.id=${booking['room_id']} AND R.area_id = A.id
+              WHERE R.id={$booking['room_id']} AND R.area_id = A.id
               LIMIT 1";
       $res = sql_query($sql);
       $row = sql_row_keyed($res, 0);
@@ -927,7 +927,7 @@ if (empty($result['rules_broken'])  &&
       {
         if (isset($value))
         {
-          echo "<input type=\"hidden\" name=\"${var}[]\" value=\"" . htmlspecialchars($value) . "\">\n";
+          echo "<input type=\"hidden\" name=\"{$var}[]\" value=\"" . htmlspecialchars($value) . "\">\n";
         }
       }
     }

@@ -93,7 +93,7 @@ class Mail_mimePart
      *
      * @var array
      */
-    protected $subparts;
+    protected $subparts = array(); // KTH: count(null) ger TypeError i PHP 8
 
     /**
      * The output of this part after being built
@@ -339,14 +339,7 @@ class Mail_mimePart
         } else if ($this->body) {
             $encoded['body'] = $this->getEncodedData($this->body, $this->encoding);
         } else if ($this->body_file) {
-            // Temporarily reset magic_quotes_runtime for file reads and writes
-            if ($magic_quote_setting = get_magic_quotes_runtime()) {
-                @ini_set('magic_quotes_runtime', 0);
-            }
             $body = $this->getEncodedDataFromFile($this->body_file, $this->encoding);
-            if ($magic_quote_setting) {
-                @ini_set('magic_quotes_runtime', $magic_quote_setting);
-            }
 
             if (is_a($body, 'PEAR_Error')) {
                 return $body;
@@ -391,19 +384,10 @@ class Mail_mimePart
             $fh = $filename;
         }
 
-        // Temporarily reset magic_quotes_runtime for file reads and writes
-        if ($magic_quote_setting = get_magic_quotes_runtime()) {
-            @ini_set('magic_quotes_runtime', 0);
-        }
-
         $res = $this->encodePartToFile($fh, $boundary, $skip_head);
 
         if (!is_resource($filename)) {
             fclose($fh);
-        }
-
-        if ($magic_quote_setting) {
-            @ini_set('magic_quotes_runtime', $magic_quote_setting);
         }
 
         return is_a($res, 'PEAR_Error') ? $res : $this->headers;
@@ -622,7 +606,7 @@ class Mail_mimePart
         $escape = '=';
         $output = '';
 
-        while (list($idx, $line) = each($lines)) {
+        foreach ($lines as $idx => $line) {
             $newline = '';
             $i = 0;
 

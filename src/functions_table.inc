@@ -1617,7 +1617,7 @@ if($lang=="en") {
       $tbody .= time_cell_html($s, $url);
       $is_invalid = $is_possibly_invalid && is_invalid_datetime(0, 0, $s, $month, $day, $year);
       // Loop through the list of rooms we have for this area
-      while (list($key, $room_id) = each($rooms))
+      foreach ($rooms as $key => $room_id)
       {
         // set up the query strings to be used for the link in the cell
         $query_strings = get_query_strings($area, $room_id, $month, $day, $year, $s);
@@ -1883,11 +1883,11 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
         //191003
 		. " style=\"text-align:center;width: " . $column_width . "%\"" 
 		. ">" 
-		. "<a href=\"day.php?year=" . strftime("%Y", $t) 
+		. "<a href=\"day.php?year=" . mrbs_strftime("%Y", $t) 
 		. "&amp;month=" 
-		. strftime("%m", $t) 
+		. mrbs_strftime("%m", $t) 
 		. "&amp;day=" 
-		. strftime('%d', $t) 
+		. mrbs_strftime('%d', $t) 
 		. "&amp;area=" 
 		. $area 
 		. "\" title=\"" 
@@ -1947,9 +1947,9 @@ function week_table_innerhtml($day, $month, $year, $room, $area, $timetohighligh
         $wdate = date('Y-n-d', $wt);
       
         $day_cell_text = utf8_strftime($dformat, $wt);
-        $day_cell_link = "day.php?year=" . strftime("%Y", $wt) . 
-                         "&amp;month=" . strftime("%m", $wt) . 
-                         "&amp;day=" . strftime("%d", $wt) . 
+        $day_cell_link = "day.php?year=" . mrbs_strftime("%Y", $wt) . 
+                         "&amp;month=" . mrbs_strftime("%m", $wt) . 
+                         "&amp;day=" . mrbs_strftime("%d", $wt) . 
                          "&amp;area=$area";
                        
         $tbody .= day_cell_html($day_cell_text, $day_cell_link, $wdate);

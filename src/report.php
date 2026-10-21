@@ -789,7 +789,7 @@ function report_row(&$rows, &$data)
         case 'last_updated':
           // Include the numeric time as a title in an empty span so
           // that the column can be sorted and filtered properly
-          $value = "<span title=\"${data[$field]}\"></span>$value";
+          $value = "<span title=\"{$data[$field]}\"></span>$value";
           break;
         default:
           break;

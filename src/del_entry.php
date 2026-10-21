@@ -61,9 +61,9 @@ if(!empty($noshow)){
 	  }
 	  if ($authorised)
 	  {
-		$day   = strftime("%d", $info["start_time"]);
-		$month = strftime("%m", $info["start_time"]);
-		$year  = strftime("%Y", $info["start_time"]);
+		$day   = mrbs_strftime("%d", $info["start_time"]);
+		$month = mrbs_strftime("%m", $info["start_time"]);
+		$year  = mrbs_strftime("%Y", $info["start_time"]);
 		$area  = mrbsGetRoomArea($info["room_id"]);
 		// Get the settings for this area (they will be needed for policy checking)
 		get_area_settings($area);

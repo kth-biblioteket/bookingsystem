@@ -1379,6 +1379,69 @@ function utf8_convert_from_locale($string, $locale=NULL)
 }
 
 
+// KTH: ersättning för strftime(), som är utfasad i PHP 8.1 och borttagen i PHP 9.
+// Dag- och månadsnamn hämtas ur aktuell LC_TIME-locale via nl_langinfo(), precis som strftime() gjorde.
+// Stöder de format som används i MRBS (%a %A %b %B %h %c %d %e %H %I %j %k %l %m %M %n %p %P %R %S %t %T
+// %u %w %x %X %y %Y %z %Z %% m.fl.)
+function mrbs_strftime($format, $timestamp = null)
+{
+  if ($timestamp === null)
+  {
+    $timestamp = time();
+  }
+  $timestamp = (int) $timestamp;
+  $have_langinfo = function_exists('nl_langinfo');
+
+  return preg_replace_callback('/%([a-zA-Z%])/', function ($m) use ($timestamp, $have_langinfo) {
+    switch ($m[1])
+    {
+      case 'a': return ($have_langinfo) ? nl_langinfo(constant('ABDAY_' . (date('w', $timestamp) + 1))) : date('D', $timestamp);
+      case 'A': return ($have_langinfo) ? nl_langinfo(constant('DAY_' . (date('w', $timestamp) + 1))) : date('l', $timestamp);
+      case 'b':
+      case 'h': return ($have_langinfo) ? nl_langinfo(constant('ABMON_' . date('n', $timestamp))) : date('M', $timestamp);
+      case 'B': return ($have_langinfo) ? nl_langinfo(constant('MON_' . date('n', $timestamp))) : date('F', $timestamp);
+      case 'c': return date('Y-m-d H:i:s', $timestamp);
+      case 'C': return sprintf('%02d', floor(date('Y', $timestamp) / 100));
+      case 'd': return date('d', $timestamp);
+      case 'D': return date('m/d/y', $timestamp);
+      case 'e': return sprintf('%2d', date('j', $timestamp));
+      case 'F': return date('Y-m-d', $timestamp);
+      case 'H': return date('H', $timestamp);
+      case 'I': return date('h', $timestamp);
+      case 'j': return sprintf('%03d', date('z', $timestamp) + 1);
+      case 'k': return sprintf('%2d', date('G', $timestamp));
+      case 'l': return sprintf('%2d', date('g', $timestamp));
+      case 'm': return date('m', $timestamp);
+      case 'M': return date('i', $timestamp);
+      case 'n': return "\n";
+      case 'p':
+        // Tom sträng om localen saknar AM/PM, anroparen (utf8_strftime) tar då date('a')
+        return ($have_langinfo) ? nl_langinfo((date('G', $timestamp) < 12) ? AM_STR : PM_STR) : date('A', $timestamp);
+      case 'P': return date('a', $timestamp);
+      case 'r': return date('h:i:s A', $timestamp);
+      case 'R': return date('H:i', $timestamp);
+      case 's': return (string) $timestamp;
+      case 'S': return date('s', $timestamp);
+      case 't': return "\t";
+      case 'T': return date('H:i:s', $timestamp);
+      case 'u': return date('N', $timestamp);
+      case 'U':
+      case 'V':
+      case 'W': return date('W', $timestamp);
+      case 'w': return date('w', $timestamp);
+      case 'x': return date('Y-m-d', $timestamp);
+      case 'X': return date('H:i:s', $timestamp);
+      case 'y': return date('y', $timestamp);
+      case 'Y': return date('Y', $timestamp);
+      case 'z': return date('O', $timestamp);
+      case 'Z': return date('T', $timestamp);
+      case '%': return '%';
+      default:  return $m[0];
+    }
+  }, $format);
+}
+
+
 //  optionally switch to a new locale, switching back at the end
 function utf8_strftime($format, $time, $temp_locale=NULL)
 {
@@ -1417,7 +1480,7 @@ function utf8_strftime($format, $time, $temp_locale=NULL)
   // %p doesn't actually work in some locales, we have to patch it up ourselves
   if (preg_match('/%p/', $format))
   {
-    $ampm = strftime('%p', $time);  // Don't replace the %p with the $strftime_format variable!!
+    $ampm = mrbs_strftime('%p', $time);  // Don't replace the %p with the $strftime_format variable!!
     if ($ampm == '')
     {
       $ampm = date('a', $time);
@@ -1426,7 +1489,7 @@ function utf8_strftime($format, $time, $temp_locale=NULL)
     $format = preg_replace('/%p/', $ampm, $format);
   }
 
-  $result = strftime($format, $time);
+  $result = mrbs_strftime($format, $time);
   $result = utf8_convert_from_locale($result, $temp_locale);
   
   // Restore the original locale
@@ -1457,6 +1520,7 @@ function utf8_substr_old($str,$start)
 // UTF-8 compatible substr function
 function utf8_substr($str, $start, $length=NULL)
 {
+  $str = (string) $str;  // KTH: null till mb_*-funktioner är utfasat i PHP 8.1
   if (!isset($length))
   {
     // We cannot set $length to PHP_INT_MAX because there is a bug (#42101)
@@ -1702,6 +1766,7 @@ function utf8_to_utf16($string)
 // string
 function utf8_strlen($str)
 {
+  $str = (string) $str;  // KTH: null till mb_*-funktioner är utfasat i PHP 8.1
   if (!isset($str) || ($str == ""))
   {
     return 0;

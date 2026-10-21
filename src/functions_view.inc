@@ -143,7 +143,7 @@ function create_details_body($data, $as_html=FALSE, $keep_private=FALSE, $room_d
   $tbody .= create_details_row(get_vocab("end_date"), $end_date, $as_html);
   // Type
   $type = get_type_vocab($data['type']);
-  $value = (empty($type)) ? "?${data['type']}?" : $type;
+  $value = (empty($type)) ? "?{$data['type']}?" : $type;
   $tbody .= create_details_row(get_vocab("type"), $value, $as_html);
   // Created by
   $class = ($keep_private && !empty($is_private_field['entry.create_by'])) ? "private" : "";

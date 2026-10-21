@@ -82,7 +82,7 @@ class Calendar
     $daysInPrevMonth = $this->getMonthDays($prevMonth, $prevYear);
     $date = mktime(12, 0, 0, $this->month, 1, $this->year);
       
-    $first = (strftime("%w",$date) + 7 - $weekstarts) % 7;  // day number of the first day of the month
+    $first = (mrbs_strftime("%w",$date) + 7 - $weekstarts) % 7;  // day number of the first day of the month
     $monthName = utf8_strftime($strftime_format['month_cal'], $date);
       
     $s .= "<table class=\"calendar\">\n";

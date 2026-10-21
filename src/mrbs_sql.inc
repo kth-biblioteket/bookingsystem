@@ -130,8 +130,8 @@ function mrbsCheckFree(&$booking, $ignore, $repignore)
 	// Select any meetings which overlap for this room:
 	$sql = "SELECT id, name, start_time, create_by, status
 			FROM $tbl_entry
-		   WHERE start_time < ${booking['end_time']}
-			 AND end_time > ${booking['start_time']}
+		   WHERE start_time < {$booking['end_time']}
+			 AND end_time > {$booking['start_time']}
 			 AND room_id = $room_id";
 			 
 	if ($ignore > 0)
@@ -363,11 +363,11 @@ function check_interval_hours(&$booking, $ignore, $repignore, $interval_type='da
     {
       if ($only_area)
       {
-        return get_vocab("max_hours_per_${interval_type}_area") . " $max_hours_per_interval_area[$interval_type]";
+        return get_vocab("max_hours_per_{$interval_type}_area") . " $max_hours_per_interval_area[$interval_type]";
       }
       else
       {
-        return get_vocab("max_hours_per_${interval_type}_global") . " $max_hours_per_interval_global[$interval_type]";
+        return get_vocab("max_hours_per_{$interval_type}_global") . " $max_hours_per_interval_global[$interval_type]";
       }
     }
       
@@ -513,11 +513,11 @@ function check_interval(&$booking, $ignore, $repignore, $interval_type='day', $o
     {
       if ($only_area)
       {
-        return get_vocab("max_per_${interval_type}_area") . " $max_per_interval_area[$interval_type]";
+        return get_vocab("max_per_{$interval_type}_area") . " $max_per_interval_area[$interval_type]";
       }
       else
       {
-        return get_vocab("max_per_${interval_type}_global") . " $max_per_interval_global[$interval_type]";
+        return get_vocab("max_per_{$interval_type}_global") . " $max_per_interval_global[$interval_type]";
       }
     }
       
@@ -642,7 +642,7 @@ function mrbsCheckPolicy(&$booking, $ignore, $repignore, $delete=FALSE)
     {
       if ($booking['start_time'] < mktime(0, 0, 0, $m, $d, $y))
       {
-        $errors[] = get_vocab("earliest_booking_date") . " " . strftime($strftime_format['date'], mktime(0, 0, 0, $m, $d, $y));
+        $errors[] = get_vocab("earliest_booking_date") . " " . mrbs_strftime($strftime_format['date'], mktime(0, 0, 0, $m, $d, $y));
       }
     }
     else
@@ -659,7 +659,7 @@ function mrbsCheckPolicy(&$booking, $ignore, $repignore, $delete=FALSE)
     {
       if ($booking['end_time'] > mktime(0, 0, 0, $m, $d+1, $y))
       {
-        $errors[] = get_vocab("latest_booking_date") . " " . strftime($strftime_format['date'], mktime(0, 0, 0, $m, $d, $y));
+        $errors[] = get_vocab("latest_booking_date") . " " . mrbs_strftime($strftime_format['date'], mktime(0, 0, 0, $m, $d, $y));
       }
     }
     else
@@ -1780,7 +1780,7 @@ function get_booking_info($id, $series, $silent=FALSE)
     {
       $res = sql_query("SELECT rep_type, end_date, rep_opt, rep_num_weeks, month_absolute, month_relative,
                         info_time AS repeat_info_time, info_user AS repeat_info_user, info_text AS repeat_info_text
-                        FROM $tbl_repeat WHERE id=${row['repeat_id']} LIMIT 1");
+                        FROM $tbl_repeat WHERE id={$row['repeat_id']} LIMIT 1");
       if (!$res || (!$extra_row = sql_row_keyed($res, 0)))
       {
         if (!$res)
@@ -2750,7 +2750,7 @@ function mrbsAddPlace($name, $room_id, &$error, $email='')
 //    $bookings     an array of bookings
 //    $id           the id of the current booking when editing an existing entry
 //191003
-function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, $original_room_id=NULL, $send_mail=FALSE, $edit_type='', $is_admin)
+function mrbsMakeBookings($bookings, $id, $just_check, $skip, $original_room_id, $send_mail, $edit_type, $is_admin)
 {
   global $max_rep_entrys, $enable_periods, $resolution, $mail_settings;
   global $tbl_entry, $tbl_room, $tbl_area;
@@ -2766,6 +2766,8 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, $
     } else {
       $lang = $_COOKIE["mrbslang"];
     }
+  } else {
+    $lang = "en";  // KTH: utan språkcookie blev $lang odefinierad => NULL i NOT NULL-kolumnen mrbs_entry.lang
   }
   
   // All the data, except for the status and room id, will be common
@@ -3143,7 +3145,7 @@ function mrbsMakeBookings($bookings, $id=NULL, $just_check=FALSE, $skip=FALSE, $
                   A.area_type, R.room_number, A.reminder_email_enabled, A.area_map, A.area_map_image, 
                   A.confirmed_default, R.mailtext, R.mailtext_en
                   FROM $tbl_room R, $tbl_area A
-                  WHERE R.id=${booking['room_id']} AND R.area_id = A.id
+                  WHERE R.id={$booking['room_id']} AND R.area_id = A.id
                   LIMIT 1";
           $res = sql_query($sql);
           $row = sql_row_keyed($res, 0);
