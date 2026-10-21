@@ -1364,7 +1364,9 @@ function generate_select($params)
       }
       else
       {
-        $first_child = each($params['options']);
+        // KTH: each() är borttagen i PHP 8
+        reset($params['options']);
+        $first_child = array('key' => key($params['options']), 'value' => current($params['options']));
         if (($first_child['key'] !== '') && ($first_child['value'] !== ''))
         {
           $message = "The first child option element of a select element with a required " .
