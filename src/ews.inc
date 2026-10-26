@@ -247,10 +247,17 @@ function updateappointment($id, $subject, $email_attendee, $email_attendee_name,
         $field->FieldURI = new PathToUnindexedFieldType();
         $field->FieldURI->FieldURI = UnindexedFieldURIType::CALENDAR_REQUIRED_ATTENDEES;
 
+        // KTH: PHP 8 skapar inte längre objekt automatiskt vid tilldelning till null
+        // ("Attempt to modify property on null"). Bygg upp dem som i createappointment().
+        $field->CalendarItem = new CalendarItemType();
+        $field->CalendarItem->RequiredAttendees = new NonEmptyArrayOfAttendeesType();
         foreach ($attendees as $guest) {
-            $field->CalendarItem->RequiredAttendees->Attendee[$ra]->Mailbox->EmailAddress = $guest['email'];
-            $field->CalendarItem->RequiredAttendees->Attendee[$ra]->Mailbox->Name = $guest['name'];
-            $field->CalendarItem->RequiredAttendees->Attendee[$ra]->Mailbox->RoutingType = RoutingType::SMTP;
+            $attendee = new AttendeeType();
+            $attendee->Mailbox = new EmailAddressType();
+            $attendee->Mailbox->EmailAddress = $guest['email'];
+            $attendee->Mailbox->Name = $guest['name'];
+            $attendee->Mailbox->RoutingType = RoutingType::SMTP;
+            $field->CalendarItem->RequiredAttendees->Attendee[] = $attendee;
             $ra++;
         }
         $change->Updates->SetItemField[] = $field;  

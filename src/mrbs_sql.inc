@@ -879,7 +879,7 @@ function mrbsDelEntry($user, $id, $series, $all, $truedelete)
           try {
             $outlook_result = updateappointment($kth_exchange_events['event_id'], get_mail_vocab("calendar_subject") . "-" . get_mail_vocab("bookable_entry_text"), $row['instructor'], $row['instructor'], '', $startdate, $enddate, $ews_host, $ews_user, $ews_password);
           }
-          catch (exception $e) {
+          catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
             $outlook_result['status'] = 'Error';
             $outlook_result['message'] = $e;
           }
@@ -924,7 +924,7 @@ function mrbsDelEntry($user, $id, $series, $all, $truedelete)
             try {
               $outlook_result = cancelappointment(get_exchange_email($room_id), $kth_exchange_events['event_id'], $kth_exchange_events['change_key'], $startdate, $enddate, $ews_host, $ews_user, $ews_password);
             }
-            catch (exception $e) {
+            catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
               $outlook_result['status'] = 'Error';
               $outlook_result['message'] = $e;
             }
@@ -2976,7 +2976,7 @@ function mrbsMakeBookings($bookings, $id, $just_check, $skip, $original_room_id,
         try {
           $outlook_result = createappointment(get_exchange_email($booking['room_id']), 'KTH Biblioteket', get_mail_vocab("calendar_subject") . "-" . get_mail_vocab("bookable_entry_text") ,$booking['instructor'], $booking['instructor'], $startdate, $enddate, $ews_host, $ews_user, $ews_password);   
         }
-        catch (exception $e) {
+        catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
           $outlook_result['status'] = 'Error';
           $outlook_result['message'] = $e;
         }
@@ -3003,7 +3003,7 @@ function mrbsMakeBookings($bookings, $id, $just_check, $skip, $original_room_id,
             try {
               $outlook_result = updateappointment($row['event_id'], get_mail_vocab("calendar_subject") . "-" . $booking['name'], $booking['instructor'], $booking['instructor'], $bookinglocation, $startdate, $enddate, $ews_host, $ews_user, $ews_password);
             }
-            catch (exception $e) {
+            catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
               $outlook_result['status'] = 'Error';
               $outlook_result['message'] = $e;
             } 
