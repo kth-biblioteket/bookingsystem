@@ -30,7 +30,14 @@ function sql_mysqli_free ($r, $db_conn = null)
 {
   sql_mysqli_ensure_handle($db_conn);
 
-  $r->close();
+  // KTH: ett redan stängt resultat (se sql_mysqli_row) ger Error i PHP 8 vid close()
+  try
+  {
+    $r->close();
+  }
+  catch (\Error $e)
+  {
+  }
 }
 
 
@@ -125,13 +132,21 @@ function sql_mysqli_row ($r, $i, $db_conn = null)
 {
   sql_mysqli_ensure_handle($db_conn);
 
-  if ($i >= $r->num_rows)
+  // KTH: i PHP 8 kastar åtkomst till ett stängt mysqli_result ett Error (i PHP 7 en varning)
+  try
   {
-    $r->close();
+    if ($i >= $r->num_rows)
+    {
+      $r->close();
+      return 0;
+    }
+    $r->data_seek($i);
+    return $r->fetch_row();
+  }
+  catch (\Error $e)
+  {
     return 0;
   }
-  $r->data_seek($i);
-  return $r->fetch_row();
 }
 
 
@@ -145,15 +160,23 @@ function sql_mysqli_row_keyed ($r, $i, $db_conn = null)
 {
   sql_mysqli_ensure_handle($db_conn);
 
-  if ($i >= $r->num_rows)
+  // KTH: i PHP 8 kastar åtkomst till ett stängt mysqli_result ett Error (i PHP 7 en varning)
+  try
   {
-    $r->close();
+    if ($i >= $r->num_rows)
+    {
+      $r->close();
+      return 0;
+    }
+    $r->data_seek($i);
+    // Use _assoc rather than _array because _array doesn't have
+    // an ASSOC parameter.  No impact on PHP version support.
+    return $r->fetch_assoc();
+  }
+  catch (\Error $e)
+  {
     return 0;
   }
-  $r->data_seek($i);
-  // Use _assoc rather than _array because _array doesn't have
-  // an ASSOC parameter.  No impact on PHP version support.
-  return $r->fetch_assoc();
 }
 
 
@@ -162,7 +185,16 @@ function sql_mysqli_count ($r, $db_conn = null)
 {
   sql_mysqli_ensure_handle($db_conn);
 
-  return $r->num_rows;
+  // KTH: sql_row()/sql_row_keyed() stänger resultatet när raden inte finns.  Ett anrop till sql_count()
+  // efter det kastade Error i PHP 8 ("mysqli_result object is already closed"); i PHP 7 gav det NULL.
+  try
+  {
+    return $r->num_rows;
+  }
+  catch (\Error $e)
+  {
+    return 0;
+  }
 }
 
 

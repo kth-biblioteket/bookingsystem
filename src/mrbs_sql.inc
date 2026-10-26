@@ -881,7 +881,9 @@ function mrbsDelEntry($user, $id, $series, $all, $truedelete)
           }
           catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
             $outlook_result['status'] = 'Error';
-            $outlook_result['message'] = $e;
+            // KTH: bara meddelandet. Hela undantaget (anropsstacken med argument) ska inte skrivas ut på sidan.
+            $outlook_result['message'] = $e->getMessage();
+            error_log('EWS: undantag ' . get_class($e) . ': ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
           }
           if ($outlook_result['status'] == 'OK' ) {
             //191003
@@ -926,7 +928,9 @@ function mrbsDelEntry($user, $id, $series, $all, $truedelete)
             }
             catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
               $outlook_result['status'] = 'Error';
-              $outlook_result['message'] = $e;
+              // KTH: bara meddelandet. Hela undantaget (anropsstacken med argument) ska inte skrivas ut på sidan.
+              $outlook_result['message'] = $e->getMessage();
+              error_log('EWS: undantag ' . get_class($e) . ': ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
             }
             if ($outlook_result['status'] == 'OK' ) {
             } else {
@@ -2978,7 +2982,9 @@ function mrbsMakeBookings($bookings, $id, $just_check, $skip, $original_room_id,
         }
         catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
           $outlook_result['status'] = 'Error';
-          $outlook_result['message'] = $e;
+          // KTH: bara meddelandet. Hela undantaget (anropsstacken med argument) ska inte skrivas ut på sidan.
+          $outlook_result['message'] = $e->getMessage();
+          error_log('EWS: undantag ' . get_class($e) . ': ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
         }
         if ($outlook_result['status'] == 'OK' ) {
         } else {
@@ -3005,7 +3011,9 @@ function mrbsMakeBookings($bookings, $id, $just_check, $skip, $original_room_id,
             }
             catch (\Throwable $e) {  // KTH: fånga även Error (t.ex. TypeError i PHP 8), annars dör skriptet inne i databaslåset
               $outlook_result['status'] = 'Error';
-              $outlook_result['message'] = $e;
+              // KTH: bara meddelandet. Hela undantaget (anropsstacken med argument) ska inte skrivas ut på sidan.
+              $outlook_result['message'] = $e->getMessage();
+              error_log('EWS: undantag ' . get_class($e) . ': ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine());
             } 
             if ($outlook_result['status'] == 'OK' ) {
             } else {
