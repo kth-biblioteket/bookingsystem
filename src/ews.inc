@@ -67,6 +67,8 @@ function checkavailability($email, $start_date, $end_date, $client) {
     $folder_id->Id = DistinguishedFolderIdNameType::CALENDAR;
     $folder_id->Mailbox = new EmailAddressType();
     $folder_id->Mailbox->EmailAddress = $email;
+    // KTH: PHP 8 skapar inte objekt automatiskt vid tilldelning till null
+    $request->ParentFolderIds = new NonEmptyArrayOfBaseFolderIdsType();
     $request->ParentFolderIds->DistinguishedFolderId[] = $folder_id;
     $response = $client->FindItem($request);
     $response_messages = $response->ResponseMessages->FindItemResponseMessage;
@@ -111,6 +113,8 @@ function getChangeKey($email, $start_date, $end_date, $event_id, $client) {
     $folder_id->Id = DistinguishedFolderIdNameType::CALENDAR;
     $folder_id->Mailbox = new EmailAddressType();
     $folder_id->Mailbox->EmailAddress = $email;
+    // KTH: PHP 8 skapar inte objekt automatiskt vid tilldelning till null
+    $request->ParentFolderIds = new NonEmptyArrayOfBaseFolderIdsType();
     $request->ParentFolderIds->DistinguishedFolderId[] = $folder_id;
     $response = $client->FindItem($request);
     $events_result = array();
