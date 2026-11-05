@@ -1503,6 +1503,7 @@ if (isset($id))
   for ($i = 0; ($row = sql_row_keyed($res_room_morning_starts, $i)); $i++) {
     $room_morningstarts = $row['morningstarts'];
     $morningstarts_minutes = $row['morningstarts_minutes'];
+    $room_morningstarts_minutes = $row['morningstarts_minutes'];  // KTH: rummets egna minuter
   }
 
   $res_room_evening_ends = get_room_eveningends_day($room, date('w', $start_time));
@@ -1512,6 +1513,7 @@ if (isset($id))
   for ($i = 0; ($row = sql_row_keyed($res_room_evening_ends, $i)); $i++) {
     $room_eveningends = $row['eveningends'];
     $eveningends_minutes = $row['eveningends_minutes'];
+    $room_eveningends_minutes = $row['eveningends_minutes'];  // KTH: rummets egna minuter (användes i pm7 men sattes aldrig)
   }
 }
 else
@@ -1574,6 +1576,7 @@ else
   for ($i = 0; ($row = sql_row_keyed($res_room_morning_starts, $i)); $i++) {
     $room_morningstarts = $row['morningstarts'];
     $morningstarts_minutes = $row['morningstarts_minutes'];
+    $room_morningstarts_minutes = $row['morningstarts_minutes'];  // KTH: rummets egna minuter
   }
 
   $res_room_evening_ends = get_room_eveningends_day($room, date('w', $start_time));
@@ -1583,6 +1586,7 @@ else
   for ($i = 0; ($row = sql_row_keyed($res_room_evening_ends, $i)); $i++) {
     $room_eveningends = $row['eveningends'];
     $eveningends_minutes = $row['eveningends_minutes'];
+    $room_eveningends_minutes = $row['eveningends_minutes'];  // KTH: rummets egna minuter (användes i pm7 men sattes aldrig)
   }
 
   if (isset($end_seconds))
@@ -1720,8 +1724,11 @@ if ($res)
     else
     {
       //TODO kolla mot rummets morningstarts/ends istället!
-      $first = (($room_morningstarts * 60) + $morningstarts_minutes) * 60;
-      $last = ((($room_eveningends * 60) + $eveningends_minutes) * 60) + $row['resolution'];
+      // KTH: rummets timme ska kombineras med rummets minuter, inte områdets ($morningstarts_minutes/$eveningends_minutes
+      // skrivs över av get_area_settings()).  Annars saknas sista starttiden / sluttiden i väljarna och
+      // sluttidsfältet blir tomt när rummets minuter skiljer sig från områdets.
+      $first = (($room_morningstarts * 60) + (isset($room_morningstarts_minutes) ? $room_morningstarts_minutes : $morningstarts_minutes)) * 60;
+      $last = ((($room_eveningends * 60) + (isset($room_eveningends_minutes) ? $room_eveningends_minutes : $eveningends_minutes)) * 60) + $row['resolution'];
       
       //$first = (($row['morningstarts'] * 60) + $row['morningstarts_minutes']) * 60;
       //$last = ((($row['eveningends'] * 60) + $row['eveningends_minutes']) * 60) + $row['resolution'];
