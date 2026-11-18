@@ -320,7 +320,8 @@ function authValidateUser($user, $pass, $kthcas)
 					if (!in_array($user_group_value, $allowed_user_groups)) {
 						$result = 0; // ERROR!!
 						$message = get_vocab("not_authorized");
-						error_log($message);
+						// KTH: logga användargruppens kod och namn så att $allowedUserGroups i configen kan fyllas i utan gissningar
+						error_log($message . " Användare: " . $user . " Alma-grupp: " . $user_group_value . " (" . (isset($source['user_group']['desc']) ? $source['user_group']['desc'] : '') . ")");
 						$valid_id = FALSE;
 					}
 
