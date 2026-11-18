@@ -313,7 +313,11 @@ function authValidateUser($user, $pass, $kthcas)
 			if ($valid_id == TRUE && (authGetUserLevel($primary_id) < 2)) {
 				if ($checkusergroup) {
 					// Kontrollera mot alma
-					if (!in_array($source['user_group']['value'], $allowedUserGroups)) {
+					// KTH: $allowedUserGroups sätts i appens config.  Saknas den är den null, och in_array(.., null) kastar
+					// TypeError i PHP 8 (gav bara en varning och false i PHP 7 = "ej behörig").  Behandla saknad lista som tom.
+					$allowed_user_groups = (isset($allowedUserGroups) && is_array($allowedUserGroups)) ? $allowedUserGroups : array();
+					$user_group_value = isset($source['user_group']['value']) ? $source['user_group']['value'] : '';
+					if (!in_array($user_group_value, $allowed_user_groups)) {
 						$result = 0; // ERROR!!
 						$message = get_vocab("not_authorized");
 						error_log($message);
@@ -325,13 +329,15 @@ function authValidateUser($user, $pass, $kthcas)
 					// Utför inte för alma som loginmetod(interna alma-användare finns inte i LDAP)
 					if ($valid_id == FALSE && $auth["method"] != "alma") {
 						$allowedUGAffiliations = isset($allowedUGAffiliations) ? $allowedUGAffiliations : array();
-						$commonaff = array_intersect($allowedUGAffiliations,$jsonldap->ugusers[0]->ugAffiliation);
+						// KTH: ugAffiliation saknas/är null om LDAP-svaret inte hittade användaren (TypeError i PHP 8)
+						$ug_affiliations = (isset($jsonldap->ugusers[0]->ugAffiliation) && is_array($jsonldap->ugusers[0]->ugAffiliation)) ? $jsonldap->ugusers[0]->ugAffiliation : array();
+						$commonaff = array_intersect($allowedUGAffiliations, $ug_affiliations);
 						if (!empty($commonaff)) {
 							$valid_id = TRUE;
 						} else {
 							$result = 0; // ERROR!!
 							$message = get_vocab("not_authorized_UG");
-							error_log($message . " Användare: " . $user . " Affiliation: " . implode(', ', $jsonldap->ugusers[0]->ugAffiliation));
+							error_log($message . " Användare: " . $user . " Affiliation: " . implode(', ', $ug_affiliations));
 							$valid_id = FALSE;
 						}
 					}
