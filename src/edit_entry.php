@@ -1008,7 +1008,8 @@ function create_field_entry_custom_field($field, $key, $is_admin, $user, $entry_
           //Att välja om inga progam passar
           $params['options']['other'] = "Other";
           //Loop all programs
-          foreach($kth_programs->programmes as $key => $value)
+          // KTH: listan kan vara tom om Ladok inte svarar och ingen cache finns
+          foreach(((isset($kth_programs->programmes) && is_array($kth_programs->programmes)) ? $kth_programs->programmes : array()) as $key => $value)
           {
               if ($lang == "sv") {
                 $params['options'][$value->code] = $value->title->sv;
