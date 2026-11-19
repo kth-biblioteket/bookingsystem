@@ -98,7 +98,58 @@ function ladok_get_token($force_new = FALSE) {
 	return $data['access_token'];
 }
 
+// Förklarande text ur ett felsvar från APIM/Azure (t.ex. "Access denied due to invalid subscription key").
+// Texten är ingen hemlighet och gör felsökningen mycket enklare.
+function ladok_error_reason($response, $curl_error) {
+	if ($response === FALSE) {
+		return (string) $curl_error;
+	}
+	$body = json_decode($response, TRUE);
+	if (is_array($body) && isset($body['message']) && is_scalar($body['message'])) {
+		return (string) $body['message'];
+	}
+	if (is_array($body) && isset($body['error']['message']) && is_scalar($body['error']['message'])) {
+		return (string) $body['error']['message'];
+	}
+	if (is_array($body) && isset($body['error_description']) && is_scalar($body['error_description'])) {
+		return (string) $body['error_description'];
+	}
+	return trim(preg_replace('/\s+/', ' ', strip_tags((string) $response)));
+}
+
+// Ett anrop till Ladok-API:t.  $continuation är token för nästa sida och skickas som HTTP-header "continuationToken".
+// Returnerar array('status' => HTTP-status, 'data' => avkodad JSON eller NULL, 'reason' => felorsak).
+function ladok_api_get($url, $bearer, $subscription_key, $continuation = '') {
+	$headers = array(
+		'Authorization: Bearer ' . $bearer,
+		'Ocp-Apim-Subscription-Key: ' . $subscription_key,
+		'Accept: application/json',
+	);
+	if ($continuation !== '') {
+		$headers[] = 'continuationToken: ' . $continuation;
+	}
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+	$response = curl_exec($ch);
+	$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	$curl_error = curl_error($ch);
+	curl_close($ch);
+
+	$ok = ($response !== FALSE && $status >= 200 && $status < 300);
+	return array(
+		'status' => $status,
+		'data'   => $ok ? json_decode($response, TRUE) : NULL,
+		'reason' => $ok ? '' : substr(ladok_error_reason($response, $curl_error), 0, 200),
+	);
+}
+
 // Anropar Ladok och returnerar en lista av array('code'=>..., 'sv'=>..., 'en'=>...), eller NULL om det misslyckas.
+// Svaret kommer i sidor (max ca 80-100 träffar per sida oavsett antalTraffar).  Nästa sida hämtas med token från
+// metadataposten tills token saknas.  Avvecklade program (avvecklad = true) tas inte med.
 function ladok_fetch_programs() {
 	global $ladok_api_url, $ladok_subscription_key, $ladok_programs_query;
 
@@ -108,85 +159,59 @@ function ladok_fetch_programs() {
 	}
 	$query = !empty($ladok_programs_query) ? $ladok_programs_query
 	       : 'kodEllerBenamning=*&antalTraffar=300&senasteversion=true&utbildningstypid=78,101971,101998,101372';
+	$url = $ladok_api_url . '?' . $query;
 
-	for ($attempt = 0; $attempt < 2; $attempt++) {
-		// Andra försöket görs bara om första gav 401 (token ogiltig/utgången): hämta då en ny token
-		$token = ladok_get_token($attempt > 0);
-		if ($token === NULL) {
-			return NULL;
-		}
-
-		$ch = curl_init($ladok_api_url . '?' . $query);
-		curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-			'Authorization: Bearer ' . $token,
-			'Ocp-Apim-Subscription-Key: ' . $ladok_subscription_key,
-			'Accept: application/json',
-		));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-		$response = curl_exec($ch);
-		$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		$curl_error = curl_error($ch);
-		curl_close($ch);
-
-		if ($response !== FALSE && $status == 401 && $attempt == 0) {
-			continue;
-		}
-		if ($response === FALSE || $status < 200 || $status >= 300) {
-			// APIM/Azure skickar en förklarande text (t.ex. "Access denied due to invalid subscription key").  Den är ingen
-			// hemlighet och gör felsökningen mycket enklare, så första delen loggas.
-			$reason = $curl_error;
-			if ($response !== FALSE) {
-				$body = json_decode($response, TRUE);
-				if (is_array($body) && isset($body['message']) && is_scalar($body['message'])) {
-					$reason = (string) $body['message'];
-				} elseif (is_array($body) && isset($body['error']['message']) && is_scalar($body['error']['message'])) {
-					$reason = (string) $body['error']['message'];
-				} elseif (is_array($body) && isset($body['error_description']) && is_scalar($body['error_description'])) {
-					$reason = (string) $body['error_description'];
-				} else {
-					$reason = trim(preg_replace('/\s+/', ' ', strip_tags((string) $response)));
-				}
-			}
-			error_log('LADOK: kunde inte hämta program, HTTP ' . $status . ($reason != '' ? ' (' . substr($reason, 0, 200) . ')' : ''));
-			return NULL;
-		}
-		break;
-	}
-
-	$data = json_decode($response, TRUE);
-	if (!is_array($data)) {
-		error_log('LADOK: oväntat svar från API:t (inte JSON)');
-		return NULL;
-	}
-
-	// Svaret är en lista: första posten är metadata (pageResultSize, continuationToken), övriga är utbildningar.
-	// Vi hämtar bara första sidan.  continuationToken finns även när allt fick plats, så den säger inget om fler sidor.
-	// I stället loggar vi när svaret fyllde hela sidan (antalet träffar = antalTraffar), så att det märks om antalet
-	// program någon gång når gränsen.
 	$programs = array();
-	foreach ($data as $item) {
-		if (!is_array($item) || !isset($item['Attributvarden'])) {
-			continue;
+	$continuation = '';
+	$max_pages = 30;  // skydd mot oändlig loop
+	for ($page_no = 1; $page_no <= $max_pages; $page_no++) {
+		$page = NULL;
+		for ($attempt = 0; $attempt < 2; $attempt++) {
+			// Andra försöket görs bara om första gav 401 (token ogiltig/utgången): hämta då en ny token
+			$token = ladok_get_token($attempt > 0);
+			if ($token === NULL) {
+				return NULL;
+			}
+			$page = ladok_api_get($url, $token, $ladok_subscription_key, $continuation);
+			if ($page['status'] != 401 || $attempt > 0) {
+				break;
+			}
 		}
-		$code = ladok_attr($item, 'utbildning.attribut.kod');
-		if ($code === '') {
-			continue;
+		if ($page['data'] === NULL || !is_array($page['data'])) {
+			error_log('LADOK: kunde inte hämta program (sida ' . $page_no . '), HTTP ' . $page['status'] . ($page['reason'] != '' ? ' (' . $page['reason'] . ')' : ''));
+			return NULL;  // hellre en gammal komplett lista än en ofullständig ny
 		}
-		$sv = ladok_attr($item, 'utbildning.attribut.svensk.benamning');
-		$en = ladok_attr($item, 'utbildning.attribut.engelsk.benamning');
-		$programs[$code] = array(
-			'code' => $code,
-			'sv'   => ($sv !== '') ? $sv : (($en !== '') ? $en : $code),
-			'en'   => ($en !== '') ? $en : (($sv !== '') ? $sv : $code),
-		);
+
+		// Sidan är en lista: första posten är metadata (pageResultSize, continuationToken), övriga är utbildningar.
+		$items_in_page = 0;
+		foreach ($page['data'] as $item) {
+			if (!is_array($item) || !isset($item['Attributvarden'])) {
+				continue;
+			}
+			$items_in_page++;
+			$code = ladok_attr($item, 'utbildning.attribut.kod');
+			if ($code === '' || ladok_attr($item, 'avvecklad') === 'true') {
+				continue;
+			}
+			$sv = ladok_attr($item, 'utbildning.attribut.svensk.benamning');
+			$en = ladok_attr($item, 'utbildning.attribut.engelsk.benamning');
+			$programs[$code] = array(
+				'code' => $code,
+				'sv'   => ($sv !== '') ? $sv : (($en !== '') ? $en : $code),
+				'en'   => ($en !== '') ? $en : (($sv !== '') ? $sv : $code),
+			);
+		}
+
+		$next = (isset($page['data'][0]['continuationToken']) && is_string($page['data'][0]['continuationToken'])) ? $page['data'][0]['continuationToken'] : '';
+		if ($items_in_page === 0 || $next === '' || $next === $continuation) {
+			break;  // sista sidan
+		}
+		$continuation = $next;
 	}
-	$limit = preg_match('/antalTraffar=(\d+)/', $query, $limit_match) ? (int) $limit_match[1] : 0;
-	if ($limit > 0 && count($programs) >= $limit) {
-		error_log('LADOK: svaret fyllde hela sidan (' . count($programs) . ' av ' . $limit . '), fler program kan finnas. Höj antalTraffar i $ladok_programs_query.');
+	if ($page_no > $max_pages) {
+		error_log('LADOK: avbröt efter ' . $max_pages . ' sidor, listan kan vara ofullständig');
 	}
+
 	$programs = array_values($programs);
 	usort($programs, function ($a, $b) {
 		return strnatcasecmp($a['sv'], $b['sv']);
