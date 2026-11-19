@@ -146,6 +146,11 @@ function ladok_fetch_programs() {
 	}
 
 	// Svaret är en lista: första posten är metadata (pageResultSize, continuationToken), övriga är utbildningar.
+	// Vi hämtar bara första sidan (antalTraffar=300).  Finns det fler sidor loggar vi det, så att det märks om
+	// antalet program någon gång överstiger gränsen.
+	if (isset($data[0]['continuationToken']) && $data[0]['continuationToken'] !== '') {
+		error_log('LADOK: svaret har fler sidor (continuationToken), bara första sidan hämtades. Höj antalTraffar eller bygg stöd för sidhämtning.');
+	}
 	$programs = array();
 	foreach ($data as $item) {
 		if (!is_array($item) || !isset($item['Attributvarden'])) {
