@@ -105,12 +105,17 @@ if (!empty($auth["session_php"]["inactivity_expire_time"]))
     if ($ajax) {
       $auth['ajaxlogout'] = "TRUE";
     } else {
-      unset($_SESSION["UserName"]);
-      unset($_SESSION["full_name"]);
-      unset($_SESSION["email_address"]);
-      unset($_SESSION["phone_number"]);
-      unset($_SESSION['CSRFToken']);
-      unset($_SESSION['CSRFToken_time']);
+      // KTH: bara en inloggad användare loggas ut.  För en besökare som inte är inloggad finns inget att logga ut, och
+      // om CSRF-token slängs här förfaller inloggningsformuläret efter inaktivitetsgränsen (30 s på kiosken)
+      // och inloggningen ger "session CSRFToken not validated".
+      if (!empty($user)) {
+        unset($_SESSION["UserName"]);
+        unset($_SESSION["full_name"]);
+        unset($_SESSION["email_address"]);
+        unset($_SESSION["phone_number"]);
+        unset($_SESSION['CSRFToken']);
+        unset($_SESSION['CSRFToken_time']);
+      }
     }
   }
   // Ajax requests don't count as activity, unless it's the special Ajax request used
