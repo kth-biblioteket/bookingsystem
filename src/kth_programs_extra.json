@@ -1,0 +1,515 @@
+{
+ "_beskrivning": "Program som finns i KOPPS-katalogen på kth.se men inte i Ladok-API:t. Slås ihop med listan från Ladok i kth.inc (Ladok har företräde). Uppdateras för hand. Hämtad 2026-11-19 från https://www.kth.se/student/kurser/kurser-inom-program, programtyper 2007PRG/FUPPRG/UPHPPRG.",
+ "programs": [
+  {
+   "code": "CL",
+   "sv": "Civilingenjör och lärare",
+   "en": "Master of Science in Engineering and of Education"
+  },
+  {
+   "code": "CKEMV",
+   "sv": "Civilingenjörsutbildning i kemivetenskap",
+   "en": "Degree Programme in Chemical Science and Engineering"
+  },
+  {
+   "code": "CMIEL",
+   "sv": "Civilingenjörsutbildning i mikroelektronik",
+   "en": "Degree Programme in Microelectronics"
+  },
+  {
+   "code": "TIBEA",
+   "sv": "Högskoleingenjörsutbildning i byggteknik och ekonomi",
+   "en": "Degree Programme in Constructional Engineering and Economics"
+  },
+  {
+   "code": "TIBHL",
+   "sv": "Högskoleingenjörsutbildning i byggteknik och hälsa",
+   "en": "Degree Programme in Constructional Engineering and Health"
+  },
+  {
+   "code": "TIDEA",
+   "sv": "Högskoleingenjörsutbildning i datateknik och ekonomi",
+   "en": "Degree Programme in Computer Engineering and Economics"
+  },
+  {
+   "code": "TIDHL",
+   "sv": "Högskoleingenjörsutbildning i datateknik och hälsa",
+   "en": "Degree Programme in Computer Engineering and Health"
+  },
+  {
+   "code": "TIEEA",
+   "sv": "Högskoleingenjörsutbildning i elektroteknik och ekonomi",
+   "en": "Degree Programme in Electrical Engineering and Economics"
+  },
+  {
+   "code": "TIELE",
+   "sv": "Högskoleingenjörsutbildning i elektroteknik, Södertälje",
+   "en": "Degree Programme in Electrical Engineering"
+  },
+  {
+   "code": "TIMES",
+   "sv": "Högskoleingenjörsutbildning i maskinteknik och ekonomi",
+   "en": "Degree Programme in Mechanical Engineering and Economics"
+  },
+  {
+   "code": "TIMHL",
+   "sv": "Högskoleingenjörsutbildning i maskinteknik och hälsa",
+   "en": "Degree Programme in Mechanical Engineering and Health"
+  },
+  {
+   "code": "TIMEH",
+   "sv": "Högskoleingenjörsutbildning i medieteknik",
+   "en": "Degree Programme in Media Technology"
+  },
+  {
+   "code": "TITHL",
+   "sv": "Högskoleingenjörsutbildning i teknik och hälsa, öppen ingång",
+   "en": "Degree Programme in Technology and Health"
+  },
+  {
+   "code": "TFASH",
+   "sv": "Högskoleutbildning i byggteknik och fastighetsförmedling",
+   "en": "School of Constructional Technology and Real Estate Agency"
+  },
+  {
+   "code": "TAFFK",
+   "sv": "Kandidatprogram, affärssystem",
+   "en": "Bachelor's Programme in Business  Engineering"
+  },
+  {
+   "code": "TKOMK",
+   "sv": "Kandidatprogram, informations- och kommunikationsteknik",
+   "en": "Bachelor's Programme in Information and Communication Technology"
+  },
+  {
+   "code": "TMILK",
+   "sv": "Kandidatprogram, medicinsk informatik",
+   "en": "Bachelor's Programme in Medical Informatics"
+  },
+  {
+   "code": "TSVDK",
+   "sv": "Kandidatprogram, simuleringsteknik och virtuell design",
+   "en": "Bachelor's Programme in Simulation Technology and Virtual Design"
+  },
+  {
+   "code": "TBAFM",
+   "sv": "Magisterprogram, bank och finans",
+   "en": "Master's Programme, Banking and Finance"
+  },
+  {
+   "code": "TDNKM",
+   "sv": "Magisterprogram, datornätverk",
+   "en": "Master's Programme, Computer Networks"
+  },
+  {
+   "code": "TDEBM",
+   "sv": "Magisterprogram, design och byggande i staden",
+   "en": "Master's Programme, Urban Development and Design"
+  },
+  {
+   "code": "TERGM",
+   "sv": "Magisterprogram, Ergonomi och Människa-Teknik-Organisation",
+   "en": "Master's Programme, Ergonomics and Human-Technology-Organisation"
+  },
+  {
+   "code": "TFAHM",
+   "sv": "Magisterprogram, fastigheter",
+   "en": "Master's Programme, Real Estate"
+  },
+  {
+   "code": "TFASM",
+   "sv": "Magisterprogram, fastighetsföretagande",
+   "en": "Master's Programme, Real Estate Management, 60 credits"
+  },
+  {
+   "code": "TMTEM",
+   "sv": "Magisterprogram, medicinsk teknik",
+   "en": "Master's Programme, Medical Engineering"
+  },
+  {
+   "code": "TMDAM",
+   "sv": "Magisterprogram, människa-datorinteraktion",
+   "en": "Master's Programme, Human-Computer Interaction"
+  },
+  {
+   "code": "TPRPM",
+   "sv": "Magisterprogram, produktframtagning",
+   "en": "Master's Programme, Product Realisation"
+  },
+  {
+   "code": "TPVUM",
+   "sv": "Magisterprogram, programvaruutveckling",
+   "en": "Master's Programme, Software Engineering"
+  },
+  {
+   "code": "TPLVM",
+   "sv": "Magisterprogram, projektledning och verksamhetsutveckling",
+   "en": "Master's Programme, Project Management and Operational Development"
+  },
+  {
+   "code": "TAOHM",
+   "sv": "Magisterprogram, Teknik, hälsa och arbetsmiljöutveckling",
+   "en": "Master's Programme, Technology, Health and Work Environment Development"
+  },
+  {
+   "code": "TTVFM",
+   "sv": "Magisterprogram, teknik- och vetenskapsfilosofi",
+   "en": "Master's Programme, Philosophy of Science and Technology"
+  },
+  {
+   "code": "TTILM",
+   "sv": "Magisterprogram, tillämpad logistik",
+   "en": "Master's Programme, Applied Logistics"
+  },
+  {
+   "code": "TURSM",
+   "sv": "Magisterprogram, urbana studier",
+   "en": "Master's Programme, Urbanism Studies"
+  },
+  {
+   "code": "TESIM",
+   "sv": "Master's Program, Environmental Engineering and Sustainable Infrastructure",
+   "en": "Master's Programme, Environmental Engineering and Sustainable Infrastructure, 90 hp"
+  },
+  {
+   "code": "TAETM",
+   "sv": "Masterprogram, aeroelasticitet i turbomaskiner",
+   "en": "Master's Programme, Turbomachinery Aeromechanic University Training"
+  },
+  {
+   "code": "TBSBM",
+   "sv": "Masterprogram, beräknings- och systembiologi",
+   "en": "Master's Programme, Computational and Systems Biology"
+  },
+  {
+   "code": "TBKFM",
+   "sv": "Masterprogram, beräkningskemi och beräkningsfysik",
+   "en": "Master's Programme, Computational Chemistry and Computational Physics"
+  },
+  {
+   "code": "TBIMM",
+   "sv": "Masterprogram, biomedicinska material",
+   "en": "Master's Programme, Biomedical Materials"
+  },
+  {
+   "code": "TBDSM",
+   "sv": "Masterprogram, biostatistik och datavetenskap",
+   "en": "Master's Programme, Biostatistics and Data Science"
+  },
+  {
+   "code": "TBIOM",
+   "sv": "Masterprogram, bioteknik",
+   "en": "Master's Programme, Biotechnology"
+  },
+  {
+   "code": "TDISM",
+   "sv": "Masterprogram, distribuerade system",
+   "en": "Master's Programme, Distributed Computing"
+  },
+  {
+   "code": "TELFM",
+   "sv": "Masterprogram, elektrofysik",
+   "en": "Master's Programme, Electrophysics"
+  },
+  {
+   "code": "TIMAM",
+   "sv": "Masterprogram, Erasmus Mundus, Industrial Management",
+   "en": "Master (Two Years), Erasmus Mundus, Industrial Management"
+  },
+  {
+   "code": "TREFM",
+   "sv": "Masterprogram, fastighetsföretagande",
+   "en": "Master's Programme, Real Estate Management"
+  },
+  {
+   "code": "TFAFM",
+   "sv": "Masterprogram, fastighetsutveckling och finansiella tjänster",
+   "en": "Master's Programme, Real Estate Development and Financial Services"
+  },
+  {
+   "code": "TLMAM",
+   "sv": "Masterprogram, fastighetsvetenskap",
+   "en": "Master's Programme, Land Management, 120 credits"
+  },
+  {
+   "code": "TPHOM",
+   "sv": "Masterprogram, fotonik",
+   "en": "Master's Programme, Photonics"
+  },
+  {
+   "code": "TPHSM",
+   "sv": "Masterprogram, fotonik",
+   "en": "Master's Programme, Photonics"
+  },
+  {
+   "code": "TFEPM",
+   "sv": "Masterprogram, fusionsenergi och teknisk fysik",
+   "en": "Master's Programme, Nuclear Fusion Science and Engineering Physics"
+  },
+  {
+   "code": "TGEGM",
+   "sv": "Masterprogram, geodesi och geoinformatik",
+   "en": "Master's Programme, Geodesy and Geoinformatics"
+  },
+  {
+   "code": "THUSM",
+   "sv": "Masterprogram, huskonstruktion",
+   "en": "Master's Programme, Architectural Engineering"
+  },
+  {
+   "code": "TEESM",
+   "sv": "Masterprogram, hållbar miljöteknik och infrastruktur",
+   "en": "Master's Programme, Environmental Engineering and Sustainable Infrastructure"
+  },
+  {
+   "code": "THSUM",
+   "sv": "Masterprogram, hållbar stadsutveckling",
+   "en": "Master's Programme, Sustainable Urban Transition"
+  },
+  {
+   "code": "TIMIM",
+   "sv": "Masterprogram, industriell ekonomi",
+   "en": "Master's Programme, Industrial Management"
+  },
+  {
+   "code": "TICSM",
+   "sv": "Masterprogram, informations- och kommunikationssäkerhet",
+   "en": "Master's Programme, Information and Communication Systems Security"
+  },
+  {
+   "code": "TIKTM",
+   "sv": "Masterprogram, informations- och kommunikationsteknik",
+   "en": "Master's Programme, Research on Information and Communication Technologies"
+  },
+  {
+   "code": "TITMM",
+   "sv": "Masterprogram, ingenjörstillämpad matematik",
+   "en": "Master's Programme, Applied and Engineering Mathematics"
+  },
+  {
+   "code": "TEINM",
+   "sv": "Masterprogram, innovations- och tillväxtekonomi",
+   "en": "Master's Programme, Economics of Innovation and Growth"
+  },
+  {
+   "code": "TINWM",
+   "sv": "Masterprogram, internetteknik",
+   "en": "Master's Programme, Internetworking"
+  },
+  {
+   "code": "TICTM",
+   "sv": "Masterprogram, IT-entreprenörskap",
+   "en": "Master's Programme, ICT Entrepreneurship"
+  },
+  {
+   "code": "TCSEM",
+   "sv": "Masterprogram, kemi och kemiteknik",
+   "en": "Master's Programme, Chemical Science and Engineering"
+  },
+  {
+   "code": "TKFEM",
+   "sv": "Masterprogram, klimatförändringar och energihantering",
+   "en": "Master's Programme, Climate Change and Energy Management"
+  },
+  {
+   "code": "TDIPM",
+   "sv": "Masterprogram, konstruktion och realisering av IT-produkter och -system",
+   "en": "Master's Programme, Design and Implementation of ICT Products and Systems"
+  },
+  {
+   "code": "TSOVM",
+   "sv": "Masterprogram, ljud och vibrationer",
+   "en": "Master's Programme, Sound and Vibration"
+  },
+  {
+   "code": "TLDHM",
+   "sv": "Masterprogram, ljus, design och hälsa",
+   "en": "Master's Programme, Architectural Lighting Design and Health"
+  },
+  {
+   "code": "TPHEM",
+   "sv": "Masterprogram, läkemedelsteknik",
+   "en": "Master's Programme, Pharmaceuticals and Pharmaceutical Engineering"
+  },
+  {
+   "code": "TMTHM",
+   "sv": "Masterprogram, matematik",
+   "en": "Master's Programme, Mathematics"
+  },
+  {
+   "code": "TMSSM",
+   "sv": "Masterprogram, material och sensorsystem för miljötekniska tillämpningar",
+   "en": "Master's Programme, Materials and Sensors System for Environmental Technologies"
+  },
+  {
+   "code": "TMSEM",
+   "sv": "Masterprogram, materialteknik",
+   "en": "Master's Programme, Materials Science and Engineering"
+  },
+  {
+   "code": "TMEMM",
+   "sv": "Masterprogram, media management",
+   "en": "Master's Programme, Media Management"
+  },
+  {
+   "code": "TMMTM",
+   "sv": "Masterprogram, media management",
+   "en": "Master's Programme, Media Management"
+  },
+  {
+   "code": "TMEEM",
+   "sv": "Masterprogram, medicinsk bildbehandling",
+   "en": "Master's Programme, Medical Imaging"
+  },
+  {
+   "code": "TMETM",
+   "sv": "Masterprogram, medieteknik",
+   "en": "Master's Programme, Media Technology"
+  },
+  {
+   "code": "TEEGM",
+   "sv": "Masterprogram, miljöteknik",
+   "en": "Master's Programme, Environmental Engineering"
+  },
+  {
+   "code": "TMPHM",
+   "sv": "Masterprogram, modern fysik",
+   "en": "Master's Programme, Modern Physics"
+  },
+  {
+   "code": "THCIM",
+   "sv": "Masterprogram, människa-datorinteraktion",
+   "en": "Master's Programme, Human-Computer Interaction"
+  },
+  {
+   "code": "TNSSM",
+   "sv": "Masterprogram, nätverkstjänster och system",
+   "en": "Master's Programme, Network Services and Systems"
+  },
+  {
+   "code": "TSPPM",
+   "sv": "Masterprogram, samhällsplanering",
+   "en": "Master's Programme, Spatial Planning"
+  },
+  {
+   "code": "TSENM",
+   "sv": "Masterprogram, smarta elektriska nätverk och system",
+   "en": "Master's Programme, Smart Electrical Networks and Systems"
+  },
+  {
+   "code": "TSYBM",
+   "sv": "Masterprogram, systembiologi",
+   "en": "Master's Programme, Systems Biology"
+  },
+  {
+   "code": "TSKKM",
+   "sv": "Masterprogram, systemkonstruktion på kisel",
+   "en": "Master's Programme, System-on-Chip Design"
+  },
+  {
+   "code": "TSMKM",
+   "sv": "Masterprogram, säker och mobil kommunikation",
+   "en": "Master's Programme, Security and Mobile Computing"
+  },
+  {
+   "code": "TISYM",
+   "sv": "Masterprogram, teknik för interaktiva system",
+   "en": "Master's Programme, Interactive Systems Engineering"
+  },
+  {
+   "code": "TEEEM",
+   "sv": "Masterprogram, teknik och ledning för energi- och miljösystem",
+   "en": "Master's Programme, Management and Engineering of Environment and Energy"
+  },
+  {
+   "code": "TEMSM",
+   "sv": "Masterprogram, teknik och ledning för informationssystem",
+   "en": "Master's Programme, Engineering and Management of Information Systems"
+  },
+  {
+   "code": "TISEM",
+   "sv": "Masterprogram, teknisk infrastruktur",
+   "en": "Master's Programme, Infrastructure Engineering"
+  },
+  {
+   "code": "TSCCM",
+   "sv": "Masterprogram, tekniska beräkningar",
+   "en": "Master's Programme, Scientific Computing"
+  },
+  {
+   "code": "TAPHM",
+   "sv": "Masterprogram, tillämpad fysik",
+   "en": "Master's Programme, Applied Physics"
+  },
+  {
+   "code": "TTSYM",
+   "sv": "Masterprogram, transportsystem",
+   "en": "Master's Programme, Transport Systems"
+  },
+  {
+   "code": "TTLSM",
+   "sv": "Masterprogram, trådlösa system",
+   "en": "Master's Programme, Wireless Systems"
+  },
+  {
+   "code": "TUPDM",
+   "sv": "Masterprogram, urban planering och design",
+   "en": "Master's Programme, Urban Planning and Design"
+  },
+  {
+   "code": "TWSTM",
+   "sv": "Masterprogram, vattensystemteknik",
+   "en": "Master's Programme, Water System Technology"
+  },
+  {
+   "code": "TBATL",
+   "sv": "Teknisk bastermin",
+   "en": "Technical Preparatory Semester"
+  },
+  {
+   "code": "TBATH",
+   "sv": "Teknisk bastermin, Haninge",
+   "en": "Technical Preparatory Semester"
+  },
+  {
+   "code": "TBUDB",
+   "sv": "Tekniskt basår mot högskoleingenjör, distans med campusträffar",
+   "en": "Technical Preparatory Year towards Bachelor of Science in Engineering, online with meetings on campus"
+  },
+  {
+   "code": "TBUDA",
+   "sv": "Tekniskt basår, distans med campusträffar",
+   "en": "Technical Preparatory Year, online with meetings on campus"
+  },
+  {
+   "code": "TBASB",
+   "sv": "Tekniskt basår, Kista",
+   "en": "Technical Preparatory Year"
+  },
+  {
+   "code": "TBASA",
+   "sv": "Tekniskt basår, KTH Flemingsberg",
+   "en": "Technical Preparatory Year"
+  },
+  {
+   "code": "TBASE",
+   "sv": "Tekniskt basår, KTH Södertälje",
+   "en": "Technical Preparatory Year"
+  },
+  {
+   "code": "TBTMB",
+   "sv": "Tekniskt basår, termin 2, Kista",
+   "en": "Technical Preparatory Semester"
+  },
+  {
+   "code": "TBTMH",
+   "sv": "Tekniskt basår, termin 2, KTH Flemingsberg",
+   "en": "Technical Preparatory Semester"
+  },
+  {
+   "code": "TBTMS",
+   "sv": "Tekniskt basår, termin 2, KTH Södertälje",
+   "en": "Technical Preparatory Semester"
+  }
+ ]
+}

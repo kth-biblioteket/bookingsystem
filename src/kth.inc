@@ -219,8 +219,8 @@ function ladok_fetch_programs() {
 	return $programs;
 }
 
-// Programlistan, cachad.  Returnerar alltid en array (tom om inget gick att hämta och ingen cache finns).
-function ladok_get_programs() {
+// Programlistan från Ladok, cachad.  Returnerar alltid en array (tom om inget gick att hämta och ingen cache finns).
+function ladok_get_ladok_programs() {
 	global $ladok_api_url, $ladok_programs_query, $ladok_cache_ttl;
 	static $memory = NULL;
 	if ($memory !== NULL) {
@@ -252,6 +252,50 @@ function ladok_get_programs() {
 		$memory = array();
 	}
 	return $memory;
+}
+
+// Program som finns i den gamla KOPPS-katalogen på kth.se men inte i Ladok-API:t (kth_programs_extra.json).
+// Behövs för att äldre program ska vara valbara och för att gamla bokningars programkoder ska få ett namn.
+function ladok_extra_programs() {
+	static $extra = NULL;
+	if ($extra !== NULL) {
+		return $extra;
+	}
+	$extra = array();
+	$file = dirname(__FILE__) . '/kth_programs_extra.json';
+	$data = is_readable($file) ? json_decode(@file_get_contents($file), TRUE) : NULL;
+	if (is_array($data) && isset($data['programs']) && is_array($data['programs'])) {
+		foreach ($data['programs'] as $p) {
+			if (is_array($p) && !empty($p['code'])) {
+				$sv = (isset($p['sv']) && $p['sv'] !== '') ? $p['sv'] : ((isset($p['en']) && $p['en'] !== '') ? $p['en'] : $p['code']);
+				$en = (isset($p['en']) && $p['en'] !== '') ? $p['en'] : $sv;
+				$extra[] = array('code' => (string) $p['code'], 'sv' => $sv, 'en' => $en);
+			}
+		}
+	}
+	return $extra;
+}
+
+// Alla valbara program: Ladok-listan plus tillägget.  Finns en kod i båda gäller Ladok.
+function ladok_get_programs() {
+	static $merged = NULL;
+	if ($merged !== NULL) {
+		return $merged;
+	}
+	$by_code = array();
+	foreach (ladok_get_ladok_programs() as $program) {
+		$by_code[$program['code']] = $program;
+	}
+	foreach (ladok_extra_programs() as $program) {
+		if (!isset($by_code[$program['code']])) {
+			$by_code[$program['code']] = $program;
+		}
+	}
+	$merged = array_values($by_code);
+	usort($merged, function ($a, $b) {
+		return strnatcasecmp($a['sv'], $b['sv']);
+	});
+	return $merged;
 }
 
 /*
