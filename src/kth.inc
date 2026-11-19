@@ -38,7 +38,9 @@ function ladok_cache_write($file, $data) {
 	$tmp = $file . '.' . getmypid() . '.tmp';
 	if (@file_put_contents($tmp, json_encode($data), LOCK_EX) !== FALSE) {
 		@chmod($tmp, 0600);
-		@rename($tmp, $file);
+		if (!@rename($tmp, $file)) {
+			@unlink($tmp);  // t.ex. om filen ägs av en annan användare: lämna inga tmp-filer kvar
+		}
 	}
 }
 
@@ -133,7 +135,22 @@ function ladok_fetch_programs() {
 			continue;
 		}
 		if ($response === FALSE || $status < 200 || $status >= 300) {
-			error_log('LADOK: kunde inte hämta program, HTTP ' . $status . ($curl_error != '' ? ' (' . $curl_error . ')' : ''));
+			// APIM/Azure skickar en förklarande text (t.ex. "Access denied due to invalid subscription key").  Den är ingen
+			// hemlighet och gör felsökningen mycket enklare, så första delen loggas.
+			$reason = $curl_error;
+			if ($response !== FALSE) {
+				$body = json_decode($response, TRUE);
+				if (is_array($body) && isset($body['message']) && is_scalar($body['message'])) {
+					$reason = (string) $body['message'];
+				} elseif (is_array($body) && isset($body['error']['message']) && is_scalar($body['error']['message'])) {
+					$reason = (string) $body['error']['message'];
+				} elseif (is_array($body) && isset($body['error_description']) && is_scalar($body['error_description'])) {
+					$reason = (string) $body['error_description'];
+				} else {
+					$reason = trim(preg_replace('/\s+/', ' ', strip_tags((string) $response)));
+				}
+			}
+			error_log('LADOK: kunde inte hämta program, HTTP ' . $status . ($reason != '' ? ' (' . substr($reason, 0, 200) . ')' : ''));
 			return NULL;
 		}
 		break;
@@ -146,11 +163,9 @@ function ladok_fetch_programs() {
 	}
 
 	// Svaret är en lista: första posten är metadata (pageResultSize, continuationToken), övriga är utbildningar.
-	// Vi hämtar bara första sidan (antalTraffar=300).  Finns det fler sidor loggar vi det, så att det märks om
-	// antalet program någon gång överstiger gränsen.
-	if (isset($data[0]['continuationToken']) && $data[0]['continuationToken'] !== '') {
-		error_log('LADOK: svaret har fler sidor (continuationToken), bara första sidan hämtades. Höj antalTraffar eller bygg stöd för sidhämtning.');
-	}
+	// Vi hämtar bara första sidan.  continuationToken finns även när allt fick plats, så den säger inget om fler sidor.
+	// I stället loggar vi när svaret fyllde hela sidan (antalet träffar = antalTraffar), så att det märks om antalet
+	// program någon gång når gränsen.
 	$programs = array();
 	foreach ($data as $item) {
 		if (!is_array($item) || !isset($item['Attributvarden'])) {
@@ -167,6 +182,10 @@ function ladok_fetch_programs() {
 			'sv'   => ($sv !== '') ? $sv : (($en !== '') ? $en : $code),
 			'en'   => ($en !== '') ? $en : (($sv !== '') ? $sv : $code),
 		);
+	}
+	$limit = preg_match('/antalTraffar=(\d+)/', $query, $limit_match) ? (int) $limit_match[1] : 0;
+	if ($limit > 0 && count($programs) >= $limit) {
+		error_log('LADOK: svaret fyllde hela sidan (' . count($programs) . ' av ' . $limit . '), fler program kan finnas. Höj antalTraffar i $ladok_programs_query.');
 	}
 	$programs = array_values($programs);
 	usort($programs, function ($a, $b) {
